@@ -1,6 +1,6 @@
 import ee
 
-def build_s1_collection(aoi, year, orbit="ASCENDING"):
+def build_s1_collection(aoi, year, orbit):
     start = ee.Date.fromYMD(year, 1, 1)
     end   = ee.Date.fromYMD(year + 1, 1, 1)
 
@@ -16,4 +16,3 @@ def build_s1_collection(aoi, year, orbit="ASCENDING"):
         .select(["VV", "VH", "angle"])  # no perder angle
         .sort("system:time_start")
     )
-        

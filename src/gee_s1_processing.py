@@ -5,12 +5,35 @@ def gamma0_normalization(img):
     cos_t = theta.cos()
     vv = img.select("VV").divide(cos_t).rename("VV")
     vh = img.select("VH").divide(cos_t).rename("VH")
-    return img.addBands(vv, overwrite=True).addBands(vh, overwrite=True)
+    return img.addBands([vv, vh, angle.rename("angle")], overwrite=True)
+
+
+def db_to_linear(db_img):
+    # linear = 10^(dB/10)
+    return ee.Image(10).pow(ee.Image(db_img).divide(10.0))
+
+def linear_to_db(lin_img):
+    # dB = 10*log10(linear)
+    # proteger contra ceros
+    eps = ee.Image.constant(1e-10)
+    lin_safe = ee.Image(lin_img).max(eps)
+    return lin_safe.log10().multiply(10.0)
 
 
 def add_vvvh_ratio(img):
-    ratio = img.select("VV").divide(img.select("VH")).rename("VVVH_ratio")
-    return img.addBands(ratio)
+    vv_db = img.select("VV")
+    vh_db = img.select("VH")
+
+    vv_lin = db_to_linear(vv_db)
+    vh_lin = db_to_linear(vh_db)
+
+    # Proteger VH cercano a 0 en lineal
+    eps = ee.Image.constant(1e-10)
+    ratio_lin = vv_lin.divide(vh_lin.max(eps))
+
+    ratio_db = linear_to_db(ratio_lin).rename("VVVH_ratio")
+
+    return img.addBands(ratio_db)
 
 
 def speckle_filter(col, n_prev=5, boxcar=7):

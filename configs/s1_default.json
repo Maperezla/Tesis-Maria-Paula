@@ -1,0 +1,7 @@
+{
+  "year": 2020,
+  "orbit": "ASCENDING",
+  "eps": 1e-10,
+  "kernel_size": 7,
+  "dem_id": "USGS/SRTMGL1_003"
+}
