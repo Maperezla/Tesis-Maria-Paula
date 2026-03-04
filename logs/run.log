@@ -7,3 +7,12 @@
 2026-03-02 15:41:13,038 | INFO | === START RUN ===
 2026-03-02 15:41:17,068 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
 2026-03-02 15:41:17,069 | INFO | n_images=114
+2026-03-03 16:48:03,542 | INFO | === START RUN ===
+2026-03-03 16:49:30,374 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-03 16:49:30,374 | INFO | n_images=114
+2026-03-04 10:07:28,417 | INFO | === START RUN ===
+2026-03-04 10:08:31,154 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-04 10:08:31,154 | INFO | n_images=114
+2026-03-04 10:08:36,504 | INFO | === START RUN ===
+2026-03-04 10:08:40,185 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-04 10:08:40,185 | INFO | n_images=114

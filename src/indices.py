@@ -1,4 +1,3 @@
-
 import ee
 
 def _db_to_lin(db_img: ee.Image) -> ee.Image:
