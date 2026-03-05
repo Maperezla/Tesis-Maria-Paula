@@ -16,3 +16,36 @@
 2026-03-04 10:08:36,504 | INFO | === START RUN ===
 2026-03-04 10:08:40,185 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
 2026-03-04 10:08:40,185 | INFO | n_images=114
+2026-03-04 10:14:13,774 | INFO | === START RUN ===
+2026-03-04 10:14:17,562 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-04 10:14:17,562 | INFO | n_images=114
+2026-03-04 11:35:48,856 | INFO | === START RUN ===
+2026-03-04 11:35:52,089 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-04 11:35:52,089 | INFO | n_images=92
+2026-03-04 11:45:10,072 | INFO | === START RUN ===
+2026-03-04 11:45:16,729 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-04 11:45:16,734 | INFO | n_images=92
+2026-03-04 12:18:05,556 | INFO | === START RUN ===
+2026-03-04 12:18:09,116 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-04 12:18:09,116 | INFO | n_images=61
+2026-03-05 07:03:09,406 | INFO | === START RUN ===
+2026-03-05 07:04:03,837 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-05 07:04:03,843 | INFO | n_images=6
+2026-03-05 07:05:57,560 | INFO | === START RUN ===
+2026-03-05 07:06:05,018 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-05 07:06:05,018 | INFO | n_images=6
+2026-03-05 07:07:42,358 | INFO | === START RUN ===
+2026-03-05 07:07:45,527 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-05 07:07:45,527 | INFO | n_images=20
+2026-03-05 07:11:46,717 | INFO | === START RUN ===
+2026-03-05 07:11:49,957 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-05 07:11:49,957 | INFO | n_images=60
+2026-03-05 07:12:54,459 | INFO | === START RUN ===
+2026-03-05 07:12:57,887 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-05 07:12:57,887 | INFO | n_images=92
+2026-03-05 07:18:33,986 | INFO | === START RUN ===
+2026-03-05 07:18:37,777 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-05 07:18:37,777 | INFO | n_images=114
+2026-03-05 07:24:29,237 | INFO | === START RUN ===
+2026-03-05 07:24:33,395 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-05 07:24:33,395 | INFO | n_images=103
