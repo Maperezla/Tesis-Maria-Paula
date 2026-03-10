@@ -49,3 +49,32 @@
 2026-03-05 07:24:29,237 | INFO | === START RUN ===
 2026-03-05 07:24:33,395 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
 2026-03-05 07:24:33,395 | INFO | n_images=103
+2026-03-09 13:09:39,220 | INFO | === START RUN ===
+2026-03-09 13:10:48,402 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-09 13:10:48,404 | INFO | n_images=6
+2026-03-09 16:17:08,140 | INFO | === START RUN ===
+2026-03-09 16:17:10,561 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-09 16:17:10,561 | INFO | n_images=20
+2026-03-09 16:23:57,202 | INFO | === START RUN ===
+2026-03-09 16:23:59,117 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-09 16:23:59,117 | INFO | n_images=20
+2026-03-09 16:24:48,616 | INFO | === START RUN ===
+2026-03-09 16:24:51,852 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-09 16:24:51,852 | INFO | n_images=20
+2026-03-09 16:25:30,586 | INFO | === START RUN ===
+2026-03-09 16:25:33,506 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-09 16:25:33,506 | INFO | n_images=60
+2026-03-09 16:31:44,795 | INFO | === START RUN ===
+2026-03-09 16:31:47,545 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-09 16:31:47,545 | INFO | n_images=92
+2026-03-09 16:39:43,077 | INFO | === START RUN ===
+2026-03-09 16:39:46,583 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-09 16:39:46,583 | INFO | n_images=114
+2026-03-09 16:52:53,891 | INFO | === START RUN ===
+2026-03-09 16:52:55,931 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-09 16:52:55,931 | INFO | n_images=103
+2026-03-10 10:57:40,695 | INFO | === START RUN ===
+2026-03-10 10:58:58,104 | INFO | === START RUN ===
+2026-03-10 10:59:34,132 | INFO | === START RUN ===
+2026-03-10 10:59:57,484 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-10 10:59:57,487 | INFO | n_images=92

@@ -1,0 +1,11 @@
+{
+  "root_tiff_dir": "D:\\Maestria_Geomatica\\Semestre_IV\\Tesis_Python\\Datos\\TIFF\\S1",
+  "aoi_path": "D:\\Maestria_Geomatica\\Semestre_IV\\Tesis_Python\\Datos\\SHP\\AOI_25_09_19.shp",
+  "tiff_extension": ".tif",
+  "out_dir": "outputs/qc_s1_batch_noVVDIFF",
+  "plots_subdir": "histogramas",
+  "nbins": 80,
+  "p_lo": 1,
+  "p_hi": 99,
+  "bands_used": ["VV", "VH", "angle", "VVVH_ratio"]
+}

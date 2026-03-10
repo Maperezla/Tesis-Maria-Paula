@@ -1,0 +1,11 @@
+JUSTIFICACIÓN TÉCNICA — SELECCIÓN DE ESCENA SENTINEL-1
+==============================================================================
+Total escenas evaluadas: 4
+
+Bandas evaluadas:
+- VV, VH, angle, VVVH_ratio
+
+ESCENA SELECCIONADA (mejor ranking):
+- Archivo: S1_2021_12.tif
+- % válido (bandas evaluadas): 5.25% | % null: 94.75%
+- Coherencia geométrica con referencia: True

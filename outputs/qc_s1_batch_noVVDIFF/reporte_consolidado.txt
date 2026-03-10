@@ -1,0 +1,15 @@
+REPORTE CONSOLIDADO SENTINEL-1
+============================================================
+Subcarpetas procesadas: 24
+
+Top 10 escenas globales:
+1. S1_2015_09 | S1_2015_4.tif | valid_all=27.43% | null_any=72.57% | geom_ok=True
+2. S1_2015_11 | S1_2015_5.tif | valid_all=27.40% | null_any=72.60% | geom_ok=True
+3. S1_2015_05 | S1_2015_2.tif | valid_all=25.11% | null_any=74.89% | geom_ok=False
+4. S1_2016_11 | S1_2016_16.tif | valid_all=17.05% | null_any=82.95% | geom_ok=False
+5. S1_2016_09 | S1_2016_7.tif | valid_all=17.02% | null_any=82.98% | geom_ok=False
+6. S1_2016_09 | S1_2016_6.tif | valid_all=17.01% | null_any=82.99% | geom_ok=True
+7. S1_2016_12 | S1_2016_19.tif | valid_all=16.99% | null_any=83.01% | geom_ok=True
+8. S1_2016_11 | S1_2016_13.tif | valid_all=16.98% | null_any=83.02% | geom_ok=True
+9. S1_2017_05 | S1_2017_25.tif | valid_all=16.98% | null_any=83.02% | geom_ok=False
+10. S1_2016_03 | S1_2016_2.tif | valid_all=16.96% | null_any=83.04% | geom_ok=True

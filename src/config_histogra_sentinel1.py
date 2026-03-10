@@ -5,9 +5,9 @@ import json
 
 @dataclass(frozen=True)
 class QcConfig:
-    tiff_dir: Path
+    root_tiff_dir: Path
     aoi_path: Path
-    tiff_glob: str
+    tiff_extension: str
     out_dir: Path
     plots_subdir: str
     nbins: int
@@ -15,36 +15,12 @@ class QcConfig:
     p_hi: float
     bands_used: List[str]
 
-    @property
-    def plots_dir(self) -> Path:
-        return self.out_dir / self.plots_subdir
-
-    @property
-    def metrics_csv(self) -> Path:
-        return self.out_dir / "metricas_qc.csv"
-
-    @property
-    def stats_csv(self) -> Path:
-        return self.out_dir / "estadistica_descriptiva.csv"
-
-    @property
-    def bandmap_csv(self) -> Path:
-        return self.out_dir / "band_mapping_inferido.csv"
-
-    @property
-    def rank_csv(self) -> Path:
-        return self.out_dir / "ranking_final.csv"
-
-    @property
-    def report_txt(self) -> Path:
-        return self.out_dir / "justificacion_seleccion.txt"
-
 def load_config(path: Path) -> QcConfig:
     cfg = json.loads(path.read_text(encoding="utf-8"))
     return QcConfig(
-        tiff_dir=Path(cfg["tiff_dir"]),
+        root_tiff_dir=Path(cfg["root_tiff_dir"]),
         aoi_path=Path(cfg["aoi_path"]),
-        tiff_glob=str(cfg["tiff_glob"]),
+        tiff_extension=str(cfg["tiff_extension"]),
         out_dir=Path(cfg["out_dir"]),
         plots_subdir=str(cfg["plots_subdir"]),
         nbins=int(cfg["nbins"]),

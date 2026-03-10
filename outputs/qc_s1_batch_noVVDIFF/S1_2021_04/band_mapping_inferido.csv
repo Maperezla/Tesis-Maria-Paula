@@ -1,0 +1,5 @@
+﻿folder,file,mapping,confidence,notes
+S1_2021_04,S1_2021_24.tif,"{'angle': 3, 'VV_Difference': 2, 'VVVH_ratio': 4, 'VV': 5, 'VH': 1}","{'angle': 0.85, 'VV_Difference': 0.8, 'VVVH_ratio': 0.75, 'VV': 0.7, 'VH': 0.7}",
+S1_2021_04,S1_2021_25.tif,"{'angle': 3, 'VV_Difference': 2, 'VVVH_ratio': 4, 'VV': 5, 'VH': 1}","{'angle': 0.85, 'VV_Difference': 0.8, 'VVVH_ratio': 0.75, 'VV': 0.7, 'VH': 0.7}",
+S1_2021_04,S1_2021_28.tif,"{'angle': 3, 'VV_Difference': 2, 'VVVH_ratio': 4, 'VV': 5, 'VH': 1}","{'angle': 0.85, 'VV_Difference': 0.8, 'VVVH_ratio': 0.75, 'VV': 0.7, 'VH': 0.7}",
+S1_2021_04,S1_2021_29.tif,"{'angle': 3, 'VV_Difference': 2, 'VV': 1, 'VH': 4, 'VVVH_ratio': 5}","{'angle': 0.85, 'VV_Difference': 0.8, 'VVVH_ratio': 0.05, 'VV': 0.3, 'VH': 0.3}",

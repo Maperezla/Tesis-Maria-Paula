@@ -1,0 +1,7 @@
+﻿folder,file,mapping,confidence,notes
+S1_2020_04,S1_2020_26.tif,"{'angle': 3, 'VV_Difference': 2, 'VVVH_ratio': 4, 'VV': 1, 'VH': 5}","{'angle': 0.85, 'VV_Difference': 0.8, 'VVVH_ratio': 0.75, 'VV': 0.3, 'VH': 0.3}",
+S1_2020_04,S1_2020_27.tif,"{'angle': 3, 'VV_Difference': 2, 'VVVH_ratio': 4, 'VV': 5, 'VH': 1}","{'angle': 0.85, 'VV_Difference': 0.8, 'VVVH_ratio': 0.75, 'VV': 0.7, 'VH': 0.7}",
+S1_2020_04,S1_2020_30.tif,"{'angle': 3, 'VV_Difference': 2, 'VVVH_ratio': 4, 'VV': 1, 'VH': 5}","{'angle': 0.85, 'VV_Difference': 0.8, 'VVVH_ratio': 0.75, 'VV': 0.3, 'VH': 0.3}",
+S1_2020_04,S1_2020_31.tif,"{'angle': 3, 'VV_Difference': 2, 'VVVH_ratio': 4, 'VV': 5, 'VH': 1}","{'angle': 0.85, 'VV_Difference': 0.8, 'VVVH_ratio': 0.75, 'VV': 0.7, 'VH': 0.7}",
+S1_2020_04,S1_2020_34.tif,"{'angle': 3, 'VV_Difference': 2, 'VV': 4, 'VH': 1, 'VVVH_ratio': 5}","{'angle': 0.85, 'VV_Difference': 0.8, 'VVVH_ratio': 0.05, 'VV': 0.7, 'VH': 0.7}",
+S1_2020_04,S1_2020_35.tif,"{'angle': 3, 'VV_Difference': 2, 'VVVH_ratio': 4, 'VV': 5, 'VH': 1}","{'angle': 0.85, 'VV_Difference': 0.8, 'VVVH_ratio': 0.75, 'VV': 0.7, 'VH': 0.7}",

@@ -1,0 +1,3 @@
+﻿folder,file,mapping,confidence,notes
+S1_2016_11,S1_2016_13.tif,"{'angle': 3, 'VV_Difference': 2, 'VVVH_ratio': 4, 'VV': 5, 'VH': 1}","{'angle': 0.85, 'VV_Difference': 0.8, 'VVVH_ratio': 0.75, 'VV': 0.7, 'VH': 0.7}",
+S1_2016_11,S1_2016_16.tif,"{'angle': 3, 'VV_Difference': 2, 'VVVH_ratio': 4, 'VV': 1, 'VH': 5}","{'angle': 0.85, 'VV_Difference': 0.8, 'VVVH_ratio': 0.75, 'VV': 0.7, 'VH': 0.7}",
