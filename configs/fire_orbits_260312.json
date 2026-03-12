@@ -1,0 +1,19 @@
+{
+  "points_shp": "D:\\Maestria_Geomatica\\Semestre_IV\\Puntos_unificados_25_11_05\\Puntos_unificados_26_02_23\\FIRMS_vs_UNGRD_coincidencias_26_02_23_v4.shp",
+  "meta_xlsx": "D:\\Maestria_Geomatica\\Semestre_IV\\Tesis_Python\\Datos\\TIFF\\sentinel1_metadata.xlsx",
+  "out_dir": "outputs/fire_orbits",
+  "out_name": "incendios_con_orbitas_26_03_12.shp",
+  "col_year": "anio",
+  "col_month": "mes",
+  "col_day": "dia",
+  "col_img_date": "date_yyyymmdd",
+  "col_orbit": "relativeOrbitNumber_start",
+  "col_sysindex": "system:index",
+  "col_slice": "sliceNumber",
+  "slice_preference": [7, 6, 5, 25, 24, 8, 26, 4, 2, 3],
+  "prefer_platform": "S1A",
+  "post_min_days": 1,
+  "post_max_days": 30,
+  "pre_min_days": 60,
+  "pre_target_days": 30
+}

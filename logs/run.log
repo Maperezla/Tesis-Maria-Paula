@@ -78,3 +78,111 @@
 2026-03-10 10:59:34,132 | INFO | === START RUN ===
 2026-03-10 10:59:57,484 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
 2026-03-10 10:59:57,487 | INFO | n_images=92
+2026-03-10 11:45:33,135 | INFO | Procesando subcarpeta S1_2015_05 con 2 TIFF
+2026-03-10 11:45:33,138 | INFO | Procesando archivo S1_2015_1.tif
+2026-03-10 11:45:35,285 | INFO | Procesando archivo S1_2015_2.tif
+2026-03-10 11:45:37,555 | INFO | Procesando subcarpeta S1_2015_09 con 1 TIFF
+2026-03-10 11:45:37,555 | INFO | Procesando archivo S1_2015_4.tif
+2026-03-10 11:45:39,989 | INFO | Procesando subcarpeta S1_2015_11 con 1 TIFF
+2026-03-10 11:45:39,989 | INFO | Procesando archivo S1_2015_5.tif
+2026-03-10 11:45:42,265 | INFO | Procesando subcarpeta S1_2016_03 con 1 TIFF
+2026-03-10 11:45:42,265 | INFO | Procesando archivo S1_2016_2.tif
+2026-03-10 11:45:44,610 | INFO | Procesando subcarpeta S1_2016_09 con 2 TIFF
+2026-03-10 11:45:44,610 | INFO | Procesando archivo S1_2016_6.tif
+2026-03-10 11:45:46,975 | INFO | Procesando archivo S1_2016_7.tif
+2026-03-10 11:45:49,178 | INFO | Procesando subcarpeta S1_2016_11 con 2 TIFF
+2026-03-10 11:45:49,180 | INFO | Procesando archivo S1_2016_13.tif
+2026-03-10 11:45:51,367 | INFO | Procesando archivo S1_2016_16.tif
+2026-03-10 11:45:53,539 | INFO | Procesando subcarpeta S1_2016_12 con 1 TIFF
+2026-03-10 11:45:53,539 | INFO | Procesando archivo S1_2016_19.tif
+2026-03-10 11:45:55,946 | INFO | Procesando subcarpeta S1_2017_05 con 2 TIFF
+2026-03-10 11:45:55,946 | INFO | Procesando archivo S1_2017_22.tif
+2026-03-10 11:45:58,517 | INFO | Procesando archivo S1_2017_25.tif
+2026-03-10 11:46:00,937 | INFO | Procesando subcarpeta S1_2019_01 con 6 TIFF
+2026-03-10 11:46:00,937 | INFO | Procesando archivo S1_2019_0 (1).tif
+2026-03-10 11:46:02,739 | INFO | Procesando archivo S1_2019_0.tif
+2026-03-10 11:46:04,554 | INFO | Procesando archivo S1_2019_1 (1).tif
+2026-03-10 11:46:06,490 | INFO | Procesando archivo S1_2019_1.tif
+2026-03-10 11:46:08,601 | INFO | Procesando archivo S1_2019_2.tif
+2026-03-10 11:46:10,667 | INFO | Procesando archivo S1_2019_3.tif
+2026-03-10 11:46:12,827 | INFO | Procesando subcarpeta S1_2019_02 con 4 TIFF
+2026-03-10 11:46:12,831 | INFO | Procesando archivo S1_2019_4.tif
+2026-03-10 11:46:14,975 | INFO | Procesando archivo S1_2019_5.tif
+2026-03-10 11:46:17,600 | INFO | Procesando archivo S1_2019_8.tif
+2026-03-10 11:46:19,495 | INFO | Procesando archivo S1_2019_9.tif
+2026-03-10 11:46:21,720 | INFO | Procesando subcarpeta S1_2019_03 con 6 TIFF
+2026-03-10 11:46:21,720 | INFO | Procesando archivo S1_2019_12.tif
+2026-03-10 11:46:23,607 | INFO | Procesando archivo S1_2019_13.tif
+2026-03-10 11:46:26,220 | INFO | Procesando archivo S1_2019_16.tif
+2026-03-10 11:46:28,161 | INFO | Procesando archivo S1_2019_17.tif
+2026-03-10 11:46:30,375 | INFO | Procesando archivo S1_2019_20.tif
+2026-03-10 11:46:32,775 | INFO | Procesando archivo S1_2019_21.tif
+2026-03-10 11:46:35,565 | INFO | Procesando subcarpeta S1_2019_04 con 4 TIFF
+2026-03-10 11:46:35,566 | INFO | Procesando archivo S1_2019_24.tif
+2026-03-10 11:46:37,417 | INFO | Procesando archivo S1_2019_25.tif
+2026-03-10 11:46:39,355 | INFO | Procesando archivo S1_2019_26.tif
+2026-03-10 11:46:41,173 | INFO | Procesando archivo S1_2019_27.tif
+2026-03-10 11:46:43,275 | INFO | Procesando subcarpeta S1_2019_08 con 4 TIFF
+2026-03-10 11:46:43,279 | INFO | Procesando archivo S1_2019_46.tif
+2026-03-10 11:46:45,221 | INFO | Procesando archivo S1_2019_47.tif
+2026-03-10 11:46:47,130 | INFO | Procesando archivo S1_2019_49.tif
+2026-03-10 11:46:49,155 | INFO | Procesando archivo S1_2019_50.tif
+2026-03-10 11:46:51,636 | INFO | Procesando subcarpeta S1_2020_02 con 4 TIFF
+2026-03-10 11:46:51,639 | INFO | Procesando archivo S1_2020_11.tif
+2026-03-10 11:46:53,397 | INFO | Procesando archivo S1_2020_12.tif
+2026-03-10 11:46:56,299 | INFO | Procesando archivo S1_2020_15.tif
+2026-03-10 11:46:57,893 | INFO | Procesando archivo S1_2020_16.tif
+2026-03-10 11:47:00,055 | INFO | Procesando subcarpeta S1_2020_03 con 4 TIFF
+2026-03-10 11:47:00,055 | INFO | Procesando archivo S1_2020_19.tif
+2026-03-10 11:47:02,114 | INFO | Procesando archivo S1_2020_20.tif
+2026-03-10 11:47:04,501 | INFO | Procesando archivo S1_2020_23.tif
+2026-03-10 11:47:06,469 | INFO | Procesando archivo S1_2020_24.tif
+2026-03-10 11:47:08,925 | INFO | Procesando subcarpeta S1_2020_04 con 6 TIFF
+2026-03-10 11:47:08,925 | INFO | Procesando archivo S1_2020_26.tif
+2026-03-10 11:47:10,609 | INFO | Procesando archivo S1_2020_27.tif
+2026-03-10 11:47:12,710 | INFO | Procesando archivo S1_2020_30.tif
+2026-03-10 11:47:14,295 | INFO | Procesando archivo S1_2020_31.tif
+2026-03-10 11:47:16,525 | INFO | Procesando archivo S1_2020_34.tif
+2026-03-10 11:47:18,159 | INFO | Procesando archivo S1_2020_35.tif
+2026-03-10 11:47:20,742 | INFO | Procesando subcarpeta S1_2020_08 con 4 TIFF
+2026-03-10 11:47:20,743 | INFO | Procesando archivo S1_2020_69.tif
+2026-03-10 11:47:22,468 | INFO | Procesando archivo S1_2020_70.tif
+2026-03-10 11:47:24,625 | INFO | Procesando archivo S1_2020_73.tif
+2026-03-10 11:47:26,210 | INFO | Procesando archivo S1_2020_74.tif
+2026-03-10 11:47:29,028 | INFO | Procesando subcarpeta S1_2020_11 con 6 TIFF
+2026-03-10 11:47:29,028 | INFO | Procesando archivo S1_2020_100.tif
+2026-03-10 11:47:30,645 | INFO | Procesando archivo S1_2020_101.tif
+2026-03-10 11:47:32,730 | INFO | Procesando archivo S1_2020_104.tif
+2026-03-10 11:47:34,816 | INFO | Procesando archivo S1_2020_105.tif
+2026-03-10 11:47:37,082 | INFO | Procesando archivo S1_2020_96.tif
+2026-03-10 11:47:38,801 | INFO | Procesando archivo S1_2020_97.tif
+2026-03-10 11:47:41,015 | INFO | Procesando subcarpeta S1_2021_02 con 4 TIFF
+2026-03-10 11:47:41,015 | INFO | Procesando archivo S1_2021_12.tif
+2026-03-10 11:47:43,276 | INFO | Procesando archivo S1_2021_13.tif
+2026-03-10 11:47:45,355 | INFO | Procesando archivo S1_2021_16.tif
+2026-03-10 11:47:47,255 | INFO | Procesando archivo S1_2021_17.tif
+2026-03-10 11:47:49,375 | INFO | Procesando subcarpeta S1_2021_03 con 2 TIFF
+2026-03-10 11:47:49,375 | INFO | Procesando archivo S1_2021_20.tif
+2026-03-10 11:47:51,240 | INFO | Procesando archivo S1_2021_21.tif
+2026-03-10 11:47:53,984 | INFO | Procesando subcarpeta S1_2021_04 con 4 TIFF
+2026-03-10 11:47:53,984 | INFO | Procesando archivo S1_2021_24.tif
+2026-03-10 11:47:55,910 | INFO | Procesando archivo S1_2021_25.tif
+2026-03-10 11:47:58,828 | INFO | Procesando archivo S1_2021_28.tif
+2026-03-10 11:48:00,846 | INFO | Procesando archivo S1_2021_29.tif
+2026-03-10 11:48:03,044 | INFO | Procesando subcarpeta S1_2021_05 con 6 TIFF
+2026-03-10 11:48:03,044 | INFO | Procesando archivo S1_2021_32.tif
+2026-03-10 11:48:05,415 | INFO | Procesando archivo S1_2021_33.tif
+2026-03-10 11:48:07,496 | INFO | Procesando archivo S1_2021_36.tif
+2026-03-10 11:48:09,588 | INFO | Procesando archivo S1_2021_37.tif
+2026-03-10 11:48:12,020 | INFO | Procesando archivo S1_2021_40.tif
+2026-03-10 11:48:13,869 | INFO | Procesando archivo S1_2021_41.tif
+2026-03-10 11:48:16,029 | INFO | Procesando subcarpeta S1_2021_09 con 6 TIFF
+2026-03-10 11:48:16,031 | INFO | Procesando archivo S1_2021_72.tif
+2026-03-10 11:48:17,765 | INFO | Procesando archivo S1_2021_73.tif
+2026-03-10 11:48:19,850 | INFO | Procesando archivo S1_2021_76.tif
+2026-03-10 11:48:21,805 | INFO | Procesando archivo S1_2021_77.tif
+2026-03-10 11:48:23,642 | INFO | Procesando archivo S1_2021_80.tif
+2026-03-10 11:48:25,565 | INFO | Procesando archivo S1_2021_81.tif
+2026-03-10 11:48:27,720 | INFO | Procesando subcarpeta S1_2021_10 con 2 TIFF
+2026-03-10 11:48:27,720 | INFO | Procesando archivo S1_2021_83.tif
+2026-03-10 11:48:29,635 | INFO | Procesando archivo S1_2021_84.tif

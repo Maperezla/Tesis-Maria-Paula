@@ -1,0 +1,36 @@
+REPORTE — DOMINIOS DE PIXELES VÁLIDOS (Sentinel-1)
+==============================================================================
+Total escenas evaluadas: 24
+
+Definición de validez: píxel válido = valor finito (no NaN/Inf) tras recorte al AOI.
+Los dominios representan la intersección de validez entre bandas.
+
+DOMINIOS reportados:
+- D1_VV: VV
+- D2_VV_VH: VV, VH
+- D3_VV_VH_angle: VV, VH, angle
+- D4_VV_VH_ratio: VV, VH, VVVH_ratio
+- D5_VV_VH_angle_ratio: VV, VH, angle, VVVH_ratio
+
+MEJOR ESCENA PARA RANDOM FOREST MULTIBANDA (prioriza D5_VV_VH_angle_ratio):
+- Variable objetivo de ranking: D5_VV_VH_angle_ratio_valid_pct
+- Archivo: S1_2016_16.tif
+- Coherencia geométrica con referencia: False
+
+- D1_VV: 28.03% válido
+- D2_VV_VH: 28.03% válido
+- D3_VV_VH_angle: 28.03% válido
+- D4_VV_VH_ratio: 28.03% válido
+- D5_VV_VH_angle_ratio: 28.03% válido
+
+Top 5 (por D5_VV_VH_angle_ratio):
+  1. S1_2016_16.tif | D1_VV=28.03% | D2_VV_VH=28.03% | D3_VV_VH_angle=28.03% | D4_VV_VH_ratio=28.03% | D5_VV_VH_angle_ratio=28.03% | geom_ok=False
+  2. S1_2015_4.tif | D1_VV=28.01% | D2_VV_VH=28.01% | D3_VV_VH_angle=28.01% | D4_VV_VH_ratio=28.01% | D5_VV_VH_angle_ratio=28.01% | geom_ok=False
+  3. S1_2016_7.tif | D1_VV=27.98% | D2_VV_VH=27.98% | D3_VV_VH_angle=27.98% | D4_VV_VH_ratio=27.98% | D5_VV_VH_angle_ratio=27.98% | geom_ok=False
+  4. S1_2015_5.tif | D1_VV=27.98% | D2_VV_VH=27.98% | D3_VV_VH_angle=27.98% | D4_VV_VH_ratio=27.98% | D5_VV_VH_angle_ratio=27.98% | geom_ok=False
+  5. S1_2016_19.tif | D1_VV=27.92% | D2_VV_VH=27.92% | D3_VV_VH_angle=27.92% | D4_VV_VH_ratio=27.92% | D5_VV_VH_angle_ratio=27.92% | geom_ok=False
+
+Interpretación para Random Forest:
+- El conjunto de entrenamiento efectivo queda acotado por el dominio multibanda más exigente.
+- Si ese dominio es bajo, conviene evaluar modelos por niveles de bandas.
+- Este reporte permite trazabilidad: un píxel solo entra al análisis si está válido en todas las bandas del dominio.

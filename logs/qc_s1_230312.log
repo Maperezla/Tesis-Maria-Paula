@@ -1,0 +1,30 @@
+2026-03-12 14:42:59,999 | INFO | TIFF encontrados: 24
+2026-03-12 14:42:59,999 | INFO | Procesando: S1_2015_2.tif
+2026-03-12 14:43:01,808 | INFO | Procesando: S1_2015_4.tif
+2026-03-12 14:43:03,415 | INFO | Procesando: S1_2015_5.tif
+2026-03-12 14:43:04,766 | INFO | Procesando: S1_2016_16.tif
+2026-03-12 14:43:05,861 | INFO | Procesando: S1_2016_19.tif
+2026-03-12 14:43:06,847 | INFO | Procesando: S1_2016_2.tif
+2026-03-12 14:43:08,020 | INFO | Procesando: S1_2016_7.tif
+2026-03-12 14:43:09,457 | INFO | Procesando: S1_2017_25.tif
+2026-03-12 14:43:11,081 | INFO | Procesando: S1_2019_0.tif
+2026-03-12 14:43:12,701 | INFO | Procesando: S1_2019_12.tif
+2026-03-12 14:43:14,360 | INFO | Procesando: S1_2019_24.tif
+2026-03-12 14:43:16,129 | INFO | Procesando: S1_2019_4.tif
+2026-03-12 14:43:17,800 | INFO | Procesando: S1_2019_49.tif
+2026-03-12 14:43:18,918 | INFO | Procesando: S1_2020_100.tif
+2026-03-12 14:43:20,009 | INFO | Procesando: S1_2020_11.tif
+2026-03-12 14:43:21,395 | INFO | Procesando: S1_2020_20.tif
+2026-03-12 14:43:23,175 | INFO | Procesando: S1_2020_26.tif
+2026-03-12 14:43:24,643 | INFO | Procesando: S1_2020_70.tif
+2026-03-12 14:43:26,346 | INFO | Procesando: S1_2021_12.tif
+2026-03-12 14:43:27,870 | INFO | Procesando: S1_2021_20.tif
+2026-03-12 14:43:29,437 | INFO | Procesando: S1_2021_24.tif
+2026-03-12 14:43:30,955 | INFO | Procesando: S1_2021_40.tif
+2026-03-12 14:43:32,515 | INFO | Procesando: S1_2021_76.tif
+2026-03-12 14:43:33,922 | INFO | Procesando: S1_2021_83.tif
+2026-03-12 14:43:34,961 | INFO | Escenas válidas procesadas: 24
+2026-03-12 14:43:34,961 | INFO | Escenas omitidas: 0
+2026-03-12 14:43:34,961 | INFO | CSV dominios: outputs\qc_s1_260312_multi_dominio\dominios_validos_s1_260312.csv
+2026-03-12 14:43:34,961 | INFO | Reporte: outputs\qc_s1_260312_multi_dominio\reporte_dominios_s1_260312.txt
+2026-03-12 14:43:34,961 | INFO | CSV omitidos: outputs\qc_s1_260312_multi_dominio\archivos_omitidos_s1_260312.csv

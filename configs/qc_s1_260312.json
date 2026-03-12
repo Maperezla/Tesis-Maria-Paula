@@ -1,0 +1,16 @@
+{
+  "tiff_dir": "D:\\Maestria_Geomatica\\Semestre_IV\\Tesis_Python\\Datos\\TIFF\\S1_V2",
+  "aoi_path": "D:\\Maestria_Geomatica\\Semestre_IV\\Tesis_Python\\Datos\\SHP\\AOI_25_09_19.shp",
+  "tiff_glob": "S1_20*.tif",
+  "out_dir": "outputs/qc_s1_260312_multi_dominio",
+  "domains_csv": "dominios_validos_s1_260312.csv",
+  "report_txt": "reporte_dominios_s1_260312.txt",
+  "skipped_csv": "archivos_omitidos_s1_260312.csv",
+  "domains": {
+    "D1_VV": ["VV"],
+    "D2_VV_VH": ["VV", "VH"],
+    "D3_VV_VH_angle": ["VV", "VH", "angle"],
+    "D4_VV_VH_ratio": ["VV", "VH", "VVVH_ratio"],
+    "D5_VV_VH_angle_ratio": ["VV", "VH", "angle", "VVVH_ratio"]
+  }
+}
