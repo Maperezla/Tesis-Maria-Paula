@@ -1,0 +1,5 @@
+2026-03-12 16:28:07,990 | INFO | Inicio de ejecución fire_orbits_260312
+2026-03-12 16:31:01,995 | INFO | Inicio de ejecución fire_orbits_260312
+2026-03-12 16:31:07,087 | INFO | Resumen asignación: {'same_date_pct': 2.81, 'post_30_pct': 37.98, 'pre_30_pct': 38.92, 'n_points': 961}
+2026-03-12 16:32:22,222 | INFO | Created 961 records
+2026-03-12 16:32:22,224 | INFO | Shapefile guardado en: outputs\fire_orbits\incendios_con_orbitas_26_03_12.shp
