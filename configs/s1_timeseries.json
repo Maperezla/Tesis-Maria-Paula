@@ -1,0 +1,18 @@
+{
+  "gpkg_path": "D:\\Maestria_Geomatica\\Semestre_IV\\Tesis_Python\\Datos\\TIFF\\outputs_rf_pipeline\\puntos_features.gpkg",
+  "layer_name": "puntos_features",
+  "raster_dir": "D:\\Maestria_Geomatica\\Semestre_IV\\Tesis_Python\\Datos\\TIFF\\Prueba_S1",
+  "metadata_xlsx": "D:\\Maestria_Geomatica\\Semestre_IV\\Tesis_Python\\Datos\\TIFF\\sentinel1_metadata.xlsx",
+  "out_dir": "outputs/s1_timeseries_features",
+  "epsilon": 1e-12,
+  "n_sample": 5,
+  "random_state": 42,
+  "min_valid_frac": 0.8,
+  "band_names": ["VV", "VH", "angle"],
+  "derived_bands": [
+    "VV_VH_Ratio",
+    "VV_pre_post_ratio",
+    "VH_pre_post_ratio",
+    "VH_VV_ratio_change"
+  ]
+}
