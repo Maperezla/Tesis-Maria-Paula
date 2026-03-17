@@ -48,3 +48,31 @@
 2026-03-17 15:24:27,646 | INFO | TIFF encontrados: 24
 2026-03-17 15:24:27,695 | INFO | Emparejamientos construidos: 24
 2026-03-17 15:24:29,116 | WARNING | Sin raster pre para S1_2015_2 -> S1_2014_0
+2026-03-17 15:27:09,195 | INFO | Inicio pipeline Sentinel-1 timeseries
+2026-03-17 15:27:11,033 | INFO | Puntos cargados: 1922
+2026-03-17 15:27:11,033 | INFO | TIFF encontrados: 24
+2026-03-17 15:27:11,131 | INFO | Emparejamientos construidos: 24
+2026-03-17 15:27:12,008 | WARNING | Sin raster pre para S1_2015_2 -> S1_2014_0
+2026-03-17 15:27:12,733 | WARNING | Sin raster pre para S1_2015_4 -> S1_2014_0
+2026-03-17 15:27:13,460 | WARNING | Sin raster pre para S1_2015_5 -> S1_2014_0
+2026-03-17 15:27:17,703 | WARNING | Sin raster pre para S1_2016_2 -> S1_2015_0
+2026-03-17 15:27:20,384 | WARNING | Sin raster pre para S1_2017_25 -> S1_2016_3
+2026-03-17 15:27:21,275 | WARNING | Sin raster pre para S1_2019_0 -> S1_2018_0
+2026-03-17 15:27:22,208 | WARNING | Sin raster pre para S1_2019_12 -> S1_2018_10
+2026-03-17 15:27:23,269 | WARNING | Sin raster pre para S1_2019_24 -> S1_2018_15
+2026-03-17 15:27:24,257 | WARNING | Sin raster pre para S1_2019_4 -> S1_2018_6
+2026-03-17 15:27:25,198 | WARNING | Sin raster pre para S1_2019_49 -> S1_2018_34
+2026-03-17 15:27:26,252 | WARNING | Sin raster pre para S1_2020_100 -> S1_2019_76
+2026-03-17 15:27:27,253 | WARNING | Sin raster pre para S1_2020_11 -> S1_2019_6
+2026-03-17 15:27:28,305 | WARNING | Sin raster pre para S1_2020_20 -> S1_2019_14
+2026-03-17 15:27:29,271 | WARNING | Sin raster pre para S1_2020_26 -> S1_2019_22
+2026-03-17 15:27:30,513 | WARNING | Sin raster pre para S1_2020_70 -> S1_2019_48
+2026-03-17 15:27:31,451 | WARNING | Sin raster pre para S1_2021_12 -> S1_2020_10
+2026-03-17 15:27:32,361 | WARNING | Sin raster pre para S1_2021_20 -> S1_2020_25
+2026-03-17 15:27:33,251 | WARNING | Sin raster pre para S1_2021_24 -> S1_2020_28
+2026-03-17 15:27:34,219 | WARNING | Sin raster pre para S1_2021_40 -> S1_2020_44
+2026-03-17 15:27:35,122 | WARNING | Sin raster pre para S1_2021_76 -> S1_2020_79
+2026-03-17 15:27:36,109 | WARNING | Sin raster pre para S1_2021_83 -> S1_2020_86
+2026-03-17 15:27:54,142 | INFO | CSV largo: outputs\s1_timeseries_features_26_03_17\extractions_long.csv
+2026-03-17 15:27:54,142 | INFO | Stats: outputs\s1_timeseries_features_26_03_17\descriptive_stats_by_band.csv
+2026-03-17 15:27:54,142 | INFO | Puntos seleccionados: [501, 480, 482, 483, 904]
