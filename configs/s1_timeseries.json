@@ -1,9 +1,8 @@
 {
-  "gpkg_path": "D:\\Maestria_Geomatica\\Semestre_IV\\Tesis_Python\\Datos\\TIFF\\outputs_rf_pipeline\\puntos_features.gpkg",
-  "layer_name": "puntos_features",
-  "raster_dir": "D:\\Maestria_Geomatica\\Semestre_IV\\Tesis_Python\\Datos\\TIFF\\Prueba_S1",
+  "layer_path": "D:\\Maestria_Geomatica\\Semestre_IV\\Tesis_Python\\Datos\\SHP\\Union_Incendio_NoIncendio_26_03_17.shp",
+  "raster_dir": "D:\\Maestria_Geomatica\\Semestre_IV\\Tesis_Python\\Datos\\TIFF\\S1_V2",
   "metadata_xlsx": "D:\\Maestria_Geomatica\\Semestre_IV\\Tesis_Python\\Datos\\TIFF\\sentinel1_metadata.xlsx",
-  "out_dir": "outputs/s1_timeseries_features",
+  "out_dir": "outputs/s1_timeseries_features_26_03_17",
   "epsilon": 1e-12,
   "n_sample": 5,
   "random_state": 42,

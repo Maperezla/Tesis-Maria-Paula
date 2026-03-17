@@ -2,6 +2,7 @@ from pathlib import Path
 import logging
 import pandas as pd
 import rasterio
+import numpy as np
 
 from .io_points import load_points, reproject_points_to_raster_crs
 from .io_metadata import load_metadata
@@ -29,7 +30,7 @@ def run_pipeline(cfg, logger: logging.Logger) -> dict:
     plots_5_dir = cfg.out_dir / "plots_5points"
     plots_5_dir.mkdir(parents=True, exist_ok=True)
 
-    gdf = load_points(cfg.gpkg_path, cfg.layer_name)
+    gdf = load_points(cfg.layer_path)
     meta = load_metadata(cfg.metadata_xlsx)
     tif_paths = list_tifs(cfg.raster_dir)
 
@@ -54,27 +55,36 @@ def run_pipeline(cfg, logger: logging.Logger) -> dict:
         image_name_pre = row["image_name_pre"]
 
         raster_pre_candidates = [p for p in tif_paths if p.stem == image_name_pre]
-        if len(raster_pre_candidates) == 0:
-            logger.warning(f"Sin raster pre para {image_name_actual} -> {image_name_pre}")
-            continue
-
-        raster_path_pre = str(raster_pre_candidates[0])
-
-        logger.info(
-            f"Procesando actual={image_name_actual} | pre={image_name_pre} | "
-            f"delta_target={row['delta_days_to_target']}"
-        )
 
         base_actual = extract_base_bands_for_image(raster_path_actual, xy)
-        base_pre = extract_base_bands_for_image(raster_path_pre, xy)
 
-        derived = compute_derived_features(
-            vv_actual_db=base_actual["VV"],
-            vh_actual_db=base_actual["VH"],
-            vv_pre_db=base_pre["VV"],
-            vh_pre_db=base_pre["VH"],
-            eps=cfg.epsilon
-        )
+        if len(raster_pre_candidates) == 0:
+            logger.warning(f"Sin raster pre para {image_name_actual} -> {image_name_pre}")
+
+            nan_arr = np.full_like(base_actual["VV"], np.nan, dtype="float64")
+            derived = {
+                "VV_VH_Ratio": compute_derived_features(
+                    vv_actual_db=base_actual["VV"],
+                    vh_actual_db=base_actual["VH"],
+                    vv_pre_db=base_actual["VV"],   # dummy, no se usará
+                    vh_pre_db=base_actual["VH"],   # dummy, no se usará
+                    eps=cfg.epsilon
+                )["VV_VH_Ratio"],
+                "VV_pre_post_ratio": nan_arr,
+                "VH_pre_post_ratio": nan_arr,
+                "VH_VV_ratio_change": nan_arr
+            }
+        else:
+            raster_path_pre = str(raster_pre_candidates[0])
+            base_pre = extract_base_bands_for_image(raster_path_pre, xy)
+            
+            derived = compute_derived_features(
+                vv_actual_db=base_actual["VV"],
+                vh_actual_db=base_actual["VH"],
+                vv_pre_db=base_pre["VV"],
+                vh_pre_db=base_pre["VH"],
+                eps=cfg.epsilon
+            )
 
         records.extend(
             build_long_records_for_pair(
@@ -84,7 +94,7 @@ def run_pipeline(cfg, logger: logging.Logger) -> dict:
                 derived=derived
             )
         )
-
+        
     df_long = pd.DataFrame.from_records(records)
 
     csv_long = cfg.out_dir / "extractions_long.csv"

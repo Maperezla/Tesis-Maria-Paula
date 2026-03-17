@@ -10,7 +10,11 @@ def load_metadata(metadata_xlsx: str) -> pd.DataFrame:
         raise ValueError(f"Faltan columnas requeridas en metadata: {missing}")
 
     meta = meta.copy()
-    meta["filename_prefix"] = meta["filename_prefix"].astype(str).str.strip()
+
+    meta["filename_prefix"] = meta["filename_prefix"].apply(
+        lambda x: str(x).strip() if pd.notna(x) else x
+    )
+
     meta["img_date"] = pd.to_datetime(
         meta["date_yyyymmdd"].astype(str),
         format="%Y%m%d",

@@ -5,8 +5,7 @@ import json
 
 @dataclass(frozen=True)
 class S1TimeseriesConfig:
-    gpkg_path: Path
-    layer_name: str
+    layer_path: Path
     raster_dir: Path
     metadata_xlsx: Path
     out_dir: Path
@@ -21,8 +20,7 @@ class S1TimeseriesConfig:
 def load_config(path: Path) -> S1TimeseriesConfig:
     cfg = json.loads(path.read_text(encoding="utf-8"))
     return S1TimeseriesConfig(
-        gpkg_path=Path(cfg["gpkg_path"]),
-        layer_name=str(cfg["layer_name"]),
+        layer_path=Path(cfg["layer_path"]),
         raster_dir=Path(cfg["raster_dir"]),
         metadata_xlsx=Path(cfg["metadata_xlsx"]),
         out_dir=Path(cfg["out_dir"]),

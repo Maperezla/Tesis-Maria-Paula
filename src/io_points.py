@@ -2,8 +2,8 @@ import numpy as np
 import geopandas as gpd
 
 
-def load_points(gpkg_path, layer_name):
-    gdf = gpd.read_file(gpkg_path, layer=layer_name)
+def load_points(layer_path):
+    gdf = gpd.read_file(layer_path)
 
     if gdf.empty:
         raise ValueError("La capa de puntos está vacía.")
