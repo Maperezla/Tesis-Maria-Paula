@@ -1,0 +1,26 @@
+{
+  "path_fire_shp": "C:\\Users\\Equipo\\Tesis\\SemestreIV\\Objetivo1\\Objetivo1_26_02_20\\outputs\\fire_orbits\\incendios_con_orbitas_26_03_12.shp",
+  "path_abs_shp": "D:\\Maestria_Geomatica\\Semestre_IV\\Puntos_unificados_25_11_05\\Puntos_unificados_26_02_23\\puntos_no_calientes_aleatorios_961_26_02_23.shp",
+  "base_tiff": "D:\\Maestria_Geomatica\\Semestre_IV\\Tesis_Python\\Datos\\TIFF",
+  "s1_meta_xlsx": "D:\\Maestria_Geomatica\\Semestre_IV\\Tesis_Python\\Datos\\TIFF\\sentinel1_metadata.xlsx",
+  "out_dir": "C:\\Users\\Equipo\\Tesis\\SemestreIV\\Objetivo1\\Objetivo1_26_02_20\\outputs\\outputs_rf_pipeline_260320",
+
+  "out_gpkg": "puntos_features_60320.gpkg",
+  "out_layer": "puntos_features_60320",
+  "out_csv_a": "dataset_A_complete_case_60320.csv",
+  "out_csv_b": "dataset_B_imputed_60320.csv",
+  "out_model_a": "modelo_RF_A_60320.pkl",
+  "out_model_b": "modelo_RF_B_60320.pkl",
+  "out_report": "reporte_cv_60320.txt",
+
+  "date_col": "acq_date",
+  "epsg_work": 9377,
+  "s1_window_days": 30,
+  "s1_start_offset_days": 1,
+  "l8_month_offset": 1,
+
+  "seed_abs_dates": 42,
+  "seed_dataset_a": 42,
+  "seed_dataset_b": 42,
+  "seed_cv": 123
+}
