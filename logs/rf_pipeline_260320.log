@@ -27,3 +27,61 @@ IMG_COUNT          3     0.156087
 2026-03-20 12:47:36,778 | INFO | Dataset A shape: (0, 68)
 2026-03-20 12:47:36,779 | INFO | Dataset B shape: (1922, 68)
 2026-03-24 14:59:41,844 | INFO | Inicio pipeline RF
+2026-03-24 15:01:54,994 | INFO | Inicio pipeline RF
+2026-03-24 15:01:57,033 | INFO | Ruta incendios: C:\Users\Equipo\Tesis\SemestreIV\Objetivo1\Objetivo1_26_02_20\outputs\fire_orbits\incendios_con_orbitas_26_03_12.shp
+2026-03-24 15:01:57,033 | INFO | Ruta ausencias: D:\Maestria_Geomatica\Semestre_IV\Puntos_unificados_25_11_05\Puntos_unificados_26_02_23\puntos_no_calientes_aleatorios_961_26_02_23.shp
+2026-03-24 15:01:57,033 | INFO | CRS puntos combinados: EPSG:9377
+2026-03-24 15:01:57,033 | INFO | Incendios: 961
+2026-03-24 15:01:57,033 | INFO | Ausencias: 961
+2026-03-24 15:01:57,033 | INFO | Total puntos: 1922
+2026-03-24 15:01:58,053 | INFO | [S1] TIFF en disco: 0
+2026-03-24 15:01:58,053 | INFO | [S1] Filas Excel: 458
+2026-03-24 15:01:58,053 | INFO | [S1] Fechas parseadas OK (Excel): 458
+2026-03-24 15:01:58,053 | INFO | [S1] Matches exactos (disco\u2194excel con fecha): 0
+2026-03-24 15:01:58,058 | INFO | L8 meses indexados: 132
+2026-03-24 15:01:58,058 | INFO | S1 escenas indexadas: 0
+2026-03-24 15:02:58,356 | INFO | Coverage report:
+  feature  missing_n  missing_pct
+       VV       1922   100.000000
+       VH       1922   100.000000
+    angle       1922   100.000000
+      RED        780    40.582726
+      NIR        780    40.582726
+   SWIR_1        780    40.582726
+   SWIR_2        780    40.582726
+     NDVI        780    40.582726
+      EVI        780    40.582726
+      NBR        780    40.582726
+IMG_COUNT          3     0.156087
+2026-03-24 15:02:58,993 | INFO | Dataset A shape: (0, 68)
+2026-03-24 15:02:58,993 | INFO | Dataset B shape: (1922, 68)
+2026-03-24 15:11:57,547 | INFO | Inicio pipeline RF
+2026-03-24 15:11:59,102 | INFO | Ruta incendios: C:\Users\Equipo\Tesis\SemestreIV\Objetivo1\Objetivo1_26_02_20\outputs\fire_orbits\incendios_con_orbitas_26_03_12.shp
+2026-03-24 15:11:59,102 | INFO | Ruta ausencias: D:\Maestria_Geomatica\Semestre_IV\Puntos_unificados_25_11_05\Puntos_unificados_26_02_23\puntos_no_calientes_aleatorios_961_26_02_23.shp
+2026-03-24 15:11:59,102 | INFO | CRS puntos combinados: EPSG:9377
+2026-03-24 15:11:59,102 | INFO | Incendios: 961
+2026-03-24 15:11:59,102 | INFO | Ausencias: 961
+2026-03-24 15:11:59,102 | INFO | Total puntos: 1922
+2026-03-24 15:11:59,242 | INFO | [S1] TIFF en disco: 24
+2026-03-24 15:11:59,242 | INFO | [S1] Filas Excel: 458
+2026-03-24 15:11:59,242 | INFO | [S1] Fechas parseadas OK (Excel): 458
+2026-03-24 15:11:59,242 | INFO | [S1] Matches exactos (disco\u2194excel con fecha): 24
+2026-03-24 15:11:59,242 | INFO | L8 meses indexados: 132
+2026-03-24 15:11:59,242 | INFO | S1 escenas indexadas: 24
+2026-03-24 15:13:05,863 | INFO | Coverage report:
+  feature  missing_n  missing_pct
+       VV       1683    87.565036
+       VH       1683    87.565036
+    angle       1610    83.766909
+      RED        780    40.582726
+      NIR        780    40.582726
+   SWIR_1        780    40.582726
+   SWIR_2        780    40.582726
+     NDVI        780    40.582726
+      EVI        780    40.582726
+      NBR        780    40.582726
+IMG_COUNT          3     0.156087
+2026-03-24 15:13:06,611 | INFO | Dataset A shape: (282, 68)
+2026-03-24 15:13:06,611 | INFO | Dataset B shape: (1922, 68)
+2026-03-24 15:13:39,998 | INFO | Created 1,922 records
+2026-03-24 15:13:40,478 | INFO | Outputs generados en: C:\Users\Equipo\Tesis\SemestreIV\Objetivo1\Objetivo1_26_02_20\outputs\outputs_rf_pipeline_260320
