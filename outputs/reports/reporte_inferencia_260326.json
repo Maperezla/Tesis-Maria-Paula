@@ -1,0 +1,32 @@
+{
+  "mode": "in_memory",
+  "summary": {
+    "pixels_totales": 4861220,
+    "pixels_validos": 1180728,
+    "pct_validos": 24.288717647010422,
+    "n_features": 11,
+    "features": [
+      "RED",
+      "NIR",
+      "SWIR_1",
+      "SWIR_2",
+      "NDVI",
+      "EVI",
+      "NBR",
+      "IMG_COUNT",
+      "VV",
+      "VH",
+      "angle"
+    ]
+  },
+  "outputs": {
+    "prob": "outputs/rasters/rf_probabilidad_quemado_260326.tif",
+    "bin": "outputs/rasters/rf_quemado_binario_260326.tif"
+  },
+  "validation": {
+    "n_puntos_incendio": 33,
+    "n_muestras_validas": 26,
+    "tp_rate_sobre_presencia": 84.61538461538461,
+    "prob_media_en_incendios": 0.8538461923599243
+  }
+}

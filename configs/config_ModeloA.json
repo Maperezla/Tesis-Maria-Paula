@@ -3,10 +3,14 @@
     "model": "C:/Users/Equipo/Tesis/SemestreIV/Objetivo1/Objetivo1_26_02_20/outputs/outputs_rf_pipeline_260320/modelo_RF_A_60320.pkl",
     "l8": "D:/Maestria_Geomatica/Semestre_IV/Tesis_Python/Datos/TIFF/L8/L8_2016_02.tif",
     "s1": "D:/Maestria_Geomatica/Semestre_IV/Tesis_Python/Datos/TIFF/S1_V2/S1_2016_2.tif",
+    "s1_aligned": "D:/Maestria_Geomatica/Semestre_IV/Tesis_Python/Datos/TIFF/S1_V2/S1_2016_2_aligned_to_L8.tif",
     "fire_points": "D:/Maestria_Geomatica/Semestre_IV/Tesis_Python/Datos/SHP/ncendios_con_orbitas_26_03_12_ModeloA.shp"
   },
+  "preprocess": {
+    "s1_resampling": "bilinear"
+  },
   "layers": {
-    "fire_layer": "Prueba_ModeloA_Enero_FIRMS_vs_UNGRD_coincidencias_Orbitas_26_03_25"
+    "fire_layer": null
   },
   "features": [
     "RED",
@@ -38,9 +42,9 @@
     "angle": 3
   },
   "outputs": {
-    "prob": "outputs/rasters/rf_probabilidad_quemado.tif",
-    "bin": "outputs/rasters/rf_quemado_binario.tif",
-    "report_json": "outputs/reports/reporte_inferencia.json"
+    "prob": "outputs/rasters/rf_probabilidad_quemado_260326.tif",
+    "bin": "outputs/rasters/rf_quemado_binario_260326.tif",
+    "report_json": "outputs/reports/reporte_inferencia_260326.json"
   },
   "validation": {
     "enabled": true,
@@ -52,6 +56,6 @@
     "size": 512
   },
   "logging": {
-    "log_file": "logs/pipeline.log"
+    "log_file": "logs/pipeline_260326.log"
   }
 }
