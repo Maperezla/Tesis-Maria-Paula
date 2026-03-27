@@ -186,3 +186,9 @@
 2026-03-10 11:48:27,720 | INFO | Procesando subcarpeta S1_2021_10 con 2 TIFF
 2026-03-10 11:48:27,720 | INFO | Procesando archivo S1_2021_83.tif
 2026-03-10 11:48:29,635 | INFO | Procesando archivo S1_2021_84.tif
+2026-03-27 09:29:20,306 | INFO | === START RUN ===
+2026-03-27 09:30:14,809 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference']
+2026-03-27 09:30:14,809 | INFO | n_images=20
+2026-03-27 16:18:31,001 | INFO | === START RUN ===
+2026-03-27 16:18:39,707 | INFO | bands=['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference', 'VH_Difference', 'VHVV_Difference']
+2026-03-27 16:18:39,707 | INFO | n_images=13

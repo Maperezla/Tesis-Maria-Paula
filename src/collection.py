@@ -1,13 +1,44 @@
-
 import ee
 
-def build_collection(aoi: ee.Geometry, year: int, orbit: str) -> ee.ImageCollection:
+
+def build_collection(
+    aoi: ee.Geometry,
+    year: int,
+    orbit: str,
+    start_date: str | None = None,
+    end_date: str | None = None,
+) -> ee.ImageCollection:
     """
-    Construye la colección Sentinel-1 GRD para un año y una órbita, asegurando VV, VH y angle.
-    VV/VH en la colección COPERNICUS/S1_GRD vienen típicamente en dB.
+    Construye la colección Sentinel-1 GRD para un año / rango temporal y órbita,
+    asegurando las bandas VV, VH y angle.
+
+    Parámetros
+    ----------
+    aoi : ee.Geometry
+        Área de interés.
+    year : int
+        Año de trabajo (se usa si start_date/end_date no se pasan).
+    orbit : str
+        Órbita, típicamente 'ASCENDING' o 'DESCENDING'.
+    start_date : str | None
+        Fecha inicial en formato 'YYYY-MM-DD'. Si es None, usa 1 de enero del año.
+    end_date : str | None
+        Fecha final en formato 'YYYY-MM-DD'. Si es None, usa 1 de enero del año+1.
+
+    Retorna
+    -------
+    ee.ImageCollection
+        Colección filtrada y ordenada por fecha.
     """
-    start = ee.Date.fromYMD(int(year), 1, 1)
-    end = ee.Date.fromYMD(int(year) + 1, 1, 1)
+    if start_date is None:
+        start = ee.Date.fromYMD(int(year), 1, 1)
+    else:
+        start = ee.Date(start_date)
+
+    if end_date is None:
+        end = ee.Date.fromYMD(int(year) + 1, 1, 1)
+    else:
+        end = ee.Date(end_date)
 
     col = (
         ee.ImageCollection("COPERNICUS/S1_GRD")

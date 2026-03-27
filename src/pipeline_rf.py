@@ -46,7 +46,7 @@ L8_BAND_MAP: Dict[str, str] = {
 L8_BANDS_IN = list(L8_BAND_MAP.keys())
 L8_BANDS_OUT = list(L8_BAND_MAP.values())
 
-S1_FEATURES = ["VV", "VH", "angle"]
+S1_FEATURES = ["VV", "VH", "angle","VVVH_ratio", "VV_Difference"]
 FEATURES = L8_BANDS_OUT + S1_FEATURES
 
 
@@ -288,13 +288,15 @@ def build_master_features(
 
         path = sel["path"]
         try:
-            vals = sample_raster_at_points(path, g.loc[[i]], [1, 2, 3])
+            vals = sample_raster_at_points(path, g.loc[[i]], [1, 2, 3, 4, 5])
         except RasterioIOError:
             continue
 
         g.at[i, "VV"] = vals[0, 0]
         g.at[i, "VH"] = vals[0, 1]
         g.at[i, "angle"] = vals[0, 2]
+        g.at[i, "VVVH_ratio"] = vals[0, 3]
+        g.at[i, "VV_Difference"] = vals[0, 4]
         g.at[i, "s1_found"] = True
         g.at[i, "s1_file"] = os.path.basename(path)
         g.at[i, "s1_date"] = pd.Timestamp(sel["date"])

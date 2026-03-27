@@ -1,7 +1,12 @@
 {
-  "year": 2019,
+  "year": 2016,
   "orbit": "ASCENDING",
   "eps": 1e-10,
   "kernel_size": 7,
-  "dem_id": "USGS/SRTMGL1_003"
+  "dem_id": "USGS/SRTMGL1_003",
+  "window_days": 2,
+  "start_date": "2016-01-01",
+  "end_date": "2017-01-01",
+  "mosaic_reducer": "median",
+  "pre_max_gap_days": 60
 }
