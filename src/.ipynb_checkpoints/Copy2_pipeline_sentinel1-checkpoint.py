@@ -1,6 +1,10 @@
 import ee
 
-from .collection import build_collection
+from .Copy_collection import (
+    build_collection,
+    build_collection_by_pass,
+    build_collection_by_pass_and_relative_orbit,
+)
 from .temporal_mosaics import build_temporal_mosaics
 from .radiometry import border_noise_mask, gamma0_db, terrain_flattening
 from .speckle import refined_lee_spatial
@@ -58,13 +62,25 @@ def build_pipeline_base(aoi: ee.Geometry, cfg: dict) -> ee.ImageCollection:
     dem = ee.Image(dem_id)
 
     # 1) colección base
-    col_raw = build_collection(
-        aoi=aoi,
-        year=year,
-        orbit=orbit,
-        start_date=start_date,
-        end_date=end_date,
-    )
+    relative_orbit = cfg.get("relative_orbit", None)
+
+    if relative_orbit is None:
+        col_raw = build_collection_by_pass(
+            aoi=aoi,
+            year=year,
+            orbit_pass=orbit,
+            start_date=start_date,
+            end_date=end_date,
+        )
+    else:
+        col_raw = build_collection_by_pass_and_relative_orbit(
+            aoi=aoi,
+            year=year,
+            orbit_pass=orbit,
+            relative_orbit=int(relative_orbit),
+            start_date=start_date,
+            end_date=end_date,
+        )
 
     # 2) mosaicos temporales
     col_mosaic = build_temporal_mosaics(

@@ -1,49 +1,23 @@
 import ee
 
-from .collection import build_collection
+from .Copy2_collection import (
+    build_collection,
+    build_collection_by_pass,
+    build_collection_by_pass_and_relative_orbit,
+)
 from .temporal_mosaics import build_temporal_mosaics
 from .radiometry import border_noise_mask, gamma0_db, terrain_flattening
 from .speckle import refined_lee_spatial
-from .indices import add_ratio_db, build_prepost_pairs_and_indices
+from .Copy2_indices import add_ratio_db, build_prepost_pairs_and_indices
 
 
 def _copy_all_properties(src_img: ee.Image, out_img: ee.Image) -> ee.Image:
-    """
-    Copia todas las propiedades de src_img a out_img.
-    Esto ayuda a conservar fecha_id, window_start, window_end, aggregation, etc.
-    """
     src_img = ee.Image(src_img)
     out_img = ee.Image(out_img)
     return out_img.copyProperties(src_img, src_img.propertyNames())
 
 
 def build_pipeline_base(aoi: ee.Geometry, cfg: dict) -> ee.ImageCollection:
-    """
-    Pipeline base Sentinel-1 SIN lógica pre/post.
-
-    Flujo:
-    1) construir colección base
-    2) construir mosaicos móviles
-    3) máscara de borde
-    4) gamma0
-    5) terrain flattening
-    6) speckle filtering
-    7) VVVH_ratio
-
-    Salida esperada por imagen:
-    - VV
-    - VH
-    - angle
-    - VVVH_ratio
-
-    Y conserva propiedades como:
-    - fecha_id
-    - conteo_imagenes
-    - window_start
-    - window_end
-    - window_days
-    - aggregation
-    """
     year = int(cfg["year"])
     orbit = str(cfg["orbit"])
     eps = float(cfg.get("eps", 1e-10))
@@ -56,17 +30,26 @@ def build_pipeline_base(aoi: ee.Geometry, cfg: dict) -> ee.ImageCollection:
     mosaic_reducer = str(cfg.get("mosaic_reducer", "median"))
 
     dem = ee.Image(dem_id)
+    relative_orbit = cfg.get("relative_orbit", None)
 
-    # 1) colección base
-    col_raw = build_collection(
-        aoi=aoi,
-        year=year,
-        orbit=orbit,
-        start_date=start_date,
-        end_date=end_date,
-    )
+    if relative_orbit is None:
+        col_raw = build_collection_by_pass(
+            aoi=aoi,
+            year=year,
+            orbit_pass=orbit,
+            start_date=start_date,
+            end_date=end_date,
+        )
+    else:
+        col_raw = build_collection_by_pass_and_relative_orbit(
+            aoi=aoi,
+            year=year,
+            orbit_pass=orbit,
+            relative_orbit=int(relative_orbit),
+            start_date=start_date,
+            end_date=end_date,
+        )
 
-    # 2) mosaicos temporales
     col_mosaic = build_temporal_mosaics(
         col=col_raw,
         aoi=aoi,
@@ -76,7 +59,6 @@ def build_pipeline_base(aoi: ee.Geometry, cfg: dict) -> ee.ImageCollection:
         reducer=mosaic_reducer,
     )
 
-    # 3) procesamiento SAR base
     col_proc = col_mosaic.map(lambda img: _copy_all_properties(img, border_noise_mask(img)))
     col_proc = col_proc.map(lambda img: _copy_all_properties(img, gamma0_db(img)))
     col_proc = col_proc.map(lambda img: _copy_all_properties(img, terrain_flattening(img, dem=dem)))
@@ -87,13 +69,6 @@ def build_pipeline_base(aoi: ee.Geometry, cfg: dict) -> ee.ImageCollection:
 
 
 def build_pipeline_with_prepost(aoi: ee.Geometry, cfg: dict) -> ee.ImageCollection:
-    """
-    Pipeline extendido Sentinel-1 CON lógica pre/post.
-
-    Nota:
-    Esta función queda disponible para uso posterior,
-    pero NO es el flujo por defecto durante la prueba de depuración.
-    """
     eps = float(cfg.get("eps", 1e-10))
     pre_max_gap_days = int(cfg.get("pre_max_gap_days", 60))
     coverage_scale = int(cfg.get("coverage_scale", 30))
@@ -117,10 +92,6 @@ def build_pipeline_with_prepost(aoi: ee.Geometry, cfg: dict) -> ee.ImageCollecti
 
 def build_pipeline(aoi: ee.Geometry, cfg: dict) -> ee.ImageCollection:
     """
-    Punto de entrada por defecto del pipeline.
-
-    IMPORTANTE:
-    Durante esta fase de depuración, build_pipeline() apunta
-    deliberadamente al flujo base SIN lógica pre/post.
+    Se mantiene apuntando al flujo base por diseño.
     """
     return build_pipeline_base(aoi, cfg)

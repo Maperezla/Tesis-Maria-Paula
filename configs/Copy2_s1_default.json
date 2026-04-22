@@ -1,12 +1,16 @@
 {
-  "year": 2016,
+  "year": 2017,
   "orbit": "ASCENDING",
+  "relative_orbit": null,
   "eps": 1e-10,
   "kernel_size": 7,
   "dem_id": "USGS/SRTMGL1_003",
-  "window_days": 2,
+  "window_days": 6,
   "start_date": "2017-01-01",
   "end_date": "2017-01-31",
   "mosaic_reducer": "median",
-  "pre_max_gap_days": 60
+  "pre_max_gap_days": 60,
+  "coverage_scale": 30,
+  "min_overlap_pixels": 1000,
+  "min_overlap_fraction_of_post": 0.20
 }

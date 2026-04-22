@@ -1,6 +1,7 @@
 {
-  "year": 2016,
+  "year": 2017,
   "orbit": "ASCENDING",
+  "relative_orbit": null,
   "eps": 1e-10,
   "kernel_size": 7,
   "dem_id": "USGS/SRTMGL1_003",

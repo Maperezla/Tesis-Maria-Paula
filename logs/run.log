@@ -199,3 +199,65 @@
 2026-03-27 16:32:04,348 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference', 'VH_Difference', 'VHVV_Difference']
 2026-03-27 16:32:56,050 | INFO | Tareas exportadas: 5
 2026-03-27 16:32:56,050 | INFO | === END RUN ===
+2026-04-17 16:27:50,640 | INFO | === START RUN ===
+2026-04-17 16:37:30,834 | INFO | === START RUN ===
+2026-04-17 16:37:41,499 | INFO | Config cargado: {'year': 2016, 'orbit': 'ASCENDING', 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 2, 'start_date': '2017-01-01', 'end_date': '2017-01-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60}
+2026-04-17 16:37:42,239 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-17 16:38:29,532 | INFO | N imágenes finales: 1
+2026-04-17 16:38:29,532 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference', 'VH_Difference', 'VHVV_Difference']
+2026-04-17 16:38:36,688 | INFO | Tareas exportadas: 1
+2026-04-17 16:38:36,693 | INFO | === END RUN ===
+2026-04-17 17:11:26,218 | INFO | === START RUN ===
+2026-04-17 17:11:27,229 | INFO | Config cargado: {'year': 2016, 'orbit': 'ASCENDING', 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 2, 'start_date': '2017-01-01', 'end_date': '2017-01-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60}
+2026-04-17 17:11:27,240 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-17 17:11:47,351 | INFO | N imágenes finales: 1
+2026-04-17 17:11:47,351 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference', 'VH_Difference', 'VHVV_Difference']
+2026-04-17 17:11:56,030 | INFO | Tareas exportadas: 1
+2026-04-17 17:11:56,030 | INFO | === END RUN ===
+2026-04-20 15:47:25,147 | INFO | === START RUN ===
+2026-04-20 15:48:09,220 | INFO | Config cargado: {'year': 2016, 'orbit': 'ASCENDING', 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 2, 'start_date': '2017-01-01', 'end_date': '2017-01-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60}
+2026-04-20 15:48:09,953 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-20 15:48:29,998 | INFO | N imágenes finales: 1
+2026-04-20 15:48:29,998 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference', 'VH_Difference', 'VHVV_Difference']
+2026-04-20 15:48:36,197 | INFO | Tareas exportadas: 1
+2026-04-20 15:48:36,197 | INFO | === END RUN ===
+2026-04-20 16:26:58,120 | INFO | === START RUN ===
+2026-04-20 16:30:08,810 | INFO | N imágenes finales: 1
+2026-04-20 16:30:08,810 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference', 'VH_Difference', 'VHVV_Difference']
+2026-04-20 16:30:16,658 | INFO | Tareas exportadas: 1
+2026-04-20 16:30:16,660 | INFO | === END RUN ===
+2026-04-21 09:46:37,950 | INFO | === START RUN ===
+2026-04-21 09:47:51,440 | INFO | === START RUN ===
+2026-04-21 09:47:53,723 | INFO | Config cargado: {'year': 2016, 'orbit': 'ASCENDING', 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 2, 'start_date': '2017-01-01', 'end_date': '2017-01-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60}
+2026-04-21 09:47:54,639 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-21 09:48:55,720 | INFO | N imágenes finales: 2
+2026-04-21 09:48:55,721 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-21 09:49:04,878 | INFO | Tareas exportadas: 2
+2026-04-21 09:49:04,878 | INFO | === END RUN ===
+2026-04-21 11:31:02,791 | INFO | === START RUN ===
+2026-04-21 11:31:06,490 | INFO | Config cargado: {'year': 2016, 'orbit': 'ASCENDING', 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 2, 'start_date': '2017-01-01', 'end_date': '2017-01-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60}
+2026-04-21 11:31:06,545 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-21 11:33:42,900 | INFO | === START RUN ===
+2026-04-21 11:33:45,036 | INFO | Config cargado: {'year': 2016, 'orbit': 'ASCENDING', 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 2, 'start_date': '2017-01-01', 'end_date': '2017-01-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60}
+2026-04-21 11:33:45,090 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-21 11:34:38,581 | INFO | N imágenes finales: 2
+2026-04-21 11:34:38,581 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-21 11:34:45,976 | INFO | Tareas exportadas: 2
+2026-04-21 11:34:45,976 | INFO | === END RUN ===
+2026-04-21 11:35:05,021 | INFO | === START RUN ===
+2026-04-21 11:35:07,837 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 2, 'start_date': '2017-01-01', 'end_date': '2017-01-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60}
+2026-04-21 11:35:07,889 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-21 11:35:58,607 | INFO | N imágenes finales: 2
+2026-04-21 11:35:58,609 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-21 11:36:04,168 | INFO | Tareas exportadas: 2
+2026-04-21 11:36:04,169 | INFO | === END RUN ===
+2026-04-21 15:48:46,812 | INFO | === START RUN ===
+2026-04-21 15:48:50,430 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2017-01-01', 'end_date': '2017-01-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 30, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-21 15:48:52,212 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-21 15:51:03,465 | INFO | === START RUN ===
+2026-04-21 15:51:05,398 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2017-01-01', 'end_date': '2017-01-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 30, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-21 15:51:05,452 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-21 15:52:22,177 | INFO | N imágenes finales: 2
+2026-04-21 15:52:22,178 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference', 'VH_Difference', 'VHVV_Difference']
+2026-04-21 15:52:32,241 | INFO | Tareas exportadas: 2
+2026-04-21 15:52:32,243 | INFO | === END RUN ===
