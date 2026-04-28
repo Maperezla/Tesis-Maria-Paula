@@ -261,3 +261,26 @@
 2026-04-21 15:52:22,178 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference', 'VH_Difference', 'VHVV_Difference']
 2026-04-21 15:52:32,241 | INFO | Tareas exportadas: 2
 2026-04-21 15:52:32,243 | INFO | === END RUN ===
+2026-04-27 13:07:59,779 | INFO | === START RUN ===
+2026-04-27 13:09:23,858 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2017-02-01', 'end_date': '2017-02-28', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 30, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-27 13:09:26,054 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-27 13:11:18,901 | INFO | N imágenes finales: 3
+2026-04-27 13:11:18,902 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference', 'VH_Difference', 'VHVV_Difference']
+2026-04-27 13:11:32,169 | INFO | Tareas exportadas: 3
+2026-04-27 13:11:32,170 | INFO | === END RUN ===
+2026-04-27 17:10:16,109 | INFO | === START RUN ===
+2026-04-27 17:10:18,465 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2017-03-01', 'end_date': '2017-03-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 30, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-27 17:10:19,119 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-27 17:11:15,795 | WARNING | Sleeping 0.88 seconds before retry 1 of 5 for request: POST https://earthengine.googleapis.com/v1/projects/432997572555/value:compute?prettyPrint=false&alt=json, after 429
+2026-04-27 17:11:17,113 | WARNING | Sleeping 1.47 seconds before retry 2 of 5 for request: POST https://earthengine.googleapis.com/v1/projects/432997572555/value:compute?prettyPrint=false&alt=json, after 429
+2026-04-27 17:11:19,079 | WARNING | Sleeping 6.58 seconds before retry 3 of 5 for request: POST https://earthengine.googleapis.com/v1/projects/432997572555/value:compute?prettyPrint=false&alt=json, after 429
+2026-04-27 17:11:26,768 | WARNING | Sleeping 6.56 seconds before retry 4 of 5 for request: POST https://earthengine.googleapis.com/v1/projects/432997572555/value:compute?prettyPrint=false&alt=json, after 429
+2026-04-27 17:11:34,016 | WARNING | Sleeping 0.47 seconds before retry 5 of 5 for request: POST https://earthengine.googleapis.com/v1/projects/432997572555/value:compute?prettyPrint=false&alt=json, after 429
+2026-04-27 17:19:10,621 | INFO | === START RUN ===
+2026-04-27 17:19:13,386 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2017-03-01', 'end_date': '2017-03-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 30, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-27 17:19:13,440 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-27 17:19:57,721 | WARNING | Sleeping 1.30 seconds before retry 1 of 5 for request: POST https://earthengine.googleapis.com/v1/projects/432997572555/value:compute?prettyPrint=false&alt=json, after 429
+2026-04-27 17:19:59,502 | WARNING | Sleeping 1.74 seconds before retry 2 of 5 for request: POST https://earthengine.googleapis.com/v1/projects/432997572555/value:compute?prettyPrint=false&alt=json, after 429
+2026-04-27 17:20:01,786 | WARNING | Sleeping 6.67 seconds before retry 3 of 5 for request: POST https://earthengine.googleapis.com/v1/projects/432997572555/value:compute?prettyPrint=false&alt=json, after 429
+2026-04-27 17:20:08,976 | WARNING | Sleeping 1.38 seconds before retry 4 of 5 for request: POST https://earthengine.googleapis.com/v1/projects/432997572555/value:compute?prettyPrint=false&alt=json, after 429
+2026-04-27 17:20:11,005 | WARNING | Sleeping 13.22 seconds before retry 5 of 5 for request: POST https://earthengine.googleapis.com/v1/projects/432997572555/value:compute?prettyPrint=false&alt=json, after 429
