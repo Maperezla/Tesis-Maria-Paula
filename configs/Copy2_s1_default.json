@@ -6,11 +6,11 @@
   "kernel_size": 7,
   "dem_id": "USGS/SRTMGL1_003",
   "window_days": 6,
-  "start_date": "2017-03-01",
-  "end_date": "2017-03-31",
+  "start_date": "2018-05-01",
+  "end_date": "2018-05-31",
   "mosaic_reducer": "median",
   "pre_max_gap_days": 60,
-  "coverage_scale": 30,
+  "coverage_scale": 31,
   "min_overlap_pixels": 1000,
   "min_overlap_fraction_of_post": 0.20
 }
