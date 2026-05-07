@@ -431,3 +431,377 @@
 2026-04-28 18:13:50,885 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
 2026-04-28 18:13:56,626 | INFO | Tareas exportadas: 3
 2026-04-28 18:13:56,627 | INFO | === END RUN ===
+2026-04-29 09:58:19,196 | INFO | === START RUN ===
+2026-04-29 09:58:21,538 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2018-06-01', 'end_date': '2018-06-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 09:58:21,550 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 09:59:21,382 | INFO | N imágenes finales: 3
+2026-04-29 09:59:21,382 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 09:59:26,019 | INFO | Tareas exportadas: 3
+2026-04-29 09:59:26,020 | INFO | === END RUN ===
+2026-04-29 10:06:26,843 | INFO | === START RUN ===
+2026-04-29 10:06:28,816 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2018-07-01', 'end_date': '2018-07-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 10:06:28,869 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 10:07:31,255 | INFO | N imágenes finales: 3
+2026-04-29 10:07:31,256 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 10:07:36,482 | INFO | Tareas exportadas: 3
+2026-04-29 10:07:36,482 | INFO | === END RUN ===
+2026-04-29 10:08:29,664 | INFO | === START RUN ===
+2026-04-29 10:08:32,499 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2018-07-01', 'end_date': '2018-07-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 10:08:32,512 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 10:08:57,608 | INFO | === START RUN ===
+2026-04-29 10:08:59,425 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2018-07-01', 'end_date': '2018-07-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 10:08:59,481 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 10:09:26,567 | INFO | === START RUN ===
+2026-04-29 10:09:28,297 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2018-08-01', 'end_date': '2018-08-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 10:09:28,350 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 10:10:12,411 | INFO | N imágenes finales: 1
+2026-04-29 10:10:12,412 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 10:10:15,094 | INFO | Tareas exportadas: 1
+2026-04-29 10:10:15,094 | INFO | === END RUN ===
+2026-04-29 10:11:57,363 | INFO | === START RUN ===
+2026-04-29 10:11:59,189 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2018-09-01', 'end_date': '2018-09-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 10:11:59,200 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 10:12:43,717 | INFO | N imágenes finales: 2
+2026-04-29 10:12:43,718 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 10:12:47,698 | INFO | Tareas exportadas: 2
+2026-04-29 10:12:47,698 | INFO | === END RUN ===
+2026-04-29 10:44:44,884 | INFO | === START RUN ===
+2026-04-29 10:44:47,866 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2018-09-01', 'end_date': '2018-09-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 10:44:47,878 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 10:45:08,262 | INFO | === START RUN ===
+2026-04-29 10:45:12,298 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2018-09-01', 'end_date': '2018-09-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 10:45:12,361 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 10:52:47,958 | INFO | === START RUN ===
+2026-04-29 10:52:49,725 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2018-10-01', 'end_date': '2018-10-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 10:52:49,780 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 10:53:52,545 | INFO | === START RUN ===
+2026-04-29 10:53:54,120 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2018-10-01', 'end_date': '2018-10-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 10:53:54,132 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 10:54:44,008 | INFO | N imágenes finales: 2
+2026-04-29 10:54:44,008 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 10:54:47,915 | INFO | Tareas exportadas: 2
+2026-04-29 10:54:47,915 | INFO | === END RUN ===
+2026-04-29 11:13:37,971 | INFO | === START RUN ===
+2026-04-29 11:13:39,971 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2018-11-01', 'end_date': '2018-11-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 11:13:39,983 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 11:14:41,876 | INFO | N imágenes finales: 3
+2026-04-29 11:14:41,877 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 11:14:46,952 | INFO | Tareas exportadas: 3
+2026-04-29 11:14:46,952 | INFO | === END RUN ===
+2026-04-29 11:16:55,476 | INFO | === START RUN ===
+2026-04-29 11:16:58,168 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2018-12-01', 'end_date': '2018-12-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 11:16:58,183 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 11:17:51,026 | INFO | N imágenes finales: 4
+2026-04-29 11:17:51,027 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 11:17:56,722 | INFO | Tareas exportadas: 4
+2026-04-29 11:17:56,724 | INFO | === END RUN ===
+2026-04-29 13:08:53,002 | INFO | === START RUN ===
+2026-04-29 13:08:54,805 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2019-01-01', 'end_date': '2019-01-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 13:08:54,866 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 13:09:42,208 | INFO | N imágenes finales: 2
+2026-04-29 13:09:42,208 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 13:09:46,614 | INFO | Tareas exportadas: 2
+2026-04-29 13:09:46,614 | INFO | === END RUN ===
+2026-04-29 17:56:18,372 | INFO | === START RUN ===
+2026-04-29 17:56:20,450 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2019-01-01', 'end_date': '2019-01-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 17:56:20,875 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 17:56:48,684 | INFO | === START RUN ===
+2026-04-29 17:56:50,738 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2019-02-01', 'end_date': '2019-02-28', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 17:56:50,843 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 17:57:41,866 | INFO | N imágenes finales: 3
+2026-04-29 17:57:41,868 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 17:57:47,481 | INFO | Tareas exportadas: 3
+2026-04-29 17:57:47,482 | INFO | === END RUN ===
+2026-04-29 17:58:42,665 | INFO | === START RUN ===
+2026-04-29 17:58:44,710 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2019-03-01', 'end_date': '2019-03-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 17:58:44,726 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 17:59:42,061 | INFO | === START RUN ===
+2026-04-29 17:59:43,881 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2019-03-01', 'end_date': '2019-03-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 17:59:43,892 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 18:00:39,079 | INFO | N imágenes finales: 5
+2026-04-29 18:00:39,080 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 18:00:45,396 | INFO | Tareas exportadas: 5
+2026-04-29 18:00:45,398 | INFO | === END RUN ===
+2026-04-29 18:08:07,523 | INFO | === START RUN ===
+2026-04-29 18:08:09,568 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2019-03-01', 'end_date': '2019-03-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 18:08:09,580 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 18:09:28,352 | INFO | === START RUN ===
+2026-04-29 18:09:30,538 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2019-04-01', 'end_date': '2019-04-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 18:09:30,596 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 18:10:29,307 | INFO | N imágenes finales: 4
+2026-04-29 18:10:29,308 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 18:10:36,409 | INFO | Tareas exportadas: 4
+2026-04-29 18:10:36,409 | INFO | === END RUN ===
+2026-04-29 18:24:05,758 | INFO | === START RUN ===
+2026-04-29 18:24:09,024 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2019-05-01', 'end_date': '2019-05-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 18:24:09,037 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 18:25:00,867 | INFO | N imágenes finales: 3
+2026-04-29 18:25:00,867 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 18:25:06,174 | INFO | Tareas exportadas: 3
+2026-04-29 18:25:06,174 | INFO | === END RUN ===
+2026-04-29 18:27:30,954 | INFO | === START RUN ===
+2026-04-29 18:27:32,932 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2019-06-01', 'end_date': '2019-06-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 18:27:32,943 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 18:28:15,134 | INFO | N imágenes finales: 2
+2026-04-29 18:28:15,134 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 18:28:18,500 | INFO | Tareas exportadas: 2
+2026-04-29 18:28:18,501 | INFO | === END RUN ===
+2026-04-29 18:29:39,131 | INFO | === START RUN ===
+2026-04-29 18:29:41,039 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2019-07-01', 'end_date': '2019-07-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 18:29:41,098 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 18:30:23,529 | INFO | N imágenes finales: 2
+2026-04-29 18:30:23,530 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 18:30:28,588 | INFO | Tareas exportadas: 2
+2026-04-29 18:30:28,588 | INFO | === END RUN ===
+2026-04-29 18:32:13,618 | INFO | === START RUN ===
+2026-04-29 18:32:15,567 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2019-08-01', 'end_date': '2019-08-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 18:32:15,625 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 18:33:40,664 | INFO | N imágenes finales: 5
+2026-04-29 18:33:40,666 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 18:33:47,195 | INFO | Tareas exportadas: 5
+2026-04-29 18:33:47,195 | INFO | === END RUN ===
+2026-04-29 18:36:46,086 | INFO | === START RUN ===
+2026-04-29 18:36:48,129 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2019-09-01', 'end_date': '2019-09-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 18:36:48,185 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 18:37:59,527 | WARNING | Sleeping 1.61 seconds before retry 1 of 5 for request: POST https://earthengine.googleapis.com/v1/projects/432997572555/value:compute?prettyPrint=false&alt=json, after 502
+2026-04-29 18:38:34,932 | INFO | N imágenes finales: 4
+2026-04-29 18:38:34,932 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 18:38:40,709 | INFO | Tareas exportadas: 4
+2026-04-29 18:38:40,710 | INFO | === END RUN ===
+2026-04-29 18:39:44,769 | INFO | === START RUN ===
+2026-04-29 18:39:46,612 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2019-10-01', 'end_date': '2019-10-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 18:39:46,674 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 18:40:30,396 | INFO | === START RUN ===
+2026-04-29 18:40:33,543 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2019-10-01', 'end_date': '2019-10-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 18:40:33,607 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 18:41:29,933 | INFO | N imágenes finales: 5
+2026-04-29 18:41:29,933 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 18:41:36,416 | INFO | Tareas exportadas: 5
+2026-04-29 18:41:36,416 | INFO | === END RUN ===
+2026-04-29 18:47:03,502 | INFO | === START RUN ===
+2026-04-29 18:47:06,543 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2019-11-01', 'end_date': '2019-11-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 18:47:06,607 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 18:47:52,906 | INFO | N imágenes finales: 2
+2026-04-29 18:47:52,906 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 18:47:56,738 | INFO | Tareas exportadas: 2
+2026-04-29 18:47:56,738 | INFO | === END RUN ===
+2026-04-29 18:50:57,847 | INFO | === START RUN ===
+2026-04-29 18:51:00,700 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2019-12-01', 'end_date': '2019-12-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 18:51:00,765 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 18:51:47,058 | INFO | N imágenes finales: 3
+2026-04-29 18:51:47,059 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 18:51:51,835 | INFO | Tareas exportadas: 3
+2026-04-29 18:51:51,836 | INFO | === END RUN ===
+2026-04-29 18:55:29,515 | INFO | === START RUN ===
+2026-04-29 18:55:31,499 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2020-01-01', 'end_date': '2020-01-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 18:55:31,567 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 18:56:23,749 | INFO | N imágenes finales: 5
+2026-04-29 18:56:23,749 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 18:56:29,818 | INFO | Tareas exportadas: 5
+2026-04-29 18:56:29,818 | INFO | === END RUN ===
+2026-04-29 18:58:31,497 | INFO | === START RUN ===
+2026-04-29 18:58:33,835 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2020-01-01', 'end_date': '2020-01-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 18:58:33,932 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 18:59:05,920 | INFO | === START RUN ===
+2026-04-29 18:59:12,214 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2020-02-01', 'end_date': '2020-02-28', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 18:59:12,280 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 19:00:57,028 | INFO | === START RUN ===
+2026-04-29 19:00:59,065 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2020-02-01', 'end_date': '2020-02-28', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 19:00:59,121 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 19:01:57,756 | INFO | N imágenes finales: 3
+2026-04-29 19:01:57,758 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 19:02:03,141 | INFO | Tareas exportadas: 3
+2026-04-29 19:02:03,142 | INFO | === END RUN ===
+2026-04-29 19:03:41,997 | INFO | === START RUN ===
+2026-04-29 19:03:43,906 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2020-03-01', 'end_date': '2020-03-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 19:03:43,967 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 19:05:24,350 | INFO | === START RUN ===
+2026-04-29 19:05:26,196 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2020-03-01', 'end_date': '2020-03-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 19:05:26,262 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 19:06:21,067 | INFO | N imágenes finales: 5
+2026-04-29 19:06:21,068 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 19:06:27,578 | INFO | Tareas exportadas: 5
+2026-04-29 19:06:27,578 | INFO | === END RUN ===
+2026-04-29 19:11:27,183 | INFO | === START RUN ===
+2026-04-29 19:11:29,550 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2020-04-01', 'end_date': '2020-04-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 19:11:29,612 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 19:12:36,731 | INFO | N imágenes finales: 5
+2026-04-29 19:12:36,732 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 19:12:45,776 | INFO | Tareas exportadas: 5
+2026-04-29 19:12:45,776 | INFO | === END RUN ===
+2026-04-29 19:14:48,340 | INFO | === START RUN ===
+2026-04-29 19:14:50,341 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2020-05-01', 'end_date': '2020-05-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 19:14:50,398 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 19:15:52,517 | INFO | N imágenes finales: 5
+2026-04-29 19:15:52,518 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 19:16:00,696 | INFO | Tareas exportadas: 5
+2026-04-29 19:16:00,696 | INFO | === END RUN ===
+2026-04-29 19:17:43,820 | INFO | === START RUN ===
+2026-04-29 19:17:45,683 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2020-06-01', 'end_date': '2020-06-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 19:17:45,743 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 19:18:45,883 | INFO | N imágenes finales: 5
+2026-04-29 19:18:45,884 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 19:18:52,120 | INFO | Tareas exportadas: 5
+2026-04-29 19:18:52,120 | INFO | === END RUN ===
+2026-04-29 19:20:10,455 | INFO | === START RUN ===
+2026-04-29 19:20:12,355 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2020-07-01', 'end_date': '2020-07-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 19:20:12,415 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 19:21:12,970 | INFO | N imágenes finales: 5
+2026-04-29 19:21:12,970 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 19:21:19,047 | INFO | Tareas exportadas: 5
+2026-04-29 19:21:19,047 | INFO | === END RUN ===
+2026-04-29 19:31:40,979 | INFO | === START RUN ===
+2026-04-29 19:31:43,017 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2020-08-01', 'end_date': '2020-08-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 19:31:43,075 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 19:32:49,260 | INFO | N imágenes finales: 4
+2026-04-29 19:32:49,260 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 19:32:57,820 | INFO | Tareas exportadas: 4
+2026-04-29 19:32:57,821 | INFO | === END RUN ===
+2026-04-29 19:33:59,959 | INFO | === START RUN ===
+2026-04-29 19:34:02,006 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2020-09-01', 'end_date': '2020-09-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 19:34:02,065 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 19:35:12,337 | INFO | === START RUN ===
+2026-04-29 19:35:14,171 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2020-09-01', 'end_date': '2020-09-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 19:35:14,228 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 19:36:19,708 | INFO | N imágenes finales: 5
+2026-04-29 19:36:19,708 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 19:36:28,274 | INFO | Tareas exportadas: 5
+2026-04-29 19:36:28,274 | INFO | === END RUN ===
+2026-04-29 19:42:10,147 | INFO | === START RUN ===
+2026-04-29 19:42:12,082 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2020-10-01', 'end_date': '2020-10-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 19:42:12,146 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 19:43:14,909 | INFO | N imágenes finales: 5
+2026-04-29 19:43:14,909 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 19:43:21,722 | INFO | Tareas exportadas: 5
+2026-04-29 19:43:21,724 | INFO | === END RUN ===
+2026-04-29 19:49:05,826 | INFO | === START RUN ===
+2026-04-29 19:49:08,564 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2020-11-01', 'end_date': '2020-11-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 19:49:08,625 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 19:50:05,932 | INFO | N imágenes finales: 3
+2026-04-29 19:50:05,932 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 19:50:10,623 | INFO | Tareas exportadas: 3
+2026-04-29 19:50:10,625 | INFO | === END RUN ===
+2026-04-29 19:53:52,940 | INFO | === START RUN ===
+2026-04-29 19:53:55,117 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2020-12-01', 'end_date': '2020-12-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 19:53:55,183 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 19:54:38,755 | INFO | N imágenes finales: 2
+2026-04-29 19:54:38,755 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 19:54:43,248 | INFO | Tareas exportadas: 2
+2026-04-29 19:54:43,249 | INFO | === END RUN ===
+2026-04-29 19:57:45,541 | INFO | === START RUN ===
+2026-04-29 19:57:47,412 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2021-01-01', 'end_date': '2021-01-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 19:57:47,471 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 19:58:40,410 | INFO | N imágenes finales: 5
+2026-04-29 19:58:40,411 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 19:58:46,335 | INFO | Tareas exportadas: 5
+2026-04-29 19:58:46,336 | INFO | === END RUN ===
+2026-04-29 20:04:19,550 | INFO | === START RUN ===
+2026-04-29 20:04:21,427 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2021-02-01', 'end_date': '2021-02-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 20:04:21,493 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 20:06:08,221 | INFO | === START RUN ===
+2026-04-29 20:06:10,252 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2021-02-01', 'end_date': '2021-02-28', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 20:06:10,314 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 20:07:04,117 | INFO | N imágenes finales: 4
+2026-04-29 20:07:04,117 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 20:07:10,651 | INFO | Tareas exportadas: 4
+2026-04-29 20:07:10,651 | INFO | === END RUN ===
+2026-04-29 20:09:00,726 | INFO | === START RUN ===
+2026-04-29 20:09:03,911 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2021-03-01', 'end_date': '2021-03-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-29 20:09:03,974 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-29 20:09:49,637 | INFO | N imágenes finales: 1
+2026-04-29 20:09:49,638 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-29 20:09:52,993 | INFO | Tareas exportadas: 1
+2026-04-29 20:09:52,993 | INFO | === END RUN ===
+2026-04-30 09:55:30,386 | INFO | === START RUN ===
+2026-04-30 09:56:18,008 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2021-04-01', 'end_date': '2021-04-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-30 09:56:18,939 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-30 09:57:05,801 | INFO | === START RUN ===
+2026-04-30 09:57:07,271 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2021-04-01', 'end_date': '2021-04-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-30 09:57:07,287 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-30 09:57:31,618 | INFO | === START RUN ===
+2026-04-30 09:57:34,691 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2021-04-01', 'end_date': '2021-04-31', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-30 09:57:34,888 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-30 09:58:07,726 | INFO | === START RUN ===
+2026-04-30 09:58:10,285 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2021-04-01', 'end_date': '2021-04-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-30 09:58:10,376 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-30 09:59:07,057 | INFO | N imágenes finales: 4
+2026-04-30 09:59:07,060 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-30 09:59:13,076 | INFO | Tareas exportadas: 4
+2026-04-30 09:59:13,076 | INFO | === END RUN ===
+2026-04-30 10:05:19,187 | INFO | === START RUN ===
+2026-04-30 10:05:22,102 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2021-05-01', 'end_date': '2021-05-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-30 10:05:22,195 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-30 10:06:25,308 | INFO | N imágenes finales: 5
+2026-04-30 10:06:25,309 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-30 10:06:32,710 | INFO | Tareas exportadas: 5
+2026-04-30 10:06:32,712 | INFO | === END RUN ===
+2026-04-30 10:07:57,580 | INFO | === START RUN ===
+2026-04-30 10:08:00,379 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2021-06-01', 'end_date': '2021-06-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-30 10:08:00,450 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-30 10:09:14,079 | INFO | N imágenes finales: 5
+2026-04-30 10:09:14,080 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-30 10:09:21,892 | INFO | Tareas exportadas: 5
+2026-04-30 10:09:21,892 | INFO | === END RUN ===
+2026-04-30 10:10:30,906 | INFO | === START RUN ===
+2026-04-30 10:10:34,172 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2021-07-01', 'end_date': '2021-07-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-30 10:10:34,311 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-30 10:11:41,744 | INFO | N imágenes finales: 5
+2026-04-30 10:11:41,746 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-30 10:11:49,849 | INFO | Tareas exportadas: 5
+2026-04-30 10:11:49,851 | INFO | === END RUN ===
+2026-04-30 10:13:15,750 | INFO | === START RUN ===
+2026-04-30 10:13:18,629 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2021-08-01', 'end_date': '2021-07-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-30 10:13:18,808 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-30 10:14:03,807 | INFO | === START RUN ===
+2026-04-30 10:14:06,621 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2021-08-01', 'end_date': '2021-08-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-30 10:14:06,753 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-30 10:15:31,788 | INFO | N imágenes finales: 5
+2026-04-30 10:15:31,788 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-30 10:15:44,528 | INFO | Tareas exportadas: 5
+2026-04-30 10:15:44,529 | INFO | === END RUN ===
+2026-04-30 10:16:56,790 | INFO | === START RUN ===
+2026-04-30 10:16:59,943 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2021-08-01', 'end_date': '2021-08-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-30 10:17:00,097 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-30 10:17:30,908 | INFO | === START RUN ===
+2026-04-30 10:17:34,051 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2021-09-01', 'end_date': '2021-09-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-30 10:17:34,191 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-30 10:19:08,548 | INFO | N imágenes finales: 5
+2026-04-30 10:19:08,548 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-30 10:19:15,510 | INFO | Tareas exportadas: 5
+2026-04-30 10:19:15,510 | INFO | === END RUN ===
+2026-04-30 10:23:09,887 | INFO | === START RUN ===
+2026-04-30 10:23:12,838 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2021-10-01', 'end_date': '2021-10-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-30 10:23:12,909 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-30 10:24:11,160 | INFO | N imágenes finales: 4
+2026-04-30 10:24:11,161 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-30 10:24:21,457 | INFO | Tareas exportadas: 4
+2026-04-30 10:24:21,458 | INFO | === END RUN ===
+2026-04-30 10:26:05,798 | INFO | === START RUN ===
+2026-04-30 10:26:09,033 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2021-10-01', 'end_date': '2021-10-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-30 10:26:09,133 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-30 10:26:45,145 | INFO | === START RUN ===
+2026-04-30 10:26:48,007 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2021-11-01', 'end_date': '2021-11-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-30 10:26:48,143 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-30 10:27:43,123 | INFO | N imágenes finales: 4
+2026-04-30 10:27:43,125 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-30 10:27:48,388 | INFO | Tareas exportadas: 4
+2026-04-30 10:27:48,390 | INFO | === END RUN ===
+2026-04-30 10:31:06,001 | INFO | === START RUN ===
+2026-04-30 10:31:09,033 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2021-11-01', 'end_date': '2021-11-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-30 10:31:09,169 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-30 10:32:00,812 | INFO | === START RUN ===
+2026-04-30 10:32:03,769 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2021-11-01', 'end_date': '2021-11-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-30 10:32:03,866 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-30 10:32:37,101 | INFO | === START RUN ===
+2026-04-30 10:32:40,171 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2021-12-01', 'end_date': '2021-12-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-30 10:32:40,309 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-30 10:35:27,114 | INFO | N imágenes finales: 3
+2026-04-30 10:35:27,115 | INFO | Bandas finales: ['VV', 'VH', 'angle', 'VVVH_ratio']
+2026-04-30 10:35:32,864 | INFO | Tareas exportadas: 3
+2026-04-30 10:35:32,865 | INFO | === END RUN ===
+2026-04-30 10:39:23,782 | INFO | === START RUN ===
+2026-04-30 10:39:25,515 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2022-01-01', 'end_date': '2022-01-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-30 10:39:25,572 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
+2026-04-30 10:41:05,689 | INFO | === START RUN ===
+2026-04-30 10:41:07,636 | INFO | Config cargado: {'year': 2017, 'orbit': 'ASCENDING', 'relative_orbit': None, 'eps': 1e-10, 'kernel_size': 7, 'dem_id': 'USGS/SRTMGL1_003', 'window_days': 6, 'start_date': '2022-01-01', 'end_date': '2022-01-30', 'mosaic_reducer': 'median', 'pre_max_gap_days': 60, 'coverage_scale': 31, 'min_overlap_pixels': 1000, 'min_overlap_fraction_of_post': 0.2}
+2026-04-30 10:41:07,689 | INFO | AOI cargado desde: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\SHP\AOI_25_09_19.shp
