@@ -1,0 +1,49 @@
+2026-05-12 11:00:33,579 | INFO | Inicio pipeline RF
+2026-05-12 11:00:33,579 | INFO | =================================================
+2026-05-12 11:00:33,579 | INFO | INICIO PIPELINE RANDOM FOREST
+2026-05-12 11:00:33,579 | INFO | =================================================
+2026-05-12 11:00:33,579 | INFO | Ruta incendios: C:\Users\Equipo\Tesis\SemestreIV\Objetivo1\Objetivo1_26_02_20\outputs\fire_orbits\incendios_con_orbitas_26_03_12.shp
+2026-05-12 11:00:33,579 | INFO | Ruta ausencias: D:\Maestria_Geomatica\Semestre_IV\Puntos_unificados_25_11_05\Puntos_unificados_26_02_23\puntos_no_calientes_aleatorios_961_26_02_23.shp
+2026-05-12 11:00:33,580 | INFO | Ruta L8 normalizado: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\L8_normalizado
+2026-05-12 11:00:33,580 | INFO | Ruta S1 normalizado: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\S1_normalizado
+2026-05-12 11:00:33,580 | INFO | OUT_DIR: C:\Users\Equipo\Tesis\SemestreIV\Objetivo1\Objetivo1_26_02_20\outputs\outputs_rf_pipeline_260507
+2026-05-12 11:00:33,970 | INFO | CRS puntos combinados: EPSG:9377
+2026-05-12 11:00:33,970 | INFO | Incendios: 961
+2026-05-12 11:00:33,971 | INFO | Ausencias: 961
+2026-05-12 11:00:33,971 | INFO | Total puntos: 1922
+2026-05-12 11:00:33,979 | INFO | [L8] Carpeta: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\L8_normalizado
+2026-05-12 11:00:33,979 | INFO | [L8] TIFF encontrados con patrón general: 30
+2026-05-12 11:00:33,980 | INFO | [L8] TIFF indexados correctamente: 30
+2026-05-12 11:00:34,000 | INFO | [S1] Carpeta: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\S1_normalizado
+2026-05-12 11:00:34,000 | INFO | [S1] TIFF encontrados con patrón general: 113
+2026-05-12 11:00:34,000 | INFO | [S1] TIFF indexados correctamente desde nombre: 113
+2026-05-12 11:00:34,001 | INFO | [L8] Bimestres indexados: 30
+2026-05-12 11:00:34,001 | INFO | [S1] Escenas indexadas: 113
+2026-05-12 11:00:34,050 | INFO | [L8] Rasters Landsat 8 usados por puntos: 21
+2026-05-12 11:00:43,453 | INFO | [L8] Puntos con imagen Landsat 8: 1055
+2026-05-12 11:00:43,453 | INFO | [L8] Puntos sin imagen Landsat 8: 867
+2026-05-12 11:01:06,868 | INFO | [S1] Puntos con imagen Sentinel-1: 630
+2026-05-12 11:01:06,868 | INFO | [S1] Puntos sin imagen Sentinel-1: 1292
+2026-05-12 11:01:06,881 | INFO | Coverage report:
+        feature  missing_n  missing_pct
+             VV       1370    71.279917
+             VH       1370    71.279917
+     VVVH_ratio       1370    71.279917
+          angle       1366    71.071800
+  VV_Difference       1321    68.730489
+  VH_Difference       1321    68.730489
+VHVV_Difference       1321    68.730489
+     SR_B5_norm       1222    63.579605
+     SR_B6_norm       1222    63.579605
+     SR_B7_norm       1222    63.579605
+      NDVI_norm       1222    63.579605
+       EVI_norm       1222    63.579605
+       NBR_norm       1222    63.579605
+      NDWI_norm       1222    63.579605
+2026-05-12 11:01:07,364 | INFO | Dataset A shape: (340, 74)
+2026-05-12 11:01:07,364 | INFO | Dataset B shape: (1922, 74)
+2026-05-12 11:01:41,021 | INFO | Created 1,922 records
+2026-05-12 11:01:41,499 | INFO | Outputs generados en: C:\Users\Equipo\Tesis\SemestreIV\Objetivo1\Objetivo1_26_02_20\outputs\outputs_rf_pipeline_260507
+2026-05-12 11:01:41,499 | INFO | =================================================
+2026-05-12 11:01:41,499 | INFO | FIN PIPELINE RANDOM FOREST
+2026-05-12 11:01:41,499 | INFO | =================================================
