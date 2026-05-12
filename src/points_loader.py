@@ -3,6 +3,22 @@ import pandas as pd
 import geopandas as gpd
 
 
+def parse_fire_dates(series: pd.Series) -> pd.Series:
+    """
+    Intenta parsear fechas de incendios con varios formatos comunes.
+    Primero intenta dd/mm/yyyy y luego inferencia general de pandas.
+    """
+    parsed = pd.to_datetime(series, format="%d/%m/%Y", errors="coerce")
+
+    mask_bad = parsed.isna()
+
+    if mask_bad.any():
+        parsed_alt = pd.to_datetime(series[mask_bad], errors="coerce", dayfirst=True)
+        parsed.loc[mask_bad] = parsed_alt
+
+    return parsed
+
+
 def load_points(
     path_fire_shp: str,
     path_abs_shp: str,
@@ -10,37 +26,43 @@ def load_points(
     epsg_work: int = 9377,
 ) -> gpd.GeoDataFrame:
     # -------------------------
-    # Incendios (SHP)
+    # Incendios
     # -------------------------
     g_fire = gpd.read_file(path_fire_shp).copy()
 
     if g_fire.empty:
         raise ValueError("El shapefile de incendios está vacío.")
+
     if g_fire.crs is None:
         raise ValueError("El shapefile de incendios no tiene CRS definido.")
+
     if date_col not in g_fire.columns:
         raise ValueError(
-            f"No se encontró '{date_col}' en incendios. Columnas disponibles: {list(g_fire.columns)}"
+            f"No se encontró '{date_col}' en incendios. "
+            f"Columnas disponibles: {list(g_fire.columns)}"
         )
 
-    g_fire[date_col] = pd.to_datetime(g_fire[date_col], format="%d/%m/%Y", errors="coerce")
+    g_fire[date_col] = parse_fire_dates(g_fire[date_col])
+
     if g_fire[date_col].isna().any():
         n_bad = int(g_fire[date_col].isna().sum())
+
         raise ValueError(
             f"Hay {n_bad} fechas inválidas en incendios en '{date_col}'. "
-            "Revisa formato dd/mm/yyyy."
+            "Revisa si están en formato dd/mm/yyyy, yyyy-mm-dd o similar."
         )
 
     g_fire["label"] = 1
     g_fire = g_fire.to_crs(epsg=epsg_work)
 
     # -------------------------
-    # Ausencias (SHP)
+    # Ausencias
     # -------------------------
     g_abs = gpd.read_file(path_abs_shp).copy()
 
     if g_abs.empty:
         raise ValueError("El shapefile de ausencias está vacío.")
+
     if g_abs.crs is None:
         raise ValueError("El shapefile de ausencias no tiene CRS definido.")
 
@@ -52,9 +74,15 @@ def load_points(
     # Unir
     # -------------------------
     g = pd.concat([g_fire, g_abs], ignore_index=True)
-    g = gpd.GeoDataFrame(g, geometry="geometry", crs=f"EPSG:{epsg_work}")
+
+    g = gpd.GeoDataFrame(
+        g,
+        geometry="geometry",
+        crs=f"EPSG:{epsg_work}"
+    )
 
     g = g.reset_index(drop=True)
+
     g["point_id"] = np.arange(1, len(g) + 1, dtype=int)
 
     return g
@@ -68,12 +96,19 @@ def assign_dates_to_absences(
     g = g.copy()
 
     fire_dates = g.loc[g["label"] == 1, date_col].dropna().values
+
     if len(fire_dates) == 0:
         raise ValueError("No hay fechas de incendios para muestrear.")
 
     rng = np.random.default_rng(seed)
+
     idx_abs = g.index[g["label"] == 0].to_numpy()
-    sampled = rng.choice(fire_dates, size=len(idx_abs), replace=True)
+
+    sampled = rng.choice(
+        fire_dates,
+        size=len(idx_abs),
+        replace=True
+    )
 
     g.loc[idx_abs, date_col] = pd.to_datetime(sampled)
     g[date_col] = pd.to_datetime(g[date_col], errors="coerce")

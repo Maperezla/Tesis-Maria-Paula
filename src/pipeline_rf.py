@@ -1,4 +1,5 @@
 import os
+import re
 import glob
 import logging
 from typing import Dict, List, Optional, Tuple
@@ -33,111 +34,322 @@ from .points_loader import load_points, assign_dates_to_absences
 # =========================================================
 # CONFIG FIJA DE FEATURES
 # =========================================================
-L8_BAND_MAP: Dict[str, str] = {
-    "SR_B4": "RED",
-    "SR_B5": "NIR",
-    "SR_B6": "SWIR_1",
-    "SR_B7": "SWIR_2",
-    "NDVI": "NDVI",
-    "EVI": "EVI",
-    "NBR": "NBR",
-    "IMG_COUNT": "IMG_COUNT",
+
+# Landsat 8 normalizado:
+# Orden fijo de bandas dentro de cada TIFF normalizado.
+L8_FEATURES = [
+    "SR_B5_norm",
+    "SR_B6_norm",
+    "SR_B7_norm",
+    "NDVI_norm",
+    "EVI_norm",
+    "NBR_norm",
+    "NDWI_norm",
+]
+
+# Sentinel-1 normalizado:
+# Orden fijo de bandas dentro de cada TIFF normalizado.
+S1_FEATURES = [
+    "VV",
+    "VH",
+    "angle",
+    "VVVH_ratio",
+    "VV_Difference",
+    "VH_Difference",
+    "VHVV_Difference",
+]
+
+FEATURES = L8_FEATURES + S1_FEATURES
+
+
+# =========================================================
+# HELPERS FECHAS Y BIMESTRES
+# =========================================================
+
+BIMONTH_LABEL_TO_START_MONTH = {
+    "ene_feb": 1,
+    "mar_abr": 3,
+    "may_jun": 5,
+    "jul_ago": 7,
+    "sep_oct": 9,
+    "nov_dic": 11,
 }
-L8_BANDS_IN = list(L8_BAND_MAP.keys())
-L8_BANDS_OUT = list(L8_BAND_MAP.values())
 
-S1_FEATURES = ["VV", "VH", "angle","VVVH_ratio", "VV_Difference"]
-FEATURES = L8_BANDS_OUT + S1_FEATURES
+START_MONTH_TO_BIMONTH_LABEL = {
+    1: "ene_feb",
+    3: "mar_abr",
+    5: "may_jun",
+    7: "jul_ago",
+    9: "sep_oct",
+    11: "nov_dic",
+}
 
 
-# =========================================================
-# HELPERS FECHAS
-# =========================================================
+def bimonth_start_month(month: int) -> int:
+    """
+    Devuelve el mes inicial del bimestre al que pertenece un mes.
+    Ejemplo:
+    enero/febrero -> 1
+    marzo/abril   -> 3
+    """
+    if month in [1, 2]:
+        return 1
+    if month in [3, 4]:
+        return 3
+    if month in [5, 6]:
+        return 5
+    if month in [7, 8]:
+        return 7
+    if month in [9, 10]:
+        return 9
+    if month in [11, 12]:
+        return 11
+    raise ValueError(f"Mes inválido: {month}")
+
+
+def next_bimonth(year: int, start_month: int) -> Tuple[int, int]:
+    """
+    Devuelve el siguiente bimestre.
+    Si el bimestre es nov-dic, retorna ene-feb del año siguiente.
+    """
+    if start_month == 11:
+        return year + 1, 1
+    return year, start_month + 2
+
+
+def build_bimonth_start_date(year: int, start_month: int) -> pd.Timestamp:
+    return pd.Timestamp(year=int(year), month=int(start_month), day=1)
+
+
+def get_l8_target_bimonth(
+    t0: pd.Timestamp,
+    switch_day: int = 14
+) -> Tuple[int, int, str]:
+    """
+    Determina qué bimestre Landsat 8 debe usarse para una fecha de incendio.
+
+    Regla:
+    - Primero se identifica el bimestre actual del incendio.
+    - Si el incendio ocurrió antes del día umbral del bimestre, se usa el bimestre actual.
+    - Si ocurrió desde el día umbral en adelante, se usa el bimestre siguiente.
+
+    Con switch_day = 14:
+    - 2017-03-13 -> mar_abr
+    - 2017-03-14 -> may_jun
+
+    La comparación se hace respecto al inicio real del bimestre.
+    """
+    if pd.isna(t0):
+        return None, None, None
+
+    t0 = pd.to_datetime(t0, errors="coerce")
+    if pd.isna(t0):
+        return None, None, None
+
+    year = int(t0.year)
+    start_month = bimonth_start_month(int(t0.month))
+    start_date = build_bimonth_start_date(year, start_month)
+
+    # Día 14 del bimestre equivale a start_date + 13 días.
+    switch_date = start_date + pd.Timedelta(days=switch_day - 1)
+
+    if t0 >= switch_date:
+        target_year, target_start_month = next_bimonth(year, start_month)
+        rule = "next_bimonth"
+    else:
+        target_year, target_start_month = year, start_month
+        rule = "current_bimonth"
+
+    return target_year, target_start_month, rule
+
+
 def ym_neighbors(y: int, m: int) -> List[Tuple[int, int]]:
-    prev_y, prev_m = (y, m - 1) if m > 1 else (y - 1, 12)
-    next_y, next_m = (y, m + 1) if m < 12 else (y + 1, 1)
+    """
+    Se mantiene para el balanceo temporal de ausencias.
+    Usa el bimestre Landsat asignado como referencia.
+    """
+    prev_y, prev_m = (y, m - 2) if m > 1 else (y - 1, 11)
+    next_y, next_m = (y, m + 2) if m < 11 else (y + 1, 1)
     return [(y, m), (prev_y, prev_m), (next_y, next_m)]
 
 
-def median_lower_index(n: int) -> int:
-    return (n - 1) // 2
+# =========================================================
+# INDEXACIÓN RASTERS LANDSAT 8
+# =========================================================
+
+def index_l8_rasters(l8_dir: str, logger: logging.Logger) -> Dict[Tuple[int, int], str]:
+    """
+    Indexa TIFF Landsat 8 normalizados con patrón:
+    L8_2017_ene_feb_normalizado.tif
+
+    Retorna:
+    {
+        (2017, 1): ruta_ene_feb,
+        (2017, 3): ruta_mar_abr,
+        ...
+    }
+    """
+    pattern = os.path.join(l8_dir, "L8_*_normalizado.tif")
+    paths = glob.glob(pattern)
+
+    index = {}
+    bad_files = []
+
+    regex = re.compile(
+        r"^L8_(?P<year>\d{4})_(?P<label>ene_feb|mar_abr|may_jun|jul_ago|sep_oct|nov_dic)_normalizado$",
+        re.IGNORECASE
+    )
+
+    for p in paths:
+        stem = os.path.splitext(os.path.basename(p))[0]
+        m = regex.match(stem)
+
+        if not m:
+            bad_files.append(os.path.basename(p))
+            continue
+
+        year = int(m.group("year"))
+        label = m.group("label").lower()
+        start_month = BIMONTH_LABEL_TO_START_MONTH[label]
+
+        key = (year, start_month)
+
+        if key in index:
+            logger.warning(
+                f"[L8] Índice duplicado para {key}. "
+                f"Se reemplaza {os.path.basename(index[key])} por {os.path.basename(p)}"
+            )
+
+        index[key] = p
+
+    logger.info(f"[L8] Carpeta: {l8_dir}")
+    logger.info(f"[L8] TIFF encontrados con patrón general: {len(paths)}")
+    logger.info(f"[L8] TIFF indexados correctamente: {len(index)}")
+
+    if bad_files:
+        logger.warning(f"[L8] Archivos no parseados por nombre: {bad_files[:20]}")
+
+    return dict(sorted(index.items()))
+
+
+def find_l8_path_for_date(
+    t0: pd.Timestamp,
+    l8_index: Dict[Tuple[int, int], str],
+    switch_day: int = 14,
+    fallback_next_available: bool = True
+) -> Tuple[Optional[str], Optional[int], Optional[int], Optional[str], Optional[str]]:
+    """
+    Selecciona el TIFF Landsat 8 para un punto.
+
+    Retorna:
+    path, year, bimonth_start_month, bimonth_label, selection_rule
+    """
+    y, bm, rule = get_l8_target_bimonth(t0, switch_day=switch_day)
+
+    if y is None or bm is None:
+        return None, None, None, None, "invalid_date"
+
+    key = (int(y), int(bm))
+
+    if key in l8_index:
+        label = START_MONTH_TO_BIMONTH_LABEL[int(bm)]
+        return l8_index[key], int(y), int(bm), label, rule
+
+    if not fallback_next_available:
+        label = START_MONTH_TO_BIMONTH_LABEL[int(bm)]
+        return None, int(y), int(bm), label, "target_missing_no_fallback"
+
+    # Buscar el siguiente bimestre disponible más cercano.
+    available_keys = sorted(l8_index.keys())
+    future_keys = [k for k in available_keys if k >= key]
+
+    if not future_keys:
+        label = START_MONTH_TO_BIMONTH_LABEL[int(bm)]
+        return None, int(y), int(bm), label, "target_missing_no_future_available"
+
+    fallback_key = future_keys[0]
+    fallback_y, fallback_bm = fallback_key
+    fallback_label = START_MONTH_TO_BIMONTH_LABEL[int(fallback_bm)]
+
+    return (
+        l8_index[fallback_key],
+        int(fallback_y),
+        int(fallback_bm),
+        fallback_label,
+        f"{rule}_fallback_next_available"
+    )
 
 
 # =========================================================
-# INDEXACIÓN RASTERS
+# INDEXACIÓN RASTERS SENTINEL-1
 # =========================================================
-def index_l8_rasters(l8_dir: str) -> Dict[Tuple[int, int], str]:
-    d = {}
-    for p in glob.glob(os.path.join(l8_dir, "L8_*.tif")):
-        base = os.path.splitext(os.path.basename(p))[0]
-        parts = base.split("_")
-        if len(parts) < 3:
+
+def index_s1_rasters_from_filenames(
+    s1_dir: str,
+    logger: logging.Logger
+) -> pd.DataFrame:
+    """
+    Indexa TIFF Sentinel-1 normalizados extrayendo la fecha y el índice desde el nombre.
+
+    Patrón esperado:
+    S1_2017-02-26_2_prepost_indices_normalizado.tif
+
+    Retorna DataFrame con:
+    filename_prefix, path, date, year, month, day, scene_index
+    """
+    pattern = os.path.join(s1_dir, "S1_*_normalizado.tif")
+    paths = glob.glob(pattern)
+
+    regex = re.compile(
+        r"^S1_(?P<date>\d{4}-\d{2}-\d{2})_(?P<idx>\d+)_.*normalizado$",
+        re.IGNORECASE
+    )
+
+    rows = []
+    bad_files = []
+
+    for p in paths:
+        stem = os.path.splitext(os.path.basename(p))[0]
+        m = regex.match(stem)
+
+        if not m:
+            bad_files.append(os.path.basename(p))
             continue
-        try:
-            y = int(parts[1])
-            m = int(parts[2])
-            d[(y, m)] = p
-        except Exception:
+
+        date = pd.to_datetime(m.group("date"), format="%Y-%m-%d", errors="coerce")
+
+        if pd.isna(date):
+            bad_files.append(os.path.basename(p))
             continue
-    return d
 
+        scene_index = int(m.group("idx"))
 
-def index_s1_rasters_with_dates(s1_dir: str, meta_xlsx: str, logger: logging.Logger) -> pd.DataFrame:
-    meta = pd.read_excel(meta_xlsx)
-    needed = {"filename_prefix", "date_yyyymmdd"}
-    if not needed.issubset(meta.columns):
-        raise ValueError(f"Faltan columnas {needed}. Columnas: {list(meta.columns)}")
+        rows.append({
+            "filename_prefix": stem,
+            "path": p,
+            "date": date,
+            "year": int(date.year),
+            "month": int(date.month),
+            "day": int(date.day),
+            "scene_index": scene_index,
+        })
 
-    meta = meta.copy()
-    meta["filename_prefix"] = meta["filename_prefix"].astype(str).str.strip()
-    meta["filename_prefix"] = meta["filename_prefix"].str.replace(r"\.0$", "", regex=True)
+    df = pd.DataFrame(rows)
 
-    def _clean_yyyymmdd(x):
-        if pd.isna(x):
-            return None
-        s = str(x).strip()
-        if s.endswith(".0"):
-            s = s[:-2]
-        s = s.replace("-", "").replace("/", "")
-        return s
+    if not df.empty:
+        df = df.sort_values(
+            ["date", "scene_index"],
+            ascending=[True, False]
+        ).reset_index(drop=True)
 
-    meta["date_str"] = meta["date_yyyymmdd"].apply(_clean_yyyymmdd)
-    meta["date"] = pd.to_datetime(meta["date_str"], format="%Y%m%d", errors="coerce")
+    logger.info(f"[S1] Carpeta: {s1_dir}")
+    logger.info(f"[S1] TIFF encontrados con patrón general: {len(paths)}")
+    logger.info(f"[S1] TIFF indexados correctamente desde nombre: {len(df)}")
 
-    n_meta = len(meta)
-    n_parsed = int(meta["date"].notna().sum())
-    meta = meta.dropna(subset=["date"]).copy()
+    if bad_files:
+        logger.warning(f"[S1] Archivos no parseados por nombre: {bad_files[:20]}")
 
-    tif_paths = glob.glob(os.path.join(s1_dir, "S1_*.tif"))
-    df_paths = pd.DataFrame({
-        "filename_prefix": [os.path.splitext(os.path.basename(p))[0] for p in tif_paths],
-        "path": tif_paths
-    })
-    n_disk = len(df_paths)
-
-    df = df_paths.merge(meta[["filename_prefix", "date"]], on="filename_prefix", how="left")
-    n_match = int(df["date"].notna().sum())
-
-    logger.info(f"[S1] TIFF en disco: {n_disk}")
-    logger.info(f"[S1] Filas Excel: {n_meta}")
-    logger.info(f"[S1] Fechas parseadas OK (Excel): {n_parsed}")
-    logger.info(f"[S1] Matches exactos (disco↔excel con fecha): {n_match}")
-
-    df = df.dropna(subset=["date"]).copy()
-    df["year"] = df["date"].dt.year
-    df["month"] = df["date"].dt.month
-    df["day"] = df["date"].dt.day
-    df = df.sort_values("date").reset_index(drop=True)
     return df
-
-
-# =========================================================
-# EXTRACCIÓN FEATURES
-# =========================================================
-def get_l8_path_for_point(t0: pd.Timestamp, l8_index: Dict[Tuple[int, int], str], month_offset: int):
-    tL8 = pd.Timestamp(t0) + pd.DateOffset(months=month_offset)
-    y, m = int(tL8.year), int(tL8.month)
-    return l8_index.get((y, m), None), y, m
 
 
 def select_s1_scene_for_point(
@@ -146,6 +358,15 @@ def select_s1_scene_for_point(
     start_offset_days: int,
     window_days: int
 ) -> Optional[pd.Series]:
+    """
+    Selecciona la primera imagen Sentinel-1 disponible después del incendio
+    dentro de la ventana temporal.
+
+    Reglas:
+    - Fecha mínima = acq_date + start_offset_days.
+    - Fecha máxima = acq_date + window_days.
+    - Si hay varias imágenes el mismo día, selecciona la de mayor scene_index.
+    """
     if t0 is None or pd.isna(t0):
         return None
 
@@ -156,10 +377,14 @@ def select_s1_scene_for_point(
     if getattr(t0, "tzinfo", None) is not None:
         t0 = t0.tz_convert(None)
 
+    if s1_df.empty:
+        return None
+
     if "date" not in s1_df.columns:
         raise ValueError("s1_df no tiene columna 'date'.")
 
     dates = pd.to_datetime(s1_df["date"], errors="coerce")
+
     try:
         if hasattr(dates.dt, "tz") and dates.dt.tz is not None:
             dates = dates.dt.tz_convert(None)
@@ -170,23 +395,38 @@ def select_s1_scene_for_point(
     end = t0 + pd.Timedelta(days=window_days)
 
     mask = (dates >= start) & (dates <= end)
+
     cand = s1_df.loc[mask].copy()
+
     if cand.empty:
         return None
 
-    cand = cand.sort_values("date").reset_index(drop=True)
-    idx = median_lower_index(len(cand))
-    return cand.iloc[idx]
+    cand = cand.sort_values(
+        ["date", "scene_index"],
+        ascending=[True, False]
+    ).reset_index(drop=True)
 
+    return cand.iloc[0]
+
+
+# =========================================================
+# EXTRACCIÓN FEATURES
+# =========================================================
 
 def sample_raster_at_points(
     raster_path: str,
     pts: gpd.GeoDataFrame,
     band_indices_1based: List[int]
 ) -> np.ndarray:
+    """
+    Extrae valores raster en puntos.
+    Reproyecta los puntos al CRS del raster antes de muestrear.
+    """
     with rasterio.open(raster_path) as src:
         pts_proj = pts.to_crs(src.crs)
+
         coords = [(geom.x, geom.y) for geom in pts_proj.geometry]
+
         samples = list(src.sample(coords, indexes=band_indices_1based))
         arr = np.array(samples, dtype="float64")
 
@@ -195,20 +435,36 @@ def sample_raster_at_points(
             arr[arr == nod] = np.nan
 
         arr[~np.isfinite(arr)] = np.nan
+
         return arr
 
 
-def get_l8_band_indices(src: rasterio.io.DatasetReader, band_names: List[str]) -> List[int]:
-    desc = list(src.descriptions)
-    if any(d is None for d in desc):
-        raise ValueError("El raster L8 no tiene descriptions en todas las bandas.")
+def validate_raster_band_count(
+    raster_path: str,
+    expected_n_bands: int,
+    sensor_name: str,
+    logger: logging.Logger
+) -> bool:
+    """
+    Valida que el TIFF tenga al menos el número de bandas esperado.
+    """
+    try:
+        with rasterio.open(raster_path) as src:
+            n_bands = src.count
 
-    idxs = []
-    for bn in band_names:
-        if bn not in desc:
-            raise ValueError(f"No se encontró banda '{bn}' en descriptions. Disponibles: {desc}")
-        idxs.append(desc.index(bn) + 1)
-    return idxs
+        if n_bands < expected_n_bands:
+            logger.warning(
+                f"[{sensor_name}] Raster con bandas insuficientes: "
+                f"{os.path.basename(raster_path)} | "
+                f"bandas={n_bands}, esperadas={expected_n_bands}"
+            )
+            return False
+
+        return True
+
+    except RasterioIOError:
+        logger.warning(f"[{sensor_name}] No se pudo abrir raster: {raster_path}")
+        return False
 
 
 def build_master_features(
@@ -216,121 +472,190 @@ def build_master_features(
     l8_index: Dict[Tuple[int, int], str],
     s1_df: pd.DataFrame,
     date_col: str,
-    l8_month_offset: int,
+    l8_switch_day: int,
+    l8_fallback_next_available: bool,
     s1_start_offset_days: int,
-    s1_window_days: int
+    s1_window_days: int,
+    logger: logging.Logger
 ) -> gpd.GeoDataFrame:
+    """
+    Construye g_master con variables Landsat 8 y Sentinel-1 extraídas en puntos.
+    """
     g = g.copy()
     g[date_col] = pd.to_datetime(g[date_col], errors="coerce")
 
     s1_df = s1_df.copy()
-    s1_df["date"] = pd.to_datetime(s1_df["date"], errors="coerce")
-    s1_df = s1_df.dropna(subset=["date"]).copy()
 
-    for col in L8_BANDS_OUT + S1_FEATURES:
+    if not s1_df.empty:
+        s1_df["date"] = pd.to_datetime(s1_df["date"], errors="coerce")
+        s1_df = s1_df.dropna(subset=["date"]).copy()
+        s1_df = s1_df.sort_values(["date", "scene_index"], ascending=[True, False])
+
+    # Inicializar columnas de features.
+    for col in FEATURES:
         g[col] = np.nan
 
+    # Metadatos Landsat 8.
     g["l8_found"] = False
     g["l8_file"] = None
     g["l8_year"] = pd.NA
-    g["l8_month"] = pd.NA
+    g["l8_bimonth_start_month"] = pd.NA
+    g["l8_bimonth_label"] = None
+    g["l8_selection_rule"] = None
 
+    # Metadatos Sentinel-1.
     g["s1_found"] = False
     g["s1_file"] = None
     g["s1_date"] = pd.NaT
+    g["s1_scene_index"] = pd.NA
+
+    # =====================================================
+    # LANDSAT 8
+    # =====================================================
 
     l8_targets = []
+
     for t0 in g[date_col]:
-        if pd.isna(t0):
-            l8_targets.append((None, pd.NA, pd.NA))
-            continue
-        p, y, m = get_l8_path_for_point(pd.Timestamp(t0), l8_index, l8_month_offset)
-        l8_targets.append((p, y, m))
+        path, y, bm, label, rule = find_l8_path_for_date(
+            t0=t0,
+            l8_index=l8_index,
+            switch_day=l8_switch_day,
+            fallback_next_available=l8_fallback_next_available
+        )
+
+        l8_targets.append((path, y, bm, label, rule))
 
     g["_l8_path"] = [x[0] for x in l8_targets]
     g["l8_year"] = [x[1] for x in l8_targets]
-    g["l8_month"] = [x[2] for x in l8_targets]
+    g["l8_bimonth_start_month"] = [x[2] for x in l8_targets]
+    g["l8_bimonth_label"] = [x[3] for x in l8_targets]
+    g["l8_selection_rule"] = [x[4] for x in l8_targets]
 
     g["l8_year"] = g["l8_year"].astype("Int64")
-    g["l8_month"] = g["l8_month"].astype("Int64")
+    g["l8_bimonth_start_month"] = g["l8_bimonth_start_month"].astype("Int64")
 
-    g_valid_l8 = g.dropna(subset=["l8_year", "l8_month"]).copy()
-    for (y, m), grp_idx in g_valid_l8.groupby(["l8_year", "l8_month"]).groups.items():
-        path = l8_index.get((int(y), int(m)), None)
-        if path is None:
+    valid_l8_paths = g["_l8_path"].dropna().unique().tolist()
+
+    logger.info(f"[L8] Rasters Landsat 8 usados por puntos: {len(valid_l8_paths)}")
+
+    for path, grp_idx in g.dropna(subset=["_l8_path"]).groupby("_l8_path").groups.items():
+        path = str(path)
+
+        if not validate_raster_band_count(
+            raster_path=path,
+            expected_n_bands=len(L8_FEATURES),
+            sensor_name="L8",
+            logger=logger
+        ):
             continue
 
         try:
-            with rasterio.open(path) as src:
-                band_idxs = get_l8_band_indices(src, L8_BANDS_IN)
+            vals = sample_raster_at_points(
+                raster_path=path,
+                pts=g.loc[grp_idx],
+                band_indices_1based=list(range(1, len(L8_FEATURES) + 1))
+            )
         except RasterioIOError:
+            logger.warning(f"[L8] No se pudo muestrear raster: {path}")
             continue
 
-        vals = sample_raster_at_points(path, g.loc[grp_idx], band_idxs)
-
-        for j, bn_in in enumerate(L8_BANDS_IN):
-            bn_out = L8_BAND_MAP[bn_in]
-            g.loc[grp_idx, bn_out] = vals[:, j]
+        for j, feature_name in enumerate(L8_FEATURES):
+            g.loc[grp_idx, feature_name] = vals[:, j]
 
         g.loc[grp_idx, "l8_found"] = True
         g.loc[grp_idx, "l8_file"] = os.path.basename(path)
 
+    n_l8_found = int(g["l8_found"].sum())
+    n_l8_missing = int((~g["l8_found"]).sum())
+
+    logger.info(f"[L8] Puntos con imagen Landsat 8: {n_l8_found}")
+    logger.info(f"[L8] Puntos sin imagen Landsat 8: {n_l8_missing}")
+
+    # =====================================================
+    # SENTINEL-1
+    # =====================================================
+
     for i, row in g.iterrows():
         t0 = row[date_col]
+
         sel = select_s1_scene_for_point(
             t0=t0,
             s1_df=s1_df,
             start_offset_days=s1_start_offset_days,
             window_days=s1_window_days
         )
+
         if sel is None:
             continue
 
         path = sel["path"]
-        try:
-            vals = sample_raster_at_points(path, g.loc[[i]], [1, 2, 3, 4, 5])
-        except RasterioIOError:
+
+        if not validate_raster_band_count(
+            raster_path=path,
+            expected_n_bands=len(S1_FEATURES),
+            sensor_name="S1",
+            logger=logger
+        ):
             continue
 
-        g.at[i, "VV"] = vals[0, 0]
-        g.at[i, "VH"] = vals[0, 1]
-        g.at[i, "angle"] = vals[0, 2]
-        g.at[i, "VVVH_ratio"] = vals[0, 3]
-        g.at[i, "VV_Difference"] = vals[0, 4]
+        try:
+            vals = sample_raster_at_points(
+                raster_path=path,
+                pts=g.loc[[i]],
+                band_indices_1based=list(range(1, len(S1_FEATURES) + 1))
+            )
+        except RasterioIOError:
+            logger.warning(f"[S1] No se pudo muestrear raster: {path}")
+            continue
+
+        for j, feature_name in enumerate(S1_FEATURES):
+            g.at[i, feature_name] = vals[0, j]
+
         g.at[i, "s1_found"] = True
         g.at[i, "s1_file"] = os.path.basename(path)
         g.at[i, "s1_date"] = pd.Timestamp(sel["date"])
+        g.at[i, "s1_scene_index"] = int(sel["scene_index"])
+
+    n_s1_found = int(g["s1_found"].sum())
+    n_s1_missing = int((~g["s1_found"]).sum())
+
+    logger.info(f"[S1] Puntos con imagen Sentinel-1: {n_s1_found}")
+    logger.info(f"[S1] Puntos sin imagen Sentinel-1: {n_s1_missing}")
 
     g.drop(columns=["_l8_path"], inplace=True)
+
     return g
 
 
 def coverage_report(g: gpd.GeoDataFrame, features: List[str]) -> pd.DataFrame:
     rep = []
+
     for col in features:
         rep.append({
             "feature": col,
             "missing_n": int(g[col].isna().sum()),
             "missing_pct": float(g[col].isna().mean() * 100.0),
         })
+
     return pd.DataFrame(rep).sort_values("missing_pct", ascending=False)
 
 
 # =========================================================
 # DATASETS A / B
 # =========================================================
+
 def build_dataset_A_balanced_exact(
     g_master: gpd.GeoDataFrame,
     feature_cols: List[str],
     label_col: str = "label",
     y_col: str = "l8_year",
-    m_col: str = "l8_month",
+    m_col: str = "l8_bimonth_start_month",
     seed: int = 42,
     allow_replacement: bool = True,
 ) -> pd.DataFrame:
     rng = np.random.default_rng(seed)
 
-    elig = g_master.dropna(subset=feature_cols).copy()
+    elig = g_master.dropna(subset=feature_cols + [y_col, m_col]).copy()
     elig[y_col] = elig[y_col].astype(int)
     elig[m_col] = elig[m_col].astype(int)
 
@@ -343,6 +668,7 @@ def build_dataset_A_balanced_exact(
 
     for (y, m), pos_g in pos.groupby([y_col, m_col]):
         n_need = len(pos_g)
+
         if n_need == 0:
             continue
 
@@ -380,8 +706,11 @@ def build_dataset_A_balanced_exact(
     df_neg = pd.concat(selected_neg, ignore_index=True) if selected_neg else neg.iloc[0:0].copy()
 
     out = pd.concat([df_pos, df_neg], ignore_index=True)
+
     c = out[label_col].value_counts().to_dict()
-    assert c.get(1, 0) == c.get(0, 0), "No quedó balance 1:1."
+
+    assert c.get(1, 0) == c.get(0, 0), "No quedó balance 1:1 en Dataset A."
+
     return out.drop(columns=["geometry"], errors="ignore")
 
 
@@ -399,8 +728,10 @@ def impute_by_class_median(
 
         if fallback == "global":
             med_global = df[c].median(skipna=True)
+
             if pd.isna(med_pos):
                 med_pos = med_global
+
             if pd.isna(med_neg):
                 med_neg = med_global
 
@@ -418,12 +749,18 @@ def build_dataset_B_balanced_exact(
     feature_cols: List[str],
     label_col: str = "label",
     y_col: str = "l8_year",
-    m_col: str = "l8_month",
+    m_col: str = "l8_bimonth_start_month",
     seed: int = 42,
     allow_replacement: bool = True,
 ) -> pd.DataFrame:
-    df = g_master.drop(columns=["geometry"], errors="ignore").copy()
-    df = impute_by_class_median(df, feature_cols, label_col=label_col, fallback="global")
+    df = g_master.dropna(subset=[y_col, m_col]).drop(columns=["geometry"], errors="ignore").copy()
+
+    df = impute_by_class_median(
+        df,
+        feature_cols,
+        label_col=label_col,
+        fallback="global"
+    )
 
     df[y_col] = df[y_col].astype(int)
     df[m_col] = df[m_col].astype(int)
@@ -439,6 +776,7 @@ def build_dataset_B_balanced_exact(
 
     for (y, m), pos_g in pos.groupby([y_col, m_col]):
         n_need = len(pos_g)
+
         if n_need == 0:
             continue
 
@@ -472,7 +810,9 @@ def build_dataset_B_balanced_exact(
     df_neg = pd.concat(selected_neg, ignore_index=True) if selected_neg else neg.iloc[0:0].copy()
 
     out = pd.concat([df_pos, df_neg], ignore_index=True)
+
     counts = out[label_col].value_counts().to_dict()
+
     assert counts.get(1, 0) == counts.get(0, 0), "Dataset B no quedó 1:1."
 
     return out
@@ -481,6 +821,7 @@ def build_dataset_B_balanced_exact(
 # =========================================================
 # CV RF
 # =========================================================
+
 def run_grouped_cv_rf(
     df: pd.DataFrame,
     feature_cols: List[str],
@@ -496,8 +837,20 @@ def run_grouped_cv_rf(
     y = df[label_col].astype(int).to_numpy()
     groups = df[group_col].astype(int).to_numpy()
 
+    n_unique_groups = len(np.unique(groups))
+
+    if n_unique_groups < n_splits:
+        raise ValueError(
+            f"No hay suficientes grupos únicos para {n_splits}-fold CV. "
+            f"Grupos únicos disponibles: {n_unique_groups}"
+        )
+
     if HAS_SGK:
-        cv = StratifiedGroupKFold(n_splits=n_splits, shuffle=True, random_state=random_state)
+        cv = StratifiedGroupKFold(
+            n_splits=n_splits,
+            shuffle=True,
+            random_state=random_state
+        )
         split_iter = cv.split(X, y, groups=groups)
         cv_name = "StratifiedGroupKFold"
     else:
@@ -520,7 +873,9 @@ def run_grouped_cv_rf(
             class_weight="balanced_subsample",
             n_jobs=-1
         )
+
         model.fit(Xtr, ytr)
+
         yp = model.predict(Xte)
 
         cm = confusion_matrix(yte, yp, labels=[0, 1])
@@ -538,26 +893,42 @@ def run_grouped_cv_rf(
             "precision_neg": precision_score(yte, yp, pos_label=0, zero_division=0),
             "recall_neg": recall_score(yte, yp, pos_label=0, zero_division=0),
             "f1_neg": f1_score(yte, yp, pos_label=0, zero_division=0),
-            "tn": cm[0, 0], "fp": cm[0, 1], "fn": cm[1, 0], "tp": cm[1, 1],
+            "tn": cm[0, 0],
+            "fp": cm[0, 1],
+            "fn": cm[1, 0],
+            "tp": cm[1, 1],
         })
 
         reports.append(
             f"--- Fold {fold} ({cv_name}) ---\n"
-            + classification_report(yte, yp, target_names=["absence(0)", "presence(1)"], zero_division=0)
+            + classification_report(
+                yte,
+                yp,
+                target_names=["absence(0)", "presence(1)"],
+                zero_division=0
+            )
         )
 
         importances.append(model.feature_importances_)
 
     df_folds = pd.DataFrame(fold_rows)
+
     cm_sum = np.sum(np.stack(cms, axis=0), axis=0)
 
     metric_cols = [
-        "balanced_accuracy", "precision_pos", "recall_pos", "f1_pos",
-        "precision_neg", "recall_neg", "f1_neg"
+        "balanced_accuracy",
+        "precision_pos",
+        "recall_pos",
+        "f1_pos",
+        "precision_neg",
+        "recall_neg",
+        "f1_neg"
     ]
+
     summary = df_folds[metric_cols].agg(["mean", "std"]).T
 
     imp_arr = np.vstack(importances)
+
     imp_df = pd.DataFrame({
         "feature": feature_cols,
         "importance_mean": imp_arr.mean(axis=0),
@@ -570,6 +941,7 @@ def run_grouped_cv_rf(
         class_weight="balanced_subsample",
         n_jobs=-1
     )
+
     final_model.fit(X, y)
 
     txt = []
@@ -590,20 +962,25 @@ def run_grouped_cv_rf(
 # =========================================================
 # EXPORT
 # =========================================================
+
 def _dedupe_columns_case_insensitive(df: pd.DataFrame) -> pd.DataFrame:
     cols = list(df.columns)
     seen = {}
     new_cols = []
+
     for c in cols:
         key = c.lower()
+
         if key not in seen:
             seen[key] = 1
             new_cols.append(c)
         else:
             seen[key] += 1
             new_cols.append(f"{c}_{seen[key]}")
+
     df = df.copy()
     df.columns = new_cols
+
     return df
 
 
@@ -625,17 +1002,27 @@ def export_outputs(
 ):
     g_master_out = g_master.copy()
 
-    g_master_out["acq_date"] = pd.to_datetime(g_master_out["acq_date"], errors="coerce")
-    g_master_out["s1_date"] = pd.to_datetime(g_master_out["s1_date"], errors="coerce")
+    if "acq_date" in g_master_out.columns:
+        g_master_out["acq_date"] = pd.to_datetime(
+            g_master_out["acq_date"],
+            errors="coerce"
+        )
 
-    try:
-        g_master_out["acq_date"] = g_master_out["acq_date"].dt.tz_localize(None)
-    except Exception:
-        pass
-    try:
-        g_master_out["s1_date"] = g_master_out["s1_date"].dt.tz_localize(None)
-    except Exception:
-        pass
+        try:
+            g_master_out["acq_date"] = g_master_out["acq_date"].dt.tz_localize(None)
+        except Exception:
+            pass
+
+    if "s1_date" in g_master_out.columns:
+        g_master_out["s1_date"] = pd.to_datetime(
+            g_master_out["s1_date"],
+            errors="coerce"
+        )
+
+        try:
+            g_master_out["s1_date"] = g_master_out["s1_date"].dt.tz_localize(None)
+        except Exception:
+            pass
 
     for c in g_master_out.columns:
         if c != "geometry" and g_master_out[c].dtype == "object":
@@ -648,8 +1035,10 @@ def export_outputs(
     g_master_out = _dedupe_columns_case_insensitive(g_master_out)
 
     g_master_out.to_file(out_gpkg, layer=out_layer, driver="GPKG")
+
     dfA.to_csv(out_csv_a, index=False)
     dfB.to_csv(out_csv_b, index=False)
+
     joblib.dump(modelA, out_model_a)
     joblib.dump(modelB, out_model_b)
 
@@ -659,14 +1048,26 @@ def export_outputs(
         f.write("\n\n\n########################\n# DATASET B\n########################\n\n")
         f.write(reportB)
 
+
 # =========================================================
 # PIPELINE PRINCIPAL
 # =========================================================
+
 def run_pipeline(cfg, logger: logging.Logger):
     cfg.out_dir.mkdir(parents=True, exist_ok=True)
 
-    l8_dir = str(cfg.base_tiff / "L8")
-    s1_dir = str(cfg.base_tiff / "S1_V2")   # <- corregir si esta es la carpeta real
+    l8_dir = str(cfg.l8_dir)
+    s1_dir = str(cfg.s1_dir)
+
+    logger.info("=================================================")
+    logger.info("INICIO PIPELINE RANDOM FOREST")
+    logger.info("=================================================")
+
+    logger.info(f"Ruta incendios: {cfg.path_fire_shp}")
+    logger.info(f"Ruta ausencias: {cfg.path_abs_shp}")
+    logger.info(f"Ruta L8 normalizado: {l8_dir}")
+    logger.info(f"Ruta S1 normalizado: {s1_dir}")
+    logger.info(f"OUT_DIR: {cfg.out_dir}")
 
     g_points = load_points(
         path_fire_shp=str(cfg.path_fire_shp),
@@ -675,8 +1076,6 @@ def run_pipeline(cfg, logger: logging.Logger):
         epsg_work=cfg.epsg_work,
     )
 
-    logger.info(f"Ruta incendios: {cfg.path_fire_shp}")
-    logger.info(f"Ruta ausencias: {cfg.path_abs_shp}")
     logger.info(f"CRS puntos combinados: {g_points.crs}")
     logger.info(f"Incendios: {(g_points['label'] == 1).sum()}")
     logger.info(f"Ausencias: {(g_points['label'] == 0).sum()}")
@@ -688,23 +1087,42 @@ def run_pipeline(cfg, logger: logging.Logger):
         seed=cfg.seed_abs_dates
     )
 
-    l8_index = index_l8_rasters(l8_dir)
-    s1_index = index_s1_rasters_with_dates(s1_dir, str(cfg.s1_meta_xlsx), logger)
+    l8_index = index_l8_rasters(l8_dir, logger=logger)
 
-    logger.info(f"L8 meses indexados: {len(l8_index)}")
-    logger.info(f"S1 escenas indexadas: {len(s1_index)}")
+    s1_index = index_s1_rasters_from_filenames(
+        s1_dir=s1_dir,
+        logger=logger
+    )
+
+    logger.info(f"[L8] Bimestres indexados: {len(l8_index)}")
+    logger.info(f"[S1] Escenas indexadas: {len(s1_index)}")
+
+    if len(l8_index) == 0:
+        raise ValueError(
+            "No se indexó ningún TIFF Landsat 8. "
+            "Revisa la ruta l8_dir y el patrón L8_YYYY_ene_feb_normalizado.tif."
+        )
+
+    if len(s1_index) == 0:
+        raise ValueError(
+            "No se indexó ningún TIFF Sentinel-1. "
+            "Revisa la ruta s1_dir y el patrón S1_YYYY-MM-DD_idx_prepost_indices_normalizado.tif."
+        )
 
     g_master = build_master_features(
         g=g_points,
         l8_index=l8_index,
         s1_df=s1_index,
         date_col=cfg.date_col,
-        l8_month_offset=cfg.l8_month_offset,
+        l8_switch_day=cfg.l8_switch_day,
+        l8_fallback_next_available=cfg.l8_fallback_next_available,
         s1_start_offset_days=cfg.s1_start_offset_days,
         s1_window_days=cfg.s1_window_days,
+        logger=logger
     )
 
     cov = coverage_report(g_master, FEATURES)
+
     logger.info("Coverage report:\n" + cov.to_string(index=False))
 
     dfA = build_dataset_A_balanced_exact(
@@ -744,15 +1162,18 @@ def run_pipeline(cfg, logger: logging.Logger):
     print("\nComplete cases en FEATURES:")
     tmp_complete = g_master.dropna(subset=FEATURES)
     print(tmp_complete.shape)
+
     if len(tmp_complete) > 0:
         print(tmp_complete["label"].value_counts(dropna=False))
 
     print("\ndfA shape:", dfA.shape)
+
     if len(dfA) > 0:
         print(dfA["label"].value_counts(dropna=False))
         print("point_id únicos en dfA:", dfA["point_id"].nunique())
 
     print("\ndfB shape:", dfB.shape)
+
     if len(dfB) > 0:
         print(dfB["label"].value_counts(dropna=False))
         print("point_id únicos en dfB:", dfB["point_id"].nunique())
@@ -760,41 +1181,47 @@ def run_pipeline(cfg, logger: logging.Logger):
     # =========================
     # VALIDACIONES PREVIAS A CV
     # =========================
+
     if dfA.empty:
         raise ValueError(
             "dfA quedó vacío antes de CV. "
-            "Revisa cobertura de FEATURES, balanceo por mes y disponibilidad de L8/S1."
+            "Revisa cobertura completa de FEATURES, disponibilidad L8/S1 y balanceo temporal."
         )
 
     if dfB.empty:
         raise ValueError(
             "dfB quedó vacío antes de CV. "
-            "Revisa imputación, columnas temporales (l8_year/l8_month) y balanceo."
+            "Revisa imputación, columnas temporales y balanceo."
         )
 
     if dfA["label"].nunique() < 2:
         raise ValueError(
-            f"dfA no tiene ambas clases. Conteo actual: {dfA['label'].value_counts(dropna=False).to_dict()}"
+            f"dfA no tiene ambas clases. "
+            f"Conteo actual: {dfA['label'].value_counts(dropna=False).to_dict()}"
         )
 
     if dfB["label"].nunique() < 2:
         raise ValueError(
-            f"dfB no tiene ambas clases. Conteo actual: {dfB['label'].value_counts(dropna=False).to_dict()}"
+            f"dfB no tiene ambas clases. "
+            f"Conteo actual: {dfB['label'].value_counts(dropna=False).to_dict()}"
         )
 
     if dfA["point_id"].nunique() < 10:
         raise ValueError(
-            f"dfA tiene menos de 10 grupos únicos para CV 10-fold. point_id únicos: {dfA['point_id'].nunique()}"
+            f"dfA tiene menos de 10 grupos únicos para CV 10-fold. "
+            f"point_id únicos: {dfA['point_id'].nunique()}"
         )
 
     if dfB["point_id"].nunique() < 10:
         raise ValueError(
-            f"dfB tiene menos de 10 grupos únicos para CV 10-fold. point_id únicos: {dfB['point_id'].nunique()}"
+            f"dfB tiene menos de 10 grupos únicos para CV 10-fold. "
+            f"point_id únicos: {dfB['point_id'].nunique()}"
         )
 
     # =========================
     # ENTRENAMIENTO / CV
     # =========================
+
     modelA, foldsA, reportA = run_grouped_cv_rf(
         dfA,
         FEATURES,
@@ -816,6 +1243,7 @@ def run_pipeline(cfg, logger: logging.Logger):
     # =========================
     # EXPORTACIÓN
     # =========================
+
     export_outputs(
         g_master=g_master,
         dfA=dfA,
@@ -834,6 +1262,10 @@ def run_pipeline(cfg, logger: logging.Logger):
     )
 
     logger.info(f"Outputs generados en: {cfg.out_dir}")
+
+    logger.info("=================================================")
+    logger.info("FIN PIPELINE RANDOM FOREST")
+    logger.info("=================================================")
 
     return {
         "g_points": g_points,
