@@ -1,10 +1,10 @@
 {
   "paths": {
-    "model": "C:/Users/Equipo/Tesis/SemestreIV/Objetivo1/Objetivo1_26_02_20/outputs/outputs_rf_pipeline_260320/modelo_RF_A_60320.pkl",
-    "l8": "D:/Maestria_Geomatica/Semestre_IV/Tesis_Python/Datos/TIFF/L8/L8_2016_02.tif",
-    "s1": "D:/Maestria_Geomatica/Semestre_IV/Tesis_Python/Datos/TIFF/S1_V2/S1_2016_2.tif",
-    "s1_aligned": "D:/Maestria_Geomatica/Semestre_IV/Tesis_Python/Datos/TIFF/S1_V2/S1_2016_2_aligned_to_L8.tif",
-    "fire_points": "D:/Maestria_Geomatica/Semestre_IV/Tesis_Python/Datos/SHP/ncendios_con_orbitas_26_03_12_ModeloA.shp"
+    "model": "C:/Users/Equipo/Tesis/SemestreIV/Objetivo1/Objetivo1_26_02_20/outputs/outputs_rf_pipeline_260507/modelo_RF_A_260507.pkl",
+    "l8": "D:/Maestria_Geomatica/Semestre_IV/Tesis_Python/Datos/TIFF/L8_normalizado/L8_2019_mar_abr_normalizado.tif",
+    "s1": "D:/Maestria_Geomatica/Semestre_IV/Tesis_Python/Datos/TIFF/S1_normalizado/S1_2019-02-16_1_prepost_indices_normalizado.tif",
+    "s1_aligned": "D:/Maestria_Geomatica/Semestre_IV/Tesis_Python/Datos/TIFF/S1_normalizado/S1_2019-02-16_1_prepost_indices_normalizado_aligned_to_L8_2019_mar_abr.tif",
+    "fire_points": null
   },
   "preprocess": {
     "s1_resampling": "bilinear"
@@ -13,41 +13,56 @@
     "fire_layer": null
   },
   "features": [
-    "RED",
-    "NIR",
-    "SWIR_1",
-    "SWIR_2",
-    "NDVI",
-    "EVI",
-    "NBR",
-    "IMG_COUNT",
-    "VV",
-    "VH",
-    "angle"
+    "SR_B5_norm",
+    "SR_B6_norm",
+    "SR_B7_norm",
+    "NDVI_norm",
+    "EVI_norm",
+    "NBR_norm",
+    "NDWI_norm",
+    "VV_norm",
+    "VH_norm",
+    "angle_norm",
+    "VVVH_ratio_norm",
+    "VV_Difference_norm",
+    "VH_Difference_norm",
+    "VHVV_Difference_norm"
+  ],
+  "l8_band_map": {
+    "SR_B5_norm": "SR_B5_norm",
+    "SR_B6_norm": "SR_B6_norm",
+    "SR_B7_norm": "SR_B7_norm",
+    "NDVI_norm": "NDVI_norm",
+    "EVI_norm": "EVI_norm",
+    "NBR_norm": "NBR_norm",
+    "NDWI_norm": "NDWI_norm"
+  },
+  "s1_band_map": {
+    "VV_norm": "VV_norm",
+    "VH_norm": "VH_norm",
+    "angle_norm": "angle_norm",
+    "VVVH_ratio_norm": "VVVH_ratio_norm",
+    "VV_Difference_norm": "VV_Difference_norm",
+    "VH_Difference_norm": "VH_Difference_norm",
+    "VHVV_Difference_norm": "VHVV_Difference_norm"
+  },
+  "s1_band_order": [
+    "VV_norm",
+    "VH_norm",
+    "angle_norm",
+    "VVVH_ratio_norm",
+    "VV_Difference_norm",
+    "VH_Difference_norm",
+    "VHVV_Difference_norm"
   ],
   "threshold": 0.5,
-  "l8_band_map": {
-    "SR_B4": "RED",
-    "SR_B5": "NIR",
-    "SR_B6": "SWIR_1",
-    "SR_B7": "SWIR_2",
-    "NDVI": "NDVI",
-    "EVI": "EVI",
-    "NBR": "NBR",
-    "IMG_COUNT": "IMG_COUNT"
-  },
-  "s1_band_idx": {
-    "VV": 1,
-    "VH": 2,
-    "angle": 3
-  },
   "outputs": {
-    "prob": "outputs/rasters/rf_probabilidad_quemado_260326.tif",
-    "bin": "outputs/rasters/rf_quemado_binario_260326.tif",
-    "report_json": "outputs/reports/reporte_inferencia_260326.json"
+    "prob": "outputs/rasters/rf_probabilidad_quemado_RF_A_260507_2019_mar_abr.tif",
+    "bin": "outputs/rasters/rf_quemado_binario_RF_A_260507_2019_mar_abr.tif",
+    "report_json": "outputs/reports/reporte_inferencia_RF_A_260507_2019_mar_abr.json"
   },
   "validation": {
-    "enabled": true,
+    "enabled": false,
     "abs_points": null,
     "abs_layer": null
   },
@@ -56,6 +71,6 @@
     "size": 512
   },
   "logging": {
-    "log_file": "logs/pipeline_260326.log"
+    "log_file": "logs/pipeline_RF_A_260507_2019_mar_abr.log"
   }
 }

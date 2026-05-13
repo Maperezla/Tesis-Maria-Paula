@@ -1,0 +1,30 @@
+{
+  "mode": "in_memory",
+  "summary": {
+    "pixels_totales": 4861220,
+    "pixels_validos": 833930,
+    "pct_validos": 17.154747162234994,
+    "n_features": 14,
+    "features": [
+      "SR_B5_norm",
+      "SR_B6_norm",
+      "SR_B7_norm",
+      "NDVI_norm",
+      "EVI_norm",
+      "NBR_norm",
+      "NDWI_norm",
+      "VV_norm",
+      "VH_norm",
+      "angle_norm",
+      "VVVH_ratio_norm",
+      "VV_Difference_norm",
+      "VH_Difference_norm",
+      "VHVV_Difference_norm"
+    ]
+  },
+  "outputs": {
+    "prob": "outputs/rasters/rf_probabilidad_quemado_RF_A_260507_2019_mar_abr.tif",
+    "bin": "outputs/rasters/rf_quemado_binario_RF_A_260507_2019_mar_abr.tif"
+  },
+  "validation": null
+}

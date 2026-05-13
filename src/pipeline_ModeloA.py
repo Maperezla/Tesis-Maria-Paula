@@ -25,33 +25,44 @@ from .io_rasters_ModeloA import (
 from .validation_ModeloA import validate_presence_absence, validate_presence_only
 
 
-S1_FEATURE_NAMES = ["VV", "VH", "angle"]
-
 
 class PipelineError(Exception):
     """Error general del pipeline."""
 
-
 def run_pipeline(cfg: Dict[str, Any], logger) -> Dict[str, Any]:
-    """Ejecuta el pipeline completo según la configuración."""
+    """
+    Ejecuta el pipeline completo según la configuración.
+    """
     paths = cfg["paths"]
     outputs = cfg["outputs"]
     threshold = float(cfg["threshold"])
     features = cfg["features"]
+
     l8_band_map = cfg.get(
         "l8_band_map",
         {
-            "SR_B4": "RED",
-            "SR_B5": "NIR",
-            "SR_B6": "SWIR_1",
-            "SR_B7": "SWIR_2",
-            "NDVI": "NDVI",
-            "EVI": "EVI",
-            "NBR": "NBR",
-            "IMG_COUNT": "IMG_COUNT",
-        },
+            "SR_B5_norm": "SR_B5_norm",
+            "SR_B6_norm": "SR_B6_norm",
+            "SR_B7_norm": "SR_B7_norm",
+            "NDVI_norm": "NDVI_norm",
+            "EVI_norm": "EVI_norm",
+            "NBR_norm": "NBR_norm",
+            "NDWI_norm": "NDWI_norm"
+        }
     )
-    s1_band_idx = cfg.get("s1_band_idx", {"VV": 1, "VH": 2, "angle": 3})
+
+    s1_band_map = cfg.get(
+        "s1_band_map",
+        {
+            "VV_norm": "VV_norm",
+            "VH_norm": "VH_norm",
+            "angle_norm": "angle_norm",
+            "VVVH_ratio_norm": "VVVH_ratio_norm",
+            "VV_Difference_norm": "VV_Difference_norm",
+            "VH_Difference_norm": "VH_Difference_norm",
+            "VHVV_Difference_norm": "VHVV_Difference_norm"
+        }
+    )
 
     logger.info("Iniciando pipeline de inferencia RF")
     logger.info("Modelo: %s", paths["model"])
@@ -60,18 +71,55 @@ def run_pipeline(cfg: Dict[str, Any], logger) -> Dict[str, Any]:
 
     model = load_model(paths["model"])
 
+    if hasattr(model, "feature_names_in_"):
+        model_features = list(model.feature_names_in_)
+        cfg_features = list(features)
+
+        if model_features != cfg_features:
+            raise PipelineError(
+                "Las variables configuradas no coinciden con las variables del modelo.\n"
+                f"Modelo espera: {model_features}\n"
+                f"Config tiene: {cfg_features}"
+            )
+
     align = validate_raster_alignment(paths["l8"], paths["s1"])
     logger.info("Alineación raster: %s", align)
-    if not all([align["same_width"], align["same_height"], align["same_crs"], align["same_transform"]]):
-        raise RasterAlignmentError("L8 y S1 no están alineados. Reproyecta/ajusta antes de inferir.")
+
+    if not all([
+        align["same_width"],
+        align["same_height"],
+        align["same_crs"],
+        align["same_transform"]
+    ]):
+        raise RasterAlignmentError(
+            "L8 y S1 no están alineados. Reproyecta/ajusta antes de inferir."
+        )
 
     use_windows = bool(cfg["window"].get("use_windows", False))
+
     if use_windows:
-        result = _run_pipeline_windows(cfg, model, logger, l8_band_map, s1_band_idx, threshold, features)
+        result = _run_pipeline_windows(
+            cfg,
+            model,
+            logger,
+            l8_band_map,
+            s1_band_map,
+            threshold,
+            features
+        )
     else:
-        result = _run_pipeline_in_memory(cfg, model, logger, l8_band_map, s1_band_idx, threshold, features)
+        result = _run_pipeline_in_memory(
+            cfg,
+            model,
+            logger,
+            l8_band_map,
+            s1_band_map,
+            threshold,
+            features
+        )
 
     validation_cfg = cfg.get("validation", {})
+
     if validation_cfg.get("enabled", False):
         logger.info("Validación activada")
         val_result = _run_validation(cfg, threshold, logger)
@@ -81,55 +129,115 @@ def run_pipeline(cfg: Dict[str, Any], logger) -> Dict[str, Any]:
         result["validation"] = None
 
     report_path = outputs.get("report_json")
+
     if report_path:
         Path(report_path).parent.mkdir(parents=True, exist_ok=True)
+
         with open(report_path, "w", encoding="utf-8") as f:
-            json.dump(result, f, ensure_ascii=False, indent=2, default=_json_default)
+            json.dump(
+                result,
+                f,
+                ensure_ascii=False,
+                indent=2,
+                default=_json_default
+            )
+
         logger.info("Reporte JSON guardado en: %s", report_path)
 
     logger.info("Pipeline finalizado correctamente")
+
     return result
 
 
-def _run_pipeline_in_memory(cfg, model, logger, l8_band_map, s1_band_idx, threshold, features):
-    """Ejecuta el pipeline leyendo todo el raster en memoria."""
+def _run_pipeline_in_memory(cfg, model, logger, l8_band_map, s1_band_map, threshold, features):
+    """
+    Ejecuta el pipeline leyendo todo el raster en memoria.
+    """
     paths = cfg["paths"]
     outputs = cfg["outputs"]
 
     try:
-        l8_cube, meta_ref, l8_names = read_l8_stack(paths["l8"], l8_band_map)
+        l8_cube, meta_ref, l8_names = read_l8_stack(
+            paths["l8"],
+            l8_band_map
+        )
     except RasterioIOError as e:
         raise PipelineError(f"No se pudo abrir L8: {e}") from e
 
     try:
-        s1_cube = read_s1_stack(paths["s1"], s1_band_idx, ref_shape=(meta_ref["height"], meta_ref["width"]), ref_meta=meta_ref)
+        s1_cube, s1_names = read_s1_stack(
+            paths["s1"],
+            s1_band_map,
+            ref_shape=(meta_ref["height"], meta_ref["width"]),
+            ref_meta=meta_ref
+        )
     except RasterioIOError as e:
         raise PipelineError(f"No se pudo abrir S1: {e}") from e
 
-    x2d, valid_mask = build_feature_cube(l8_cube, l8_names, s1_cube, S1_FEATURE_NAMES, features)
+    x2d, valid_mask = build_feature_cube(
+        l8_cube,
+        l8_names,
+        s1_cube,
+        s1_names,
+        features
+    )
+
     summary = summarize_prediction(valid_mask, features)
     logger.info("Resumen inferencia: %s", summary)
 
     p_valid = predict_probability(model, x2d)
-    prob = reconstruct_from_valid_mask(p_valid, valid_mask, fill_value=np.nan, dtype="float32")
-    burn_bin = apply_threshold(prob, threshold, valid_mask=valid_mask, nodata_value=255)
 
-    write_geotiff(outputs["prob"], prob, meta_ref, nodata_val=np.nan, dtype="float32")
-    write_geotiff(outputs["bin"], burn_bin, meta_ref, nodata_val=255, dtype="uint8")
-    logger.info("Rasters exportados: prob=%s | bin=%s", outputs["prob"], outputs["bin"])
+    prob = reconstruct_from_valid_mask(
+        p_valid,
+        valid_mask,
+        fill_value=np.nan,
+        dtype="float32"
+    )
+
+    burn_bin = apply_threshold(
+        prob,
+        threshold,
+        valid_mask=valid_mask,
+        nodata_value=255
+    )
+
+    write_geotiff(
+        outputs["prob"],
+        prob,
+        meta_ref,
+        nodata_val=np.nan,
+        dtype="float32"
+    )
+
+    write_geotiff(
+        outputs["bin"],
+        burn_bin,
+        meta_ref,
+        nodata_val=255,
+        dtype="uint8"
+    )
+
+    logger.info(
+        "Rasters exportados: prob=%s | bin=%s",
+        outputs["prob"],
+        outputs["bin"]
+    )
 
     return {
         "mode": "in_memory",
         "summary": summary,
         "outputs": {
             "prob": outputs["prob"],
-            "bin": outputs["bin"],
-        },
+            "bin": outputs["bin"]
+        }
     }
 
 
-def _run_pipeline_windows(cfg, model, logger, l8_band_map, s1_band_idx, threshold, features):
-    """Ejecuta el pipeline usando lectura y escritura por ventanas."""
+
+def _run_pipeline_windows(cfg, model, logger, l8_band_map, s1_band_map, threshold, features):
+    """
+    Ejecuta el pipeline usando lectura y escritura por ventanas.
+    """
     paths = cfg["paths"]
     outputs = cfg["outputs"]
     window_size = int(cfg["window"].get("size", 512))
@@ -141,27 +249,84 @@ def _run_pipeline_windows(cfg, model, logger, l8_band_map, s1_band_idx, threshol
             "width": src_l8.width,
             "height": src_l8.height,
         }
-        if src_s1.crs != src_l8.crs or src_s1.transform != src_l8.transform or src_s1.width != src_l8.width or src_s1.height != src_l8.height:
-            raise RasterAlignmentError("L8 y S1 no están alineados para procesamiento por ventanas.")
 
-        create_output_raster(outputs["prob"], meta_ref, dtype="float32", nodata_val=np.nan)
-        create_output_raster(outputs["bin"], meta_ref, dtype="uint8", nodata_val=255)
+        if (
+            src_s1.crs != src_l8.crs
+            or src_s1.transform != src_l8.transform
+            or src_s1.width != src_l8.width
+            or src_s1.height != src_l8.height
+        ):
+            raise RasterAlignmentError(
+                "L8 y S1 no están alineados para procesamiento por ventanas."
+            )
+
+        create_output_raster(
+            outputs["prob"],
+            meta_ref,
+            dtype="float32",
+            nodata_val=np.nan
+        )
+
+        create_output_raster(
+            outputs["bin"],
+            meta_ref,
+            dtype="uint8",
+            nodata_val=255
+        )
 
         total_valid = 0
         total_pixels = 0
         n_windows = 0
 
         for window in build_windows(src_l8.width, src_l8.height, window_size):
-            l8_cube, l8_names = read_l8_window(src_l8, l8_band_map, window)
-            s1_cube = read_s1_window(src_s1, s1_band_idx, window, ref_window_shape=(int(window.height), int(window.width)))
+            l8_cube, l8_names = read_l8_window(
+                src_l8,
+                l8_band_map,
+                window
+            )
 
-            x2d, valid_mask = build_feature_cube(l8_cube, l8_names, s1_cube, S1_FEATURE_NAMES, features)
+            s1_cube, s1_names = read_s1_window(
+                src_s1,
+                s1_band_map,
+                window,
+                ref_window_shape=(int(window.height), int(window.width))
+            )
+
+            x2d, valid_mask = build_feature_cube(
+                l8_cube,
+                l8_names,
+                s1_cube,
+                s1_names,
+                features
+            )
+
             p_valid = predict_probability(model, x2d)
-            prob = reconstruct_from_valid_mask(p_valid, valid_mask, fill_value=np.nan, dtype="float32")
-            burn_bin = apply_threshold(prob, threshold, valid_mask=valid_mask, nodata_value=255)
 
-            write_window(outputs["prob"], prob.astype("float32"), window)
-            write_window(outputs["bin"], burn_bin.astype("uint8"), window)
+            prob = reconstruct_from_valid_mask(
+                p_valid,
+                valid_mask,
+                fill_value=np.nan,
+                dtype="float32"
+            )
+
+            burn_bin = apply_threshold(
+                prob,
+                threshold,
+                valid_mask=valid_mask,
+                nodata_value=255
+            )
+
+            write_window(
+                outputs["prob"],
+                prob.astype("float32"),
+                window
+            )
+
+            write_window(
+                outputs["bin"],
+                burn_bin.astype("uint8"),
+                window
+            )
 
             total_valid += int(valid_mask.sum())
             total_pixels += int(valid_mask.size)
@@ -174,8 +339,9 @@ def _run_pipeline_windows(cfg, model, logger, l8_band_map, s1_band_idx, threshol
             "n_features": len(features),
             "features": list(features),
             "n_windows": n_windows,
-            "window_size": window_size,
+            "window_size": window_size
         }
+
         logger.info("Resumen inferencia por ventanas: %s", summary)
 
     return {
@@ -183,8 +349,8 @@ def _run_pipeline_windows(cfg, model, logger, l8_band_map, s1_band_idx, threshol
         "summary": summary,
         "outputs": {
             "prob": outputs["prob"],
-            "bin": outputs["bin"],
-        },
+            "bin": outputs["bin"]
+        }
     }
 
 

@@ -67,34 +67,90 @@ def read_l8_stack(l8_path: str, band_map: Dict[str, str]) -> tuple[np.ndarray, d
         }
     return arr, meta_ref, out_names
 
+def read_s1_stack(
+    s1_path: str,
+    band_map: Dict[str, str],
+    ref_shape: tuple[int, int],
+    ref_meta: dict | None = None
+) -> tuple[np.ndarray, list[str]]:
+    """
+    Lee Sentinel-1 usando descriptions y retorna stack completo en memoria.
 
-def read_s1_stack(s1_path: str, band_idx: Dict[str, int], ref_shape: tuple[int, int], ref_meta: dict | None = None) -> np.ndarray:
-    """Lee Sentinel-1 por índices 1-based y valida alineación básica."""
+    Parameters
+    ----------
+    s1_path : str
+        Ruta al GeoTIFF multibanda Sentinel-1.
+    band_map : Dict[str, str]
+        Mapeo {descripcion_en_raster: nombre_feature_modelo}.
+    ref_shape : tuple[int, int]
+        Forma esperada (height, width).
+    ref_meta : dict | None
+        Metadatos del raster de referencia.
+
+    Returns
+    -------
+    arr : np.ndarray
+        Array (H, W, C) float32.
+    out_names : list[str]
+        Nombres finales de bandas/features.
+    """
     with rasterio.open(s1_path) as src:
         h_ref, w_ref = ref_shape
+
         if src.height != h_ref or src.width != w_ref:
             raise RasterAlignmentError(
-                f"S1: shape distinto a referencia. S1={src.height}x{src.width} vs ref={h_ref}x{w_ref}."
+                f"S1: shape distinto a referencia. "
+                f"S1={src.height}x{src.width} vs ref={h_ref}x{w_ref}."
             )
 
         if ref_meta is not None:
             if src.crs != ref_meta.get("crs"):
-                raise RasterAlignmentError(f"S1: CRS distinto al raster de referencia. S1={src.crs}, ref={ref_meta.get('crs')}")
-            if src.transform != ref_meta.get("transform"):
-                raise RasterAlignmentError("S1: transform distinto al raster de referencia.")
+                raise RasterAlignmentError(
+                    f"S1: CRS distinto al raster de referencia. "
+                    f"S1={src.crs}, ref={ref_meta.get('crs')}"
+                )
 
-        bands: List[np.ndarray] = []
-        for name in ["VV", "VH", "angle"]:
-            idx = band_idx[name]
+            if src.transform != ref_meta.get("transform"):
+                raise RasterAlignmentError(
+                    "S1: transform distinto al raster de referencia."
+                )
+
+        desc = list(src.descriptions)
+
+        if any(d is None for d in desc):
+            raise ValueError(
+                "S1: hay bandas sin descriptions. "
+                "El pipeline requiere descriptions para mapear nombres."
+            )
+
+        missing = [k for k in band_map.keys() if k not in desc]
+
+        if missing:
+            raise ValueError(
+                f"S1: faltan bandas requeridas en descriptions: {missing}. "
+                f"Disponibles: {desc}"
+            )
+
+        bands_out: List[np.ndarray] = []
+        out_names: List[str] = []
+
+        for band_in, band_out in band_map.items():
+            idx = desc.index(band_in) + 1
             band = src.read(idx).astype("float32")
+
             nodata = src.nodata
             if nodata is not None:
                 band[band == nodata] = np.nan
-            band[~np.isfinite(band)] = np.nan
-            bands.append(band)
 
-        arr = np.stack(bands, axis=-1)
-    return arr
+            band[~np.isfinite(band)] = np.nan
+
+            bands_out.append(band)
+            out_names.append(band_out)
+
+        arr = np.stack(bands_out, axis=-1)
+
+    return arr, out_names
+
 
 
 def build_windows(width: int, height: int, size: int) -> Iterator[Window]:
@@ -134,26 +190,77 @@ def read_l8_window(src: rasterio.io.DatasetReader, band_map: Dict[str, str], win
     arr = np.stack(bands_out, axis=-1)
     return arr, out_names
 
+def read_s1_window(
+    src: rasterio.io.DatasetReader,
+    band_map: Dict[str, str],
+    window: Window,
+    ref_window_shape: tuple[int, int]
+) -> tuple[np.ndarray, list[str]]:
+    """
+    Lee una ventana de Sentinel-1 usando descriptions.
 
-def read_s1_window(src: rasterio.io.DatasetReader, band_idx: Dict[str, int], window: Window, ref_window_shape: tuple[int, int]) -> np.ndarray:
-    """Lee una ventana de S1 usando índices fijos."""
+    Parameters
+    ----------
+    src : rasterio.io.DatasetReader
+        Raster Sentinel-1 abierto.
+    band_map : Dict[str, str]
+        Mapeo {descripcion_en_raster: nombre_feature_modelo}.
+    window : Window
+        Ventana de lectura.
+    ref_window_shape : tuple[int, int]
+        Shape esperado de la ventana.
+
+    Returns
+    -------
+    arr : np.ndarray
+        Array (H, W, C) float32.
+    out_names : list[str]
+        Nombres finales de bandas/features.
+    """
     h_ref, w_ref = ref_window_shape
-    bands: List[np.ndarray] = []
-    for name in ["VV", "VH", "angle"]:
-        idx = band_idx[name]
+
+    desc = list(src.descriptions)
+
+    if any(d is None for d in desc):
+        raise ValueError(
+            "S1: hay bandas sin descriptions. "
+            "El pipeline requiere descriptions para mapear nombres."
+        )
+
+    missing = [k for k in band_map.keys() if k not in desc]
+
+    if missing:
+        raise ValueError(
+            f"S1: faltan bandas requeridas en descriptions: {missing}. "
+            f"Disponibles: {desc}"
+        )
+
+    bands_out: List[np.ndarray] = []
+    out_names: List[str] = []
+
+    for band_in, band_out in band_map.items():
+        idx = desc.index(band_in) + 1
         band = src.read(idx, window=window).astype("float32")
+
         if band.shape != (h_ref, w_ref):
             raise RasterAlignmentError(
-                f"S1 ventana con shape distinto. Esperado {(h_ref, w_ref)}, obtenido {band.shape}"
+                f"S1 ventana con shape distinto. "
+                f"Esperado {(h_ref, w_ref)}, obtenido {band.shape}"
             )
+
         nodata = src.nodata
         if nodata is not None:
             band[band == nodata] = np.nan
-        band[~np.isfinite(band)] = np.nan
-        bands.append(band)
 
-    arr = np.stack(bands, axis=-1)
-    return arr
+        band[~np.isfinite(band)] = np.nan
+
+        bands_out.append(band)
+        out_names.append(band_out)
+
+    arr = np.stack(bands_out, axis=-1)
+
+    return arr, out_names
+
 
 
 def get_raster_meta(raster_path: str) -> dict:

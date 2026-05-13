@@ -28,12 +28,11 @@ def _normalize_nodata_array(arr: np.ndarray, nodata: Optional[float]) -> np.ndar
     out[~np.isfinite(out)] = np.nan
     return out
 
-
 def align_raster_to_reference(
     reference_path: str | Path,
     source_path: str | Path,
     output_path: str | Path,
-    band_map: Dict[str, int],
+    band_map: Dict[str, str],
     band_order: Optional[Iterable[str]] = None,
     resampling_method: str = "bilinear",
     dst_nodata: float = np.nan,
@@ -42,16 +41,26 @@ def align_raster_to_reference(
     """
     Reproyecta y remuestrea un raster fuente a la grilla exacta de un raster de referencia.
 
-    Parámetros
+    Esta versión lee el raster fuente usando descriptions.
+
+    Parameters
     ----------
-    reference_path : raster de referencia, por ejemplo Landsat 8.
-    source_path : raster fuente a alinear, por ejemplo Sentinel-1.
-    output_path : ruta de salida del raster alineado.
-    band_map : dict nombre_banda -> índice 1-based en el raster fuente.
-    band_order : orden de escritura de bandas. Si es None, usa band_map.keys().
-    resampling_method : nearest, bilinear, cubic o average.
-    dst_nodata : valor nodata de salida.
-    compress : compresión GeoTIFF.
+    reference_path : str | Path
+        Raster de referencia, por ejemplo Landsat 8.
+    source_path : str | Path
+        Raster fuente, por ejemplo Sentinel-1.
+    output_path : str | Path
+        Ruta de salida del raster alineado.
+    band_map : Dict[str, str]
+        Diccionario {descripcion_en_raster: nombre_salida}.
+    band_order : Iterable[str], optional
+        Orden de bandas a escribir en el raster de salida.
+    resampling_method : str
+        Método de remuestreo: nearest, bilinear, cubic o average.
+    dst_nodata : float
+        Valor NoData de salida.
+    compress : str
+        Compresión del GeoTIFF.
     """
     reference_path = Path(reference_path)
     source_path = Path(source_path)
@@ -65,13 +74,16 @@ def align_raster_to_reference(
         )
 
     ordered_names: List[str] = list(band_order) if band_order is not None else list(band_map.keys())
+
     if not ordered_names:
         raise RasterPreprocessError("No se definió ningún nombre de banda para alinear.")
 
     missing_names = [name for name in ordered_names if name not in band_map]
+
     if missing_names:
         raise RasterPreprocessError(
-            f"Las siguientes bandas no existen en band_map: {missing_names}. band_map={band_map}"
+            f"Las siguientes bandas no existen en band_map: {missing_names}. "
+            f"band_map={band_map}"
         )
 
     resampling = RESAMPLING_MAP[resampling_method]
@@ -84,6 +96,22 @@ def align_raster_to_reference(
         ref_height = ref.height
 
     with rasterio.open(source_path) as src:
+        src_descriptions = list(src.descriptions)
+
+        if any(desc is None for desc in src_descriptions):
+            raise RasterPreprocessError(
+                "El raster fuente tiene bandas sin descriptions. "
+                "No se puede mapear por nombre de banda."
+            )
+
+        missing_in_raster = [name for name in ordered_names if name not in src_descriptions]
+
+        if missing_in_raster:
+            raise RasterPreprocessError(
+                f"Faltan bandas en el raster fuente: {missing_in_raster}. "
+                f"Bandas disponibles: {src_descriptions}"
+            )
+
         out_profile = ref_profile.copy()
         out_profile.update(
             driver="GTiff",
@@ -96,8 +124,14 @@ def align_raster_to_reference(
 
         with rasterio.open(output_path, "w", **out_profile) as dst:
             for out_idx, band_name in enumerate(ordered_names, start=1):
-                src_idx = band_map[band_name]
-                destination = np.full((ref_height, ref_width), dst_nodata, dtype="float32")
+                src_idx = src_descriptions.index(band_name) + 1
+                output_name = band_map[band_name]
+
+                destination = np.full(
+                    (ref_height, ref_width),
+                    dst_nodata,
+                    dtype="float32"
+                )
 
                 reproject(
                     source=rasterio.band(src, src_idx),
@@ -112,10 +146,12 @@ def align_raster_to_reference(
                 )
 
                 destination = _normalize_nodata_array(destination, dst_nodata)
+
                 dst.write(destination, out_idx)
-                dst.set_band_description(out_idx, band_name)
+                dst.set_band_description(out_idx, output_name)
 
     return str(output_path)
+
 
 
 def compare_raster_grids(reference_path: str | Path, other_path: str | Path) -> dict:
