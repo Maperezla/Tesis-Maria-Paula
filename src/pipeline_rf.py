@@ -59,6 +59,40 @@ S1_FEATURES = [
     "VHVV_Difference",
 ]
 
+# =========================================================
+# CONFIG MODELO C
+# =========================================================
+
+S1_GENERAL_FEATURES_MODEL_C = [
+    "VV",
+    "VH",
+    "angle",
+    "VVVH_ratio",
+]
+
+S1_DIFFERENCE_FEATURES_MODEL_C = [
+    "VV_Difference_norm",
+    "VH_Difference_norm",
+    "VHVV_Difference_norm",
+]
+
+FEATURES_C = L8_FEATURES + S1_GENERAL_FEATURES_MODEL_C + S1_DIFFERENCE_FEATURES_MODEL_C
+
+# Orden real de bandas dentro del TIFF Sentinel-1 normalizado.
+S1_TIF_BAND_ORDER = [
+    "VV",
+    "VH",
+    "angle",
+    "VVVH_ratio",
+    "VV_Difference",
+    "VH_Difference",
+    "VHVV_Difference",
+]
+
+S1_GENERAL_BAND_INDICES_MODEL_C = [1, 2, 3, 4]
+
+S1_DIFFERENCE_BAND_INDICES_MODEL_C = [5, 6, 7]
+
 FEATURES = L8_FEATURES + S1_FEATURES
 
 
@@ -407,6 +441,106 @@ def select_s1_scene_for_point(
     ).reset_index(drop=True)
 
     return cand.iloc[0]
+    
+
+def select_s1_scene_same_month_for_difference_bands(
+    t0,
+    s1_df: pd.DataFrame,
+    selection_strategy: str = "closest_to_fire_date"
+) -> Optional[pd.Series]:
+    """
+    Selecciona una imagen Sentinel-1 del mismo año y mes de la fecha del punto.
+
+    Se usa exclusivamente para las bandas:
+    - VV_Difference_norm
+    - VH_Difference_norm
+    - VHVV_Difference_norm
+
+    Regla principal:
+    - Debe pertenecer al mismo año y mes de acq_date.
+    - Si hay varias imágenes, se selecciona la más cercana a la fecha del incendio.
+    - Si hay empate en distancia temporal, se selecciona la de mayor scene_index.
+    - Si no hay imagen en ese mes, retorna None.
+    """
+    if t0 is None or pd.isna(t0):
+        return None
+
+    t0 = pd.to_datetime(t0, errors="coerce")
+
+    if pd.isna(t0):
+        return None
+
+    if getattr(t0, "tzinfo", None) is not None:
+        t0 = t0.tz_convert(None)
+
+    if s1_df.empty:
+        return None
+
+    required_cols = {"date", "year", "month", "scene_index"}
+
+    if not required_cols.issubset(set(s1_df.columns)):
+        raise ValueError(
+            f"s1_df no tiene las columnas requeridas {required_cols}. "
+            f"Columnas disponibles: {list(s1_df.columns)}"
+        )
+
+    cand = s1_df[
+        (s1_df["year"].astype(int) == int(t0.year)) &
+        (s1_df["month"].astype(int) == int(t0.month))
+    ].copy()
+
+    if cand.empty:
+        return None
+
+    cand["date"] = pd.to_datetime(cand["date"], errors="coerce")
+    cand = cand.dropna(subset=["date"]).copy()
+
+    if cand.empty:
+        return None
+
+    if selection_strategy == "closest_to_fire_date":
+        cand["abs_delta_days"] = (cand["date"] - t0).abs().dt.days
+
+        cand = cand.sort_values(
+            ["abs_delta_days", "scene_index"],
+            ascending=[True, False]
+        ).reset_index(drop=True)
+
+        return cand.iloc[0]
+
+    elif selection_strategy == "first_available_in_month":
+        cand = cand.sort_values(
+            ["date", "scene_index"],
+            ascending=[True, False]
+        ).reset_index(drop=True)
+
+        return cand.iloc[0]
+
+    elif selection_strategy == "last_available_in_month":
+        cand = cand.sort_values(
+            ["date", "scene_index"],
+            ascending=[False, False]
+        ).reset_index(drop=True)
+
+        return cand.iloc[0]
+
+    elif selection_strategy == "highest_index_same_month":
+        cand = cand.sort_values(
+            ["scene_index", "date"],
+            ascending=[False, True]
+        ).reset_index(drop=True)
+
+        return cand.iloc[0]
+
+    else:
+        raise ValueError(
+            f"Estrategia no reconocida: {selection_strategy}. "
+            "Opciones válidas: "
+            "'closest_to_fire_date', "
+            "'first_available_in_month', "
+            "'last_available_in_month', "
+            "'highest_index_same_month'."
+        )
 
 
 # =========================================================
@@ -480,6 +614,10 @@ def build_master_features(
 ) -> gpd.GeoDataFrame:
     """
     Construye g_master con variables Landsat 8 y Sentinel-1 extraídas en puntos.
+
+    Modelo A/B:
+    - Landsat 8: regla bimestral con umbral de día 14.
+    - Sentinel-1: primera imagen posterior al incendio dentro de la ventana temporal.
     """
     g = g.copy()
     g[date_col] = pd.to_datetime(g[date_col], errors="coerce")
@@ -489,13 +627,20 @@ def build_master_features(
     if not s1_df.empty:
         s1_df["date"] = pd.to_datetime(s1_df["date"], errors="coerce")
         s1_df = s1_df.dropna(subset=["date"]).copy()
-        s1_df = s1_df.sort_values(["date", "scene_index"], ascending=[True, False])
+        s1_df = s1_df.sort_values(
+            ["date", "scene_index"],
+            ascending=[True, False]
+        ).reset_index(drop=True)
 
-    # Inicializar columnas de features.
+    # =====================================================
+    # Inicializar columnas de features
+    # =====================================================
     for col in FEATURES:
         g[col] = np.nan
 
-    # Metadatos Landsat 8.
+    # =====================================================
+    # Metadatos Landsat 8
+    # =====================================================
     g["l8_found"] = False
     g["l8_file"] = None
     g["l8_year"] = pd.NA
@@ -503,7 +648,9 @@ def build_master_features(
     g["l8_bimonth_label"] = None
     g["l8_selection_rule"] = None
 
-    # Metadatos Sentinel-1.
+    # =====================================================
+    # Metadatos Sentinel-1
+    # =====================================================
     g["s1_found"] = False
     g["s1_file"] = None
     g["s1_date"] = pd.NaT
@@ -512,7 +659,6 @@ def build_master_features(
     # =====================================================
     # LANDSAT 8
     # =====================================================
-
     l8_targets = []
 
     for t0 in g[date_col]:
@@ -574,7 +720,6 @@ def build_master_features(
     # =====================================================
     # SENTINEL-1
     # =====================================================
-
     for i, row in g.iterrows():
         t0 = row[date_col]
 
@@ -621,6 +766,239 @@ def build_master_features(
 
     logger.info(f"[S1] Puntos con imagen Sentinel-1: {n_s1_found}")
     logger.info(f"[S1] Puntos sin imagen Sentinel-1: {n_s1_missing}")
+
+    g.drop(columns=["_l8_path"], inplace=True)
+
+    return g
+
+def build_master_features_model_c(
+    g: gpd.GeoDataFrame,
+    l8_index: Dict[Tuple[int, int], str],
+    s1_df: pd.DataFrame,
+    date_col: str,
+    l8_switch_day: int,
+    l8_fallback_next_available: bool,
+    s1_start_offset_days: int,
+    s1_window_days: int,
+    s1_difference_selection_strategy: str,
+    logger: logging.Logger
+) -> gpd.GeoDataFrame:
+    """
+    Construye g_master_c para Modelo C.
+
+    Modelo C:
+    - Landsat 8: misma regla bimestral del Modelo A.
+    - Sentinel-1 general: VV, VH, angle, VVVH_ratio desde la primera imagen posterior.
+    - Sentinel-1 diferencias: VV_Difference_norm, VH_Difference_norm,
+      VHVV_Difference_norm desde imagen del mismo mes del incendio.
+    """
+    g = g.copy()
+    g[date_col] = pd.to_datetime(g[date_col], errors="coerce")
+
+    s1_df = s1_df.copy()
+
+    if not s1_df.empty:
+        s1_df["date"] = pd.to_datetime(s1_df["date"], errors="coerce")
+        s1_df = s1_df.dropna(subset=["date"]).copy()
+        s1_df = s1_df.sort_values(
+            ["date", "scene_index"],
+            ascending=[True, False]
+        ).reset_index(drop=True)
+
+    # Inicializar features Modelo C.
+    for col in FEATURES_C:
+        g[col] = np.nan
+
+    # =====================================================
+    # METADATOS LANDSAT 8
+    # =====================================================
+    g["l8_found"] = False
+    g["l8_file"] = None
+    g["l8_year"] = pd.NA
+    g["l8_bimonth_start_month"] = pd.NA
+    g["l8_bimonth_label"] = None
+    g["l8_selection_rule"] = None
+
+    # =====================================================
+    # METADATOS SENTINEL-1 GENERAL
+    # =====================================================
+    g["s1_general_found"] = False
+    g["s1_general_file"] = None
+    g["s1_general_date"] = pd.NaT
+    g["s1_general_scene_index"] = pd.NA
+
+    # =====================================================
+    # METADATOS SENTINEL-1 DIFERENCIAS
+    # =====================================================
+    g["s1_difference_found"] = False
+    g["s1_difference_file"] = None
+    g["s1_difference_date"] = pd.NaT
+    g["s1_difference_scene_index"] = pd.NA
+    g["s1_difference_selection_rule"] = None
+
+    # =====================================================
+    # LANDSAT 8
+    # =====================================================
+    l8_targets = []
+
+    for t0 in g[date_col]:
+        path, y, bm, label, rule = find_l8_path_for_date(
+            t0=t0,
+            l8_index=l8_index,
+            switch_day=l8_switch_day,
+            fallback_next_available=l8_fallback_next_available
+        )
+
+        l8_targets.append((path, y, bm, label, rule))
+
+    g["_l8_path"] = [x[0] for x in l8_targets]
+    g["l8_year"] = [x[1] for x in l8_targets]
+    g["l8_bimonth_start_month"] = [x[2] for x in l8_targets]
+    g["l8_bimonth_label"] = [x[3] for x in l8_targets]
+    g["l8_selection_rule"] = [x[4] for x in l8_targets]
+
+    g["l8_year"] = g["l8_year"].astype("Int64")
+    g["l8_bimonth_start_month"] = g["l8_bimonth_start_month"].astype("Int64")
+
+    valid_l8_paths = g["_l8_path"].dropna().unique().tolist()
+    logger.info(f"[MODELO C][L8] Rasters Landsat 8 usados por puntos: {len(valid_l8_paths)}")
+
+    for path, grp_idx in g.dropna(subset=["_l8_path"]).groupby("_l8_path").groups.items():
+        path = str(path)
+
+        if not validate_raster_band_count(
+            raster_path=path,
+            expected_n_bands=len(L8_FEATURES),
+            sensor_name="MODELO C - L8",
+            logger=logger
+        ):
+            continue
+
+        try:
+            vals = sample_raster_at_points(
+                raster_path=path,
+                pts=g.loc[grp_idx],
+                band_indices_1based=list(range(1, len(L8_FEATURES) + 1))
+            )
+        except RasterioIOError:
+            logger.warning(f"[MODELO C][L8] No se pudo muestrear raster: {path}")
+            continue
+
+        for j, feature_name in enumerate(L8_FEATURES):
+            g.loc[grp_idx, feature_name] = vals[:, j]
+
+        g.loc[grp_idx, "l8_found"] = True
+        g.loc[grp_idx, "l8_file"] = os.path.basename(path)
+
+    logger.info(f"[MODELO C][L8] Puntos con imagen Landsat 8: {int(g['l8_found'].sum())}")
+    logger.info(f"[MODELO C][L8] Puntos sin imagen Landsat 8: {int((~g['l8_found']).sum())}")
+
+    # =====================================================
+    # SENTINEL-1 GENERAL
+    # =====================================================
+    for i, row in g.iterrows():
+        t0 = row[date_col]
+
+        sel_general = select_s1_scene_for_point(
+            t0=t0,
+            s1_df=s1_df,
+            start_offset_days=s1_start_offset_days,
+            window_days=s1_window_days
+        )
+
+        if sel_general is None:
+            continue
+
+        path_general = sel_general["path"]
+
+        if not validate_raster_band_count(
+            raster_path=path_general,
+            expected_n_bands=len(S1_TIF_BAND_ORDER),
+            sensor_name="MODELO C - S1 GENERAL",
+            logger=logger
+        ):
+            continue
+
+        try:
+            vals_general = sample_raster_at_points(
+                raster_path=path_general,
+                pts=g.loc[[i]],
+                band_indices_1based=S1_GENERAL_BAND_INDICES_MODEL_C
+            )
+        except RasterioIOError:
+            logger.warning(f"[MODELO C][S1 GENERAL] No se pudo muestrear raster: {path_general}")
+            continue
+
+        for j, feature_name in enumerate(S1_GENERAL_FEATURES_MODEL_C):
+            g.at[i, feature_name] = vals_general[0, j]
+
+        g.at[i, "s1_general_found"] = True
+        g.at[i, "s1_general_file"] = os.path.basename(path_general)
+        g.at[i, "s1_general_date"] = pd.Timestamp(sel_general["date"])
+        g.at[i, "s1_general_scene_index"] = int(sel_general["scene_index"])
+
+    logger.info(
+        f"[MODELO C][S1 GENERAL] Puntos con Sentinel-1 general: "
+        f"{int(g['s1_general_found'].sum())}"
+    )
+    logger.info(
+        f"[MODELO C][S1 GENERAL] Puntos sin Sentinel-1 general: "
+        f"{int((~g['s1_general_found']).sum())}"
+    )
+
+    # =====================================================
+    # SENTINEL-1 DIFERENCIAS MISMO MES
+    # =====================================================
+    for i, row in g.iterrows():
+        t0 = row[date_col]
+
+        sel_diff = select_s1_scene_same_month_for_difference_bands(
+            t0=t0,
+            s1_df=s1_df,
+            selection_strategy=s1_difference_selection_strategy
+        )
+
+        if sel_diff is None:
+            g.at[i, "s1_difference_selection_rule"] = "same_month_missing"
+            continue
+
+        path_diff = sel_diff["path"]
+
+        if not validate_raster_band_count(
+            raster_path=path_diff,
+            expected_n_bands=len(S1_TIF_BAND_ORDER),
+            sensor_name="MODELO C - S1 DIFFERENCE",
+            logger=logger
+        ):
+            continue
+
+        try:
+            vals_diff = sample_raster_at_points(
+                raster_path=path_diff,
+                pts=g.loc[[i]],
+                band_indices_1based=S1_DIFFERENCE_BAND_INDICES_MODEL_C
+            )
+        except RasterioIOError:
+            logger.warning(f"[MODELO C][S1 DIFFERENCE] No se pudo muestrear raster: {path_diff}")
+            continue
+
+        for j, feature_name in enumerate(S1_DIFFERENCE_FEATURES_MODEL_C):
+            g.at[i, feature_name] = vals_diff[0, j]
+
+        g.at[i, "s1_difference_found"] = True
+        g.at[i, "s1_difference_file"] = os.path.basename(path_diff)
+        g.at[i, "s1_difference_date"] = pd.Timestamp(sel_diff["date"])
+        g.at[i, "s1_difference_scene_index"] = int(sel_diff["scene_index"])
+        g.at[i, "s1_difference_selection_rule"] = s1_difference_selection_strategy
+
+    logger.info(
+        f"[MODELO C][S1 DIFFERENCE] Puntos con Sentinel-1 diferencias mismo mes: "
+        f"{int(g['s1_difference_found'].sum())}"
+    )
+    logger.info(
+        f"[MODELO C][S1 DIFFERENCE] Puntos sin Sentinel-1 diferencias mismo mes: "
+        f"{int((~g['s1_difference_found']).sum())}"
+    )
 
     g.drop(columns=["_l8_path"], inplace=True)
 
@@ -712,6 +1090,33 @@ def build_dataset_A_balanced_exact(
     assert c.get(1, 0) == c.get(0, 0), "No quedó balance 1:1 en Dataset A."
 
     return out.drop(columns=["geometry"], errors="ignore")
+    
+
+def build_dataset_C_balanced_exact(
+    g_master_c: gpd.GeoDataFrame,
+    feature_cols: List[str],
+    label_col: str = "label",
+    y_col: str = "l8_year",
+    m_col: str = "l8_bimonth_start_month",
+    seed: int = 42,
+    allow_replacement: bool = True,
+) -> pd.DataFrame:
+    """
+    Dataset C:
+    - Caso completo.
+    - Sin imputación.
+    - Balance 1:1 presencia/ausencia.
+    - Misma lógica de balanceo temporal usada en Dataset A.
+    """
+    return build_dataset_A_balanced_exact(
+        g_master=g_master_c,
+        feature_cols=feature_cols,
+        label_col=label_col,
+        y_col=y_col,
+        m_col=m_col,
+        seed=seed,
+        allow_replacement=allow_replacement
+    )
 
 
 def impute_by_class_median(
@@ -1049,6 +1454,57 @@ def export_outputs(
         f.write(reportB)
 
 
+def export_outputs_model_c(
+    g_master_c: gpd.GeoDataFrame,
+    dfC: pd.DataFrame,
+    modelC,
+    reportC: str,
+    out_gpkg_c: str,
+    out_layer_c: str,
+    out_csv_c: str,
+    out_model_c: str,
+    out_report_c: str,
+):
+    g_out = g_master_c.copy()
+
+    date_cols = [
+        "acq_date",
+        "s1_general_date",
+        "s1_difference_date"
+    ]
+
+    for dc in date_cols:
+        if dc in g_out.columns:
+            g_out[dc] = pd.to_datetime(g_out[dc], errors="coerce")
+
+            try:
+                g_out[dc] = g_out[dc].dt.tz_localize(None)
+            except Exception:
+                pass
+
+    for c in g_out.columns:
+        if c != "geometry" and g_out[c].dtype == "object":
+            g_out[c] = g_out[c].astype(str)
+
+    for cand in ["Label", "LABEL"]:
+        if cand in g_out.columns:
+            g_out = g_out.rename(columns={cand: f"{cand}_src"})
+
+    g_out = _dedupe_columns_case_insensitive(g_out)
+
+    g_out.to_file(out_gpkg_c, layer=out_layer_c, driver="GPKG")
+
+    dfC.to_csv(out_csv_c, index=False)
+
+    joblib.dump(modelC, out_model_c)
+
+    with open(out_report_c, "w", encoding="utf-8") as f:
+        f.write("########################\n")
+        f.write("# DATASET C - MODELO C\n")
+        f.write("########################\n\n")
+        f.write(reportC)
+
+
 # =========================================================
 # PIPELINE PRINCIPAL
 # =========================================================
@@ -1276,5 +1732,213 @@ def run_pipeline(cfg, logger: logging.Logger):
         "foldsB": foldsB,
         "features": FEATURES,
         "coverage": cov,
+        "out_dir": str(cfg.out_dir),
+    }
+
+def run_pipeline_model_c(cfg, logger: logging.Logger):
+    """
+    Ejecuta Modelo C.
+
+    Modelo C:
+    - Derivado del Modelo A.
+    - Caso completo.
+    - Sin imputación.
+    - Balance 1:1.
+    - Diferencia clave:
+      las bandas VV_Difference_norm, VH_Difference_norm y VHVV_Difference_norm
+      se extraen desde una imagen Sentinel-1 del mismo mes del incendio.
+    """
+    if not cfg.model_c_enabled:
+        raise ValueError("El Modelo C está desactivado en la configuración.")
+
+    cfg.out_dir.mkdir(parents=True, exist_ok=True)
+
+    l8_dir = str(cfg.l8_dir)
+    s1_dir = str(cfg.s1_dir)
+
+    logger.info("=================================================")
+    logger.info("INICIO PIPELINE MODELO C")
+    logger.info("=================================================")
+
+    logger.info(f"[MODELO C] Ruta incendios: {cfg.path_fire_shp}")
+    logger.info(f"[MODELO C] Ruta ausencias: {cfg.path_abs_shp}")
+    logger.info(f"[MODELO C] Ruta L8 normalizado: {l8_dir}")
+    logger.info(f"[MODELO C] Ruta S1 normalizado: {s1_dir}")
+    logger.info(f"[MODELO C] OUT_DIR: {cfg.out_dir}")
+    logger.info(f"[MODELO C] Estrategia diferencias S1: {cfg.s1_difference_selection_strategy}")
+
+    # =====================================================
+    # CARGAR PUNTOS
+    # =====================================================
+    g_points = load_points(
+        path_fire_shp=str(cfg.path_fire_shp),
+        path_abs_shp=str(cfg.path_abs_shp),
+        date_col=cfg.date_col,
+        epsg_work=cfg.epsg_work,
+    )
+
+    logger.info(f"[MODELO C] CRS puntos combinados: {g_points.crs}")
+    logger.info(f"[MODELO C] Incendios: {(g_points['label'] == 1).sum()}")
+    logger.info(f"[MODELO C] Ausencias: {(g_points['label'] == 0).sum()}")
+    logger.info(f"[MODELO C] Total puntos: {len(g_points)}")
+
+    # Las ausencias usan fecha asignada igual que A/B.
+    g_points = assign_dates_to_absences(
+        g_points,
+        date_col=cfg.date_col,
+        seed=cfg.seed_abs_dates
+    )
+
+    # =====================================================
+    # INDEXAR RASTERS
+    # =====================================================
+    l8_index = index_l8_rasters(l8_dir, logger=logger)
+
+    s1_index = index_s1_rasters_from_filenames(
+        s1_dir=s1_dir,
+        logger=logger
+    )
+
+    logger.info(f"[MODELO C][L8] Bimestres indexados: {len(l8_index)}")
+    logger.info(f"[MODELO C][S1] Escenas indexadas: {len(s1_index)}")
+
+    if len(l8_index) == 0:
+        raise ValueError(
+            "[MODELO C] No se indexó ningún TIFF Landsat 8. "
+            "Revisa l8_dir y el patrón L8_YYYY_ene_feb_normalizado.tif."
+        )
+
+    if len(s1_index) == 0:
+        raise ValueError(
+            "[MODELO C] No se indexó ningún TIFF Sentinel-1. "
+            "Revisa s1_dir y el patrón S1_YYYY-MM-DD_idx_prepost_indices_normalizado.tif."
+        )
+
+    # =====================================================
+    # CONSTRUIR FEATURES MODELO C
+    # =====================================================
+    g_master_c = build_master_features_model_c(
+        g=g_points,
+        l8_index=l8_index,
+        s1_df=s1_index,
+        date_col=cfg.date_col,
+        l8_switch_day=cfg.l8_switch_day,
+        l8_fallback_next_available=cfg.l8_fallback_next_available,
+        s1_start_offset_days=cfg.s1_start_offset_days,
+        s1_window_days=cfg.s1_window_days,
+        s1_difference_selection_strategy=cfg.s1_difference_selection_strategy,
+        logger=logger
+    )
+
+    coverageC = coverage_report(g_master_c, FEATURES_C)
+
+    logger.info("[MODELO C] Coverage report:\n" + coverageC.to_string(index=False))
+
+    # =====================================================
+    # DATASET C
+    # =====================================================
+    dfC = build_dataset_C_balanced_exact(
+        g_master_c=g_master_c,
+        feature_cols=FEATURES_C,
+        seed=cfg.seed_dataset_c,
+        allow_replacement=True
+    )
+
+    logger.info(f"[MODELO C] Dataset C shape: {dfC.shape}")
+
+    print("=== DEBUG PRE-CV MODELO C ===")
+    print("g_points:", g_points.shape)
+    print("g_master_c:", g_master_c.shape)
+    print("FEATURES_C:", FEATURES_C)
+
+    print("\nConteo label en g_master_c:")
+    print(g_master_c["label"].value_counts(dropna=False))
+
+    print("\nL8 found:")
+    print(g_master_c["l8_found"].value_counts(dropna=False))
+
+    print("\nS1 general found:")
+    print(g_master_c["s1_general_found"].value_counts(dropna=False))
+
+    print("\nS1 difference found:")
+    print(g_master_c["s1_difference_found"].value_counts(dropna=False))
+
+    print("\nNaN por feature en g_master_c:")
+    print(g_master_c[FEATURES_C].isna().sum())
+
+    print("\nComplete cases en FEATURES_C:")
+    tmp_complete = g_master_c.dropna(subset=FEATURES_C)
+    print(tmp_complete.shape)
+
+    if len(tmp_complete) > 0:
+        print(tmp_complete["label"].value_counts(dropna=False))
+
+    print("\ndfC shape:", dfC.shape)
+
+    if len(dfC) > 0:
+        print(dfC["label"].value_counts(dropna=False))
+        print("point_id únicos en dfC:", dfC["point_id"].nunique())
+
+    # =====================================================
+    # VALIDACIONES PREVIAS A CV
+    # =====================================================
+    if dfC.empty:
+        raise ValueError(
+            "[MODELO C] dfC quedó vacío antes de CV. "
+            "Revisa cobertura de FEATURES_C y disponibilidad de S1 mismo mes."
+        )
+
+    if dfC["label"].nunique() < 2:
+        raise ValueError(
+            f"[MODELO C] dfC no tiene ambas clases. "
+            f"Conteo actual: {dfC['label'].value_counts(dropna=False).to_dict()}"
+        )
+
+    if dfC["point_id"].nunique() < 10:
+        raise ValueError(
+            f"[MODELO C] dfC tiene menos de 10 grupos únicos para CV 10-fold. "
+            f"point_id únicos: {dfC['point_id'].nunique()}"
+        )
+
+    # =====================================================
+    # ENTRENAMIENTO / CV MODELO C
+    # =====================================================
+    modelC, foldsC, reportC = run_grouped_cv_rf(
+        dfC,
+        FEATURES_C,
+        label_col="label",
+        group_col="point_id",
+        n_splits=10,
+        random_state=cfg.seed_cv
+    )
+
+    # =====================================================
+    # EXPORTACIÓN MODELO C
+    # =====================================================
+    export_outputs_model_c(
+        g_master_c=g_master_c,
+        dfC=dfC,
+        modelC=modelC,
+        reportC=reportC,
+        out_gpkg_c=str(cfg.out_dir / cfg.out_gpkg_c),
+        out_layer_c=cfg.out_layer_c,
+        out_csv_c=str(cfg.out_dir / cfg.out_csv_c),
+        out_model_c=str(cfg.out_dir / cfg.out_model_c),
+        out_report_c=str(cfg.out_dir / cfg.out_report_c),
+    )
+
+    logger.info(f"[MODELO C] Outputs generados en: {cfg.out_dir}")
+
+    logger.info("=================================================")
+    logger.info("FIN PIPELINE MODELO C")
+    logger.info("=================================================")
+
+    return {
+        "g_points": g_points,
+        "g_master_c": g_master_c,
+        "dfC": dfC,
+        "foldsC": foldsC,
+        "featuresC": FEATURES_C,
+        "coverageC": coverageC,
         "out_dir": str(cfg.out_dir),
     }

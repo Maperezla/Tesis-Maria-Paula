@@ -29,15 +29,27 @@ class RFPipelineConfig:
     l8_switch_day: int
     l8_fallback_next_available: bool
 
-    # Sentinel-1
+    # Sentinel-1 general
     s1_window_days: int
     s1_start_offset_days: int
     s1_select_mode: str
+
+    # Modelo C
+    model_c_enabled: bool
+    s1_difference_same_month: bool
+    s1_difference_selection_strategy: str
+
+    out_gpkg_c: str
+    out_layer_c: str
+    out_csv_c: str
+    out_model_c: str
+    out_report_c: str
 
     # Seeds
     seed_abs_dates: int
     seed_dataset_a: int
     seed_dataset_b: int
+    seed_dataset_c: int
     seed_cv: int
 
 
@@ -74,8 +86,21 @@ def load_config(path: Path) -> RFPipelineConfig:
         s1_start_offset_days=int(cfg["s1_start_offset_days"]),
         s1_select_mode=str(cfg.get("s1_select_mode", "next_available_after_fire")),
 
+        model_c_enabled=bool(cfg.get("model_c_enabled", True)),
+        s1_difference_same_month=bool(cfg.get("s1_difference_same_month", True)),
+        s1_difference_selection_strategy=str(
+            cfg.get("s1_difference_selection_strategy", "closest_to_fire_date")
+        ),
+
+        out_gpkg_c=str(cfg.get("out_gpkg_c", "puntos_features_model_C_260507.gpkg")),
+        out_layer_c=str(cfg.get("out_layer_c", "puntos_features_model_C_260507")),
+        out_csv_c=str(cfg.get("out_csv_c", "dataset_C_complete_case_260507.csv")),
+        out_model_c=str(cfg.get("out_model_c", "modelo_RF_C_260507.pkl")),
+        out_report_c=str(cfg.get("out_report_c", "reporte_cv_C_260507.txt")),
+
         seed_abs_dates=int(cfg["seed_abs_dates"]),
         seed_dataset_a=int(cfg["seed_dataset_a"]),
         seed_dataset_b=int(cfg["seed_dataset_b"]),
+        seed_dataset_c=int(cfg.get("seed_dataset_c", cfg["seed_dataset_a"])),
         seed_cv=int(cfg["seed_cv"]),
     )

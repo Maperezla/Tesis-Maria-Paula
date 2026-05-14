@@ -1,9 +1,9 @@
 {
   "paths": {
     "model": "C:/Users/Equipo/Tesis/SemestreIV/Objetivo1/Objetivo1_26_02_20/outputs/outputs_rf_pipeline_260507/modelo_RF_A_260507.pkl",
-    "l8": "D:/Maestria_Geomatica/Semestre_IV/Tesis_Python/Datos/TIFF/L8_normalizado/L8_2019_mar_abr_normalizado.tif",
-    "s1": "D:/Maestria_Geomatica/Semestre_IV/Tesis_Python/Datos/TIFF/S1_normalizado/S1_2019-02-16_1_prepost_indices_normalizado.tif",
-    "s1_aligned": "D:/Maestria_Geomatica/Semestre_IV/Tesis_Python/Datos/TIFF/S1_normalizado/S1_2019-02-16_1_prepost_indices_normalizado_aligned_to_L8_2019_mar_abr.tif",
+    "l8": "D:/Maestria_Geomatica/Semestre_IV/Tesis_Python/Datos/TIFF/L8_normalizado/L8_2019_jul_ago_normalizado.tif",
+    "s1": "D:/Maestria_Geomatica/Semestre_IV/Tesis_Python/Datos/TIFF/S1_normalizado/S1_2019-08-27_4_prepost_indices_normalizado.tif",
+    "s1_aligned": "D:/Maestria_Geomatica/Semestre_IV/Tesis_Python/Datos/TIFF/S1_normalizado/S1_2019-08-27_4_prepost_indices_normalizado_aligned_to_L8_2019_jul_ago_normalizado.tif",
     "fire_points": null
   },
   "preprocess": {
@@ -57,9 +57,9 @@
   ],
   "threshold": 0.5,
   "outputs": {
-    "prob": "outputs/rasters/rf_probabilidad_quemado_RF_A_260507_2019_mar_abr.tif",
-    "bin": "outputs/rasters/rf_quemado_binario_RF_A_260507_2019_mar_abr.tif",
-    "report_json": "outputs/reports/reporte_inferencia_RF_A_260507_2019_mar_abr.json"
+    "prob": "outputs/rasters/rf_probabilidad_quemado_RF_A_260507_2019_jul_agos.tif",
+    "bin": "outputs/rasters/rf_quemado_binario_RF_A_260507_2019_jul_agos.tif",
+    "report_json": "outputs/reports/reporte_inferencia_RF_A_260507_2019__jul_agos.json"
   },
   "validation": {
     "enabled": false,
@@ -71,6 +71,6 @@
     "size": 512
   },
   "logging": {
-    "log_file": "logs/pipeline_RF_A_260507_2019_mar_abr.log"
+    "log_file": "logs/pipeline_RF_A_260507_2019__jul_agos.log"
   }
 }

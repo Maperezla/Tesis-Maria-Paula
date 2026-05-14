@@ -47,3 +47,24 @@ VHVV_Difference       1321    68.730489
 2026-05-12 11:01:41,499 | INFO | =================================================
 2026-05-12 11:01:41,499 | INFO | FIN PIPELINE RANDOM FOREST
 2026-05-12 11:01:41,499 | INFO | =================================================
+2026-05-14 08:20:40,149 | INFO | Inicio pipeline RF modelos A, B y C
+2026-05-14 08:20:40,149 | INFO | =================================================
+2026-05-14 08:20:40,150 | INFO | INICIO PIPELINE RANDOM FOREST
+2026-05-14 08:20:40,150 | INFO | =================================================
+2026-05-14 08:20:40,150 | INFO | Ruta incendios: C:\Users\Equipo\Tesis\SemestreIV\Objetivo1\Objetivo1_26_02_20\outputs\fire_orbits\incendios_con_orbitas_26_03_12.shp
+2026-05-14 08:20:40,150 | INFO | Ruta ausencias: D:\Maestria_Geomatica\Semestre_IV\Puntos_unificados_25_11_05\Puntos_unificados_26_02_23\puntos_no_calientes_aleatorios_961_26_02_23.shp
+2026-05-14 08:20:40,150 | INFO | Ruta L8 normalizado: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\L8_normalizado
+2026-05-14 08:20:40,150 | INFO | Ruta S1 normalizado: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\S1_normalizado
+2026-05-14 08:20:40,150 | INFO | OUT_DIR: C:\Users\Equipo\Tesis\SemestreIV\Objetivo1\Objetivo1_26_02_20\outputs\outputs_rf_pipeline_260507
+2026-05-14 08:20:41,208 | INFO | CRS puntos combinados: EPSG:9377
+2026-05-14 08:20:41,209 | INFO | Incendios: 961
+2026-05-14 08:20:41,209 | INFO | Ausencias: 961
+2026-05-14 08:20:41,209 | INFO | Total puntos: 1922
+2026-05-14 08:20:41,307 | INFO | [L8] Carpeta: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\L8_normalizado
+2026-05-14 08:20:41,307 | INFO | [L8] TIFF encontrados con patrón general: 30
+2026-05-14 08:20:41,307 | INFO | [L8] TIFF indexados correctamente: 30
+2026-05-14 08:20:41,439 | INFO | [S1] Carpeta: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\S1_normalizado
+2026-05-14 08:20:41,440 | INFO | [S1] TIFF encontrados con patrón general: 113
+2026-05-14 08:20:41,440 | INFO | [S1] TIFF indexados correctamente desde nombre: 113
+2026-05-14 08:20:41,440 | INFO | [L8] Bimestres indexados: 30
+2026-05-14 08:20:41,440 | INFO | [S1] Escenas indexadas: 113

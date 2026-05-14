@@ -16,6 +16,12 @@
   "out_model_b": "modelo_RF_B_260507.pkl",
   "out_report": "reporte_cv_260507.txt",
 
+  "out_gpkg_c": "puntos_features_model_C_260507.gpkg",
+  "out_layer_c": "puntos_features_model_C_260507",
+  "out_csv_c": "dataset_C_complete_case_260507.csv",
+  "out_model_c": "modelo_RF_C_260507.pkl",
+  "out_report_c": "reporte_cv_C_260507.txt",
+
   "date_col": "acq_date",
   "epsg_work": 9377,
 
@@ -27,8 +33,13 @@
   "s1_start_offset_days": 1,
   "s1_select_mode": "next_available_after_fire",
 
+  "model_c_enabled": true,
+  "s1_difference_same_month": true,
+  "s1_difference_selection_strategy": "closest_to_fire_date",
+
   "seed_abs_dates": 42,
   "seed_dataset_a": 42,
   "seed_dataset_b": 42,
+  "seed_dataset_c": 42,
   "seed_cv": 123
 }
