@@ -1,0 +1,10 @@
+2026-05-14 09:55:03 | INFO | pipeline_RF_A_260507 | Iniciando pipeline de inferencia RF
+2026-05-14 09:55:03 | INFO | pipeline_RF_A_260507 | Modelo: C:/Users/Equipo/Tesis/SemestreIV/Objetivo1/Objetivo1_26_02_20/outputs/outputs_rf_pipeline_260507/modelo_RF_A_260507.pkl
+2026-05-14 09:55:03 | INFO | pipeline_RF_A_260507 | L8: D:/Maestria_Geomatica/Semestre_IV/Tesis_Python/Datos/TIFF/L8_normalizado/L8_2019_jul_ago_normalizado.tif
+2026-05-14 09:55:03 | INFO | pipeline_RF_A_260507 | S1: D:/Maestria_Geomatica/Semestre_IV/Tesis_Python/Datos/TIFF/S1_normalizado/S1_2019-08-27_4_prepost_indices_normalizado_aligned_to_L8_2019_jul_ago_normalizado.tif
+2026-05-14 09:55:03 | INFO | pipeline_RF_A_260507 | Alineación raster: {'same_width': True, 'same_height': True, 'same_crs': True, 'same_transform': True, 'l8_shape': (1820, 2671), 's1_shape': (1820, 2671), 'l8_crs': 'EPSG:4326', 's1_crs': 'EPSG:4326'}
+2026-05-14 09:55:06 | INFO | pipeline_RF_A_260507 | Resumen inferencia: {'pixels_totales': 4861220, 'pixels_validos': 3678097, 'pct_validos': 75.66201488515229, 'n_features': 14, 'features': ['SR_B5_norm', 'SR_B6_norm', 'SR_B7_norm', 'NDVI_norm', 'EVI_norm', 'NBR_norm', 'NDWI_norm', 'VV_norm', 'VH_norm', 'angle_norm', 'VVVH_ratio_norm', 'VV_Difference_norm', 'VH_Difference_norm', 'VHVV_Difference_norm']}
+2026-05-14 09:55:27 | INFO | pipeline_RF_A_260507 | Rasters exportados: prob=outputs/rasters/rf_probabilidad_quemado_RF_A_260507_2019_jul_agos.tif | bin=outputs/rasters/rf_quemado_binario_RF_A_260507_2019_jul_agos.tif
+2026-05-14 09:55:27 | INFO | pipeline_RF_A_260507 | Validación desactivada
+2026-05-14 09:55:27 | INFO | pipeline_RF_A_260507 | Reporte JSON guardado en: outputs/reports/reporte_inferencia_RF_A_260507_2019__jul_agos.json
+2026-05-14 09:55:27 | INFO | pipeline_RF_A_260507 | Pipeline finalizado correctamente

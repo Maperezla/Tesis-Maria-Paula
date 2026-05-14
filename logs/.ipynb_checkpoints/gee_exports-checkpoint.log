@@ -1,0 +1,330 @@
+2026-02-25 15:16:05,887 - INFO - L8_2014_01 | img_count=4 | dry_run=False
+2026-02-25 15:16:06,679 - INFO - L8_2014_02 | img_count=4 | dry_run=False
+2026-02-25 15:16:07,639 - INFO - L8_2014_03 | img_count=4 | dry_run=False
+2026-02-25 15:16:08,418 - INFO - L8_2014_04 | img_count=3 | dry_run=False
+2026-02-25 15:16:09,083 - INFO - L8_2014_05 | img_count=3 | dry_run=False
+2026-02-25 15:16:09,878 - INFO - L8_2014_06 | img_count=3 | dry_run=False
+2026-02-25 15:16:10,638 - INFO - L8_2014_07 | img_count=4 | dry_run=False
+2026-02-25 15:16:11,463 - INFO - L8_2014_08 | img_count=4 | dry_run=False
+2026-02-25 15:16:12,292 - INFO - L8_2014_09 | img_count=4 | dry_run=False
+2026-02-25 15:16:13,060 - INFO - L8_2014_10 | img_count=3 | dry_run=False
+2026-02-25 15:16:13,844 - INFO - L8_2014_11 | img_count=4 | dry_run=False
+2026-02-25 15:16:14,578 - INFO - L8_2014_12 | img_count=4 | dry_run=False
+2026-02-25 15:16:15,476 - INFO - L8_2015_01 | img_count=4 | dry_run=False
+2026-02-25 15:16:16,206 - INFO - L8_2015_02 | img_count=3 | dry_run=False
+2026-02-25 15:16:16,882 - INFO - L8_2015_03 | img_count=3 | dry_run=False
+2026-02-25 15:16:18,065 - INFO - L8_2015_04 | img_count=4 | dry_run=False
+2026-02-25 15:16:18,898 - INFO - L8_2015_05 | img_count=4 | dry_run=False
+2026-02-25 15:16:19,468 - INFO - L8_2015_06 | img_count=3 | dry_run=False
+2026-02-25 15:16:20,070 - INFO - L8_2015_07 | img_count=3 | dry_run=False
+2026-02-25 15:16:20,642 - INFO - L8_2015_08 | img_count=3 | dry_run=False
+2026-02-25 15:16:21,293 - INFO - L8_2015_09 | img_count=4 | dry_run=False
+2026-02-25 15:16:22,143 - INFO - L8_2015_10 | img_count=4 | dry_run=False
+2026-02-25 15:16:22,859 - INFO - L8_2015_11 | img_count=4 | dry_run=False
+2026-02-25 15:16:23,489 - INFO - L8_2015_12 | img_count=4 | dry_run=False
+2026-02-25 15:16:24,323 - INFO - L8_2016_01 | img_count=3 | dry_run=False
+2026-02-25 15:16:25,053 - INFO - L8_2016_02 | img_count=4 | dry_run=False
+2026-02-25 15:16:25,730 - INFO - L8_2016_03 | img_count=4 | dry_run=False
+2026-02-25 15:16:26,391 - INFO - L8_2016_04 | img_count=3 | dry_run=False
+2026-02-25 15:16:27,195 - INFO - L8_2016_05 | img_count=4 | dry_run=False
+2026-02-25 15:16:28,094 - INFO - L8_2016_06 | img_count=3 | dry_run=False
+2026-02-25 15:16:28,980 - INFO - L8_2016_07 | img_count=4 | dry_run=False
+2026-02-25 15:16:29,790 - INFO - L8_2016_08 | img_count=4 | dry_run=False
+2026-02-25 15:16:30,355 - INFO - L8_2016_09 | img_count=4 | dry_run=False
+2026-02-25 15:16:31,090 - INFO - L8_2016_10 | img_count=4 | dry_run=False
+2026-02-25 15:16:31,620 - INFO - L8_2016_11 | img_count=3 | dry_run=False
+2026-02-25 15:16:32,247 - INFO - L8_2016_12 | img_count=4 | dry_run=False
+2026-02-25 15:16:32,920 - INFO - L8_2017_01 | img_count=3 | dry_run=False
+2026-02-25 15:16:33,700 - INFO - L8_2017_02 | img_count=4 | dry_run=False
+2026-02-25 15:16:34,215 - INFO - L8_2017_03 | img_count=3 | dry_run=False
+2026-02-25 15:16:34,864 - INFO - L8_2017_04 | img_count=3 | dry_run=False
+2026-02-25 15:16:35,608 - INFO - L8_2017_05 | img_count=3 | dry_run=False
+2026-02-25 15:16:36,168 - INFO - L8_2017_06 | img_count=2 | dry_run=False
+2026-02-25 15:16:36,794 - INFO - L8_2017_07 | img_count=4 | dry_run=False
+2026-02-25 15:16:37,305 - INFO - L8_2017_08 | img_count=4 | dry_run=False
+2026-02-25 15:16:37,912 - INFO - L8_2017_09 | img_count=3 | dry_run=False
+2026-02-25 15:16:38,665 - INFO - L8_2017_10 | img_count=4 | dry_run=False
+2026-02-25 15:16:39,359 - INFO - L8_2017_11 | img_count=4 | dry_run=False
+2026-02-25 15:16:40,391 - INFO - L8_2017_12 | img_count=4 | dry_run=False
+2026-02-25 15:16:40,804 - INFO - L8_2018_01 | img_count=4 | dry_run=False
+2026-02-25 15:16:41,327 - INFO - L8_2018_02 | img_count=3 | dry_run=False
+2026-02-25 15:16:41,967 - INFO - L8_2018_03 | img_count=4 | dry_run=False
+2026-02-25 15:16:42,592 - INFO - L8_2018_04 | img_count=3 | dry_run=False
+2026-02-25 15:16:43,288 - INFO - L8_2018_05 | img_count=3 | dry_run=False
+2026-02-25 15:16:43,944 - INFO - L8_2018_06 | img_count=4 | dry_run=False
+2026-02-25 15:16:44,573 - INFO - L8_2018_07 | img_count=3 | dry_run=False
+2026-02-25 15:16:45,061 - INFO - L8_2018_08 | img_count=4 | dry_run=False
+2026-02-25 15:16:45,833 - INFO - L8_2018_09 | img_count=4 | dry_run=False
+2026-02-25 15:16:46,502 - INFO - L8_2018_10 | img_count=3 | dry_run=False
+2026-02-25 15:16:47,027 - INFO - L8_2018_11 | img_count=2 | dry_run=False
+2026-02-25 15:16:47,588 - INFO - L8_2018_12 | img_count=4 | dry_run=False
+2026-02-25 15:16:48,066 - INFO - L8_2019_01 | img_count=4 | dry_run=False
+2026-02-25 15:16:48,818 - INFO - L8_2019_02 | img_count=3 | dry_run=False
+2026-02-25 15:16:49,414 - INFO - L8_2019_03 | img_count=2 | dry_run=False
+2026-02-25 15:16:49,956 - INFO - L8_2019_04 | img_count=4 | dry_run=False
+2026-02-25 15:16:50,441 - INFO - L8_2019_05 | img_count=3 | dry_run=False
+2026-02-25 15:16:51,030 - INFO - L8_2019_06 | img_count=3 | dry_run=False
+2026-02-25 15:16:51,645 - INFO - L8_2019_07 | img_count=4 | dry_run=False
+2026-02-25 15:16:52,097 - INFO - L8_2019_08 | img_count=4 | dry_run=False
+2026-02-25 15:16:53,052 - INFO - L8_2019_09 | img_count=3 | dry_run=False
+2026-02-25 15:16:53,777 - INFO - L8_2019_10 | img_count=4 | dry_run=False
+2026-02-25 15:16:54,549 - INFO - L8_2019_11 | img_count=3 | dry_run=False
+2026-02-25 15:16:55,079 - INFO - L8_2019_12 | img_count=4 | dry_run=False
+2026-02-25 15:16:55,722 - INFO - L8_2020_01 | img_count=4 | dry_run=False
+2026-02-25 15:16:56,139 - INFO - L8_2020_02 | img_count=4 | dry_run=False
+2026-02-25 15:16:57,014 - INFO - L8_2020_03 | img_count=4 | dry_run=False
+2026-02-25 15:16:57,542 - INFO - L8_2020_04 | img_count=3 | dry_run=False
+2026-02-25 15:16:58,283 - INFO - L8_2020_05 | img_count=4 | dry_run=False
+2026-02-25 15:16:58,879 - INFO - L8_2020_06 | img_count=4 | dry_run=False
+2026-02-25 15:16:59,440 - INFO - L8_2020_07 | img_count=4 | dry_run=False
+2026-02-25 15:17:00,209 - INFO - L8_2020_08 | img_count=4 | dry_run=False
+2026-02-25 15:17:00,627 - INFO - L8_2020_09 | img_count=4 | dry_run=False
+2026-02-25 15:17:01,126 - INFO - L8_2020_10 | img_count=3 | dry_run=False
+2026-02-25 15:17:01,965 - INFO - L8_2020_11 | img_count=2 | dry_run=False
+2026-02-25 15:17:02,474 - INFO - L8_2020_12 | img_count=4 | dry_run=False
+2026-02-25 15:17:03,043 - INFO - L8_2021_01 | img_count=4 | dry_run=False
+2026-02-25 15:17:03,819 - INFO - L8_2021_02 | img_count=3 | dry_run=False
+2026-02-25 15:17:04,468 - INFO - L8_2021_03 | img_count=4 | dry_run=False
+2026-02-25 15:17:04,908 - INFO - L8_2021_04 | img_count=4 | dry_run=False
+2026-02-25 15:17:05,340 - INFO - L8_2021_05 | img_count=4 | dry_run=False
+2026-02-25 15:17:05,833 - INFO - L8_2021_06 | img_count=3 | dry_run=False
+2026-02-25 15:17:06,280 - INFO - L8_2021_07 | img_count=3 | dry_run=False
+2026-02-25 15:17:06,980 - INFO - L8_2021_08 | img_count=3 | dry_run=False
+2026-02-25 15:17:07,542 - INFO - L8_2021_09 | img_count=4 | dry_run=False
+2026-02-25 15:17:08,170 - INFO - L8_2021_10 | img_count=4 | dry_run=False
+2026-02-25 15:17:08,578 - INFO - L8_2021_11 | img_count=4 | dry_run=False
+2026-02-25 15:17:09,089 - INFO - L8_2021_12 | img_count=4 | dry_run=False
+2026-02-25 15:17:09,640 - INFO - L8_2022_01 | img_count=3 | dry_run=False
+2026-02-25 15:17:10,242 - INFO - L8_2022_02 | img_count=3 | dry_run=False
+2026-02-25 15:17:11,006 - INFO - L8_2022_03 | img_count=4 | dry_run=False
+2026-02-25 15:17:11,445 - INFO - L8_2022_04 | img_count=4 | dry_run=False
+2026-02-25 15:17:11,912 - INFO - L8_2022_05 | img_count=3 | dry_run=False
+2026-02-25 15:17:12,610 - INFO - L8_2022_06 | img_count=2 | dry_run=False
+2026-02-25 15:17:13,137 - INFO - L8_2022_07 | img_count=3 | dry_run=False
+2026-02-25 15:17:13,856 - INFO - L8_2022_08 | img_count=4 | dry_run=False
+2026-02-25 15:17:14,385 - INFO - L8_2022_09 | img_count=4 | dry_run=False
+2026-02-25 15:17:14,889 - INFO - L8_2022_10 | img_count=4 | dry_run=False
+2026-02-25 15:17:15,584 - INFO - L8_2022_11 | img_count=3 | dry_run=False
+2026-02-25 15:17:16,146 - INFO - L8_2022_12 | img_count=4 | dry_run=False
+2026-02-25 15:17:16,579 - INFO - L8_2023_01 | img_count=3 | dry_run=False
+2026-02-25 15:17:17,111 - INFO - L8_2023_02 | img_count=4 | dry_run=False
+2026-02-25 15:17:17,572 - INFO - L8_2023_03 | img_count=3 | dry_run=False
+2026-02-25 15:17:18,070 - INFO - L8_2023_04 | img_count=2 | dry_run=False
+2026-02-25 15:17:18,583 - INFO - L8_2023_05 | img_count=4 | dry_run=False
+2026-02-25 15:17:19,022 - INFO - L8_2023_06 | img_count=4 | dry_run=False
+2026-02-25 15:17:19,479 - INFO - L8_2023_07 | img_count=4 | dry_run=False
+2026-02-25 15:17:19,938 - INFO - L8_2023_08 | img_count=4 | dry_run=False
+2026-02-25 15:17:20,465 - INFO - L8_2023_09 | img_count=3 | dry_run=False
+2026-02-25 15:17:21,171 - INFO - L8_2023_10 | img_count=4 | dry_run=False
+2026-02-25 15:17:21,643 - INFO - L8_2023_11 | img_count=4 | dry_run=False
+2026-02-25 15:17:22,270 - INFO - L8_2023_12 | img_count=4 | dry_run=False
+2026-02-25 15:17:22,736 - INFO - L8_2024_01 | img_count=4 | dry_run=False
+2026-02-25 15:17:23,225 - INFO - L8_2024_02 | img_count=3 | dry_run=False
+2026-02-25 15:17:23,608 - INFO - L8_2024_03 | img_count=4 | dry_run=False
+2026-02-25 15:17:24,068 - INFO - L8_2024_04 | img_count=4 | dry_run=False
+2026-02-25 15:17:24,581 - INFO - L8_2024_05 | img_count=2 | dry_run=False
+2026-02-25 15:17:25,242 - INFO - L8_2024_06 | img_count=4 | dry_run=False
+2026-02-25 15:17:25,842 - INFO - L8_2024_07 | img_count=3 | dry_run=False
+2026-02-25 15:17:26,340 - INFO - L8_2024_08 | img_count=3 | dry_run=False
+2026-02-25 15:17:26,835 - INFO - L8_2024_09 | img_count=4 | dry_run=False
+2026-02-25 15:17:27,379 - INFO - L8_2024_10 | img_count=4 | dry_run=False
+2026-02-25 15:17:27,774 - INFO - L8_2024_11 | img_count=3 | dry_run=False
+2026-02-25 15:17:28,231 - INFO - L8_2024_12 | img_count=4 | dry_run=False
+2026-04-29 09:51:43,080 - INFO - L8_2014_01 | img_count=4 | dry_run=False
+2026-04-29 09:51:44,623 - INFO - L8_2014_02 | img_count=4 | dry_run=False
+2026-04-29 09:51:45,529 - INFO - L8_2014_03 | img_count=4 | dry_run=False
+2026-04-29 09:51:46,295 - INFO - L8_2014_04 | img_count=3 | dry_run=False
+2026-04-29 09:51:47,311 - INFO - L8_2014_05 | img_count=3 | dry_run=False
+2026-04-29 09:51:48,073 - INFO - L8_2014_06 | img_count=3 | dry_run=False
+2026-04-29 09:51:48,835 - INFO - L8_2014_07 | img_count=4 | dry_run=False
+2026-04-29 09:51:49,473 - INFO - L8_2014_08 | img_count=4 | dry_run=False
+2026-04-29 09:51:50,323 - INFO - L8_2014_09 | img_count=4 | dry_run=False
+2026-04-29 09:51:51,277 - INFO - L8_2014_10 | img_count=3 | dry_run=False
+2026-04-29 09:51:51,875 - INFO - L8_2014_11 | img_count=4 | dry_run=False
+2026-04-29 09:51:52,724 - INFO - L8_2014_12 | img_count=4 | dry_run=False
+2026-04-29 09:51:53,486 - INFO - L8_2015_01 | img_count=4 | dry_run=False
+2026-04-29 09:51:54,466 - INFO - L8_2015_02 | img_count=3 | dry_run=False
+2026-04-29 09:51:55,179 - INFO - L8_2015_03 | img_count=3 | dry_run=False
+2026-04-29 09:51:55,825 - INFO - L8_2015_04 | img_count=4 | dry_run=False
+2026-04-29 09:51:56,758 - INFO - L8_2015_05 | img_count=4 | dry_run=False
+2026-04-29 09:51:57,515 - INFO - L8_2015_06 | img_count=3 | dry_run=False
+2026-04-29 09:51:58,432 - INFO - L8_2015_07 | img_count=3 | dry_run=False
+2026-04-29 09:51:59,116 - INFO - L8_2015_08 | img_count=3 | dry_run=False
+2026-04-29 09:51:59,771 - INFO - L8_2015_09 | img_count=4 | dry_run=False
+2026-04-29 09:52:00,811 - INFO - L8_2015_10 | img_count=4 | dry_run=False
+2026-04-29 09:52:01,419 - INFO - L8_2015_11 | img_count=4 | dry_run=False
+2026-04-29 09:52:02,157 - INFO - L8_2015_12 | img_count=4 | dry_run=False
+2026-04-29 09:52:03,062 - INFO - L8_2016_01 | img_count=3 | dry_run=False
+2026-04-29 09:52:04,004 - INFO - L8_2016_02 | img_count=4 | dry_run=False
+2026-04-29 09:52:04,896 - INFO - L8_2016_03 | img_count=4 | dry_run=False
+2026-04-29 09:52:05,587 - INFO - L8_2016_04 | img_count=3 | dry_run=False
+2026-04-29 09:52:06,214 - INFO - L8_2016_05 | img_count=4 | dry_run=False
+2026-04-29 09:52:07,178 - INFO - L8_2016_06 | img_count=3 | dry_run=False
+2026-04-29 09:52:07,698 - INFO - L8_2016_07 | img_count=4 | dry_run=False
+2026-04-29 09:52:08,364 - INFO - L8_2016_08 | img_count=4 | dry_run=False
+2026-04-29 09:52:09,155 - INFO - L8_2016_09 | img_count=4 | dry_run=False
+2026-04-29 09:52:09,693 - INFO - L8_2016_10 | img_count=4 | dry_run=False
+2026-04-29 09:52:10,264 - INFO - L8_2016_11 | img_count=3 | dry_run=False
+2026-04-29 09:52:10,835 - INFO - L8_2016_12 | img_count=4 | dry_run=False
+2026-04-29 09:52:11,553 - INFO - L8_2017_01 | img_count=3 | dry_run=False
+2026-04-29 09:52:12,237 - INFO - L8_2017_02 | img_count=4 | dry_run=False
+2026-04-29 09:52:12,678 - INFO - L8_2017_03 | img_count=3 | dry_run=False
+2026-04-29 09:52:13,289 - INFO - L8_2017_04 | img_count=3 | dry_run=False
+2026-04-29 09:52:13,814 - INFO - L8_2017_05 | img_count=3 | dry_run=False
+2026-04-29 09:52:14,444 - INFO - L8_2017_06 | img_count=2 | dry_run=False
+2026-04-29 09:52:14,830 - INFO - L8_2017_07 | img_count=4 | dry_run=False
+2026-04-29 09:52:15,349 - INFO - L8_2017_08 | img_count=4 | dry_run=False
+2026-04-29 09:52:16,017 - INFO - L8_2017_09 | img_count=3 | dry_run=False
+2026-04-29 09:52:16,744 - INFO - L8_2017_10 | img_count=4 | dry_run=False
+2026-04-29 09:52:17,571 - INFO - L8_2017_11 | img_count=4 | dry_run=False
+2026-04-29 09:52:18,051 - INFO - L8_2017_12 | img_count=4 | dry_run=False
+2026-04-29 09:52:18,819 - INFO - L8_2018_01 | img_count=4 | dry_run=False
+2026-04-29 09:52:19,313 - INFO - L8_2018_02 | img_count=3 | dry_run=False
+2026-04-29 09:52:20,267 - INFO - L8_2018_03 | img_count=4 | dry_run=False
+2026-04-29 09:52:20,952 - INFO - L8_2018_04 | img_count=3 | dry_run=False
+2026-04-29 09:52:21,323 - INFO - L8_2018_05 | img_count=3 | dry_run=False
+2026-04-29 09:52:21,819 - INFO - L8_2018_06 | img_count=4 | dry_run=False
+2026-04-29 09:52:22,753 - INFO - L8_2018_07 | img_count=3 | dry_run=False
+2026-04-29 09:52:23,372 - INFO - L8_2018_08 | img_count=4 | dry_run=False
+2026-04-29 09:52:23,761 - INFO - L8_2018_09 | img_count=4 | dry_run=False
+2026-04-29 09:52:24,478 - INFO - L8_2018_10 | img_count=3 | dry_run=False
+2026-04-29 09:52:25,127 - INFO - L8_2018_11 | img_count=2 | dry_run=False
+2026-04-29 09:52:25,927 - INFO - L8_2018_12 | img_count=4 | dry_run=False
+2026-04-29 09:52:26,377 - INFO - L8_2019_01 | img_count=4 | dry_run=False
+2026-04-29 09:52:26,959 - INFO - L8_2019_02 | img_count=3 | dry_run=False
+2026-04-29 09:52:27,574 - INFO - L8_2019_03 | img_count=2 | dry_run=False
+2026-04-29 09:52:28,111 - INFO - L8_2019_04 | img_count=4 | dry_run=False
+2026-04-29 09:52:28,716 - INFO - L8_2019_05 | img_count=3 | dry_run=False
+2026-04-29 09:52:29,181 - INFO - L8_2019_06 | img_count=3 | dry_run=False
+2026-04-29 09:52:29,804 - INFO - L8_2019_07 | img_count=4 | dry_run=False
+2026-04-29 09:52:30,546 - INFO - L8_2019_08 | img_count=4 | dry_run=False
+2026-04-29 09:52:31,136 - INFO - L8_2019_09 | img_count=3 | dry_run=False
+2026-04-29 09:52:31,659 - INFO - L8_2019_10 | img_count=4 | dry_run=False
+2026-04-29 09:52:32,320 - INFO - L8_2019_11 | img_count=3 | dry_run=False
+2026-04-29 09:52:32,931 - INFO - L8_2019_12 | img_count=4 | dry_run=False
+2026-04-29 09:52:33,579 - INFO - L8_2020_01 | img_count=4 | dry_run=False
+2026-04-29 09:52:34,045 - INFO - L8_2020_02 | img_count=4 | dry_run=False
+2026-04-29 09:52:34,644 - INFO - L8_2020_03 | img_count=4 | dry_run=False
+2026-04-29 09:52:35,103 - INFO - L8_2020_04 | img_count=3 | dry_run=False
+2026-04-29 09:52:35,628 - INFO - L8_2020_05 | img_count=4 | dry_run=False
+2026-04-29 09:52:36,025 - INFO - L8_2020_06 | img_count=4 | dry_run=False
+2026-04-29 09:52:36,679 - INFO - L8_2020_07 | img_count=4 | dry_run=False
+2026-04-29 09:52:37,232 - INFO - L8_2020_08 | img_count=4 | dry_run=False
+2026-04-29 09:52:37,737 - INFO - L8_2020_09 | img_count=4 | dry_run=False
+2026-04-29 09:52:38,235 - INFO - L8_2020_10 | img_count=3 | dry_run=False
+2026-04-29 09:52:39,128 - INFO - L8_2020_11 | img_count=2 | dry_run=False
+2026-04-29 09:52:39,596 - INFO - L8_2020_12 | img_count=4 | dry_run=False
+2026-04-29 09:52:40,281 - INFO - L8_2021_01 | img_count=4 | dry_run=False
+2026-04-29 09:52:40,838 - INFO - L8_2021_02 | img_count=3 | dry_run=False
+2026-04-29 09:52:41,519 - INFO - L8_2021_03 | img_count=4 | dry_run=False
+2026-04-29 09:52:42,289 - INFO - L8_2021_04 | img_count=4 | dry_run=False
+2026-04-29 09:52:42,918 - INFO - L8_2021_05 | img_count=4 | dry_run=False
+2026-04-29 09:52:43,370 - INFO - L8_2021_06 | img_count=3 | dry_run=False
+2026-04-29 09:52:43,829 - INFO - L8_2021_07 | img_count=3 | dry_run=False
+2026-04-29 09:52:44,214 - INFO - L8_2021_08 | img_count=3 | dry_run=False
+2026-04-29 09:52:44,709 - INFO - L8_2021_09 | img_count=4 | dry_run=False
+2026-04-29 09:52:45,147 - INFO - L8_2021_10 | img_count=4 | dry_run=False
+2026-04-29 09:52:45,885 - INFO - L8_2021_11 | img_count=4 | dry_run=False
+2026-04-29 09:52:46,387 - INFO - L8_2021_12 | img_count=4 | dry_run=False
+2026-04-29 09:52:46,819 - INFO - L8_2022_01 | img_count=3 | dry_run=False
+2026-04-29 09:52:47,323 - INFO - L8_2022_02 | img_count=3 | dry_run=False
+2026-04-29 09:52:47,900 - INFO - L8_2022_03 | img_count=4 | dry_run=False
+2026-04-29 09:52:48,363 - INFO - L8_2022_04 | img_count=4 | dry_run=False
+2026-04-29 09:52:48,790 - INFO - L8_2022_05 | img_count=3 | dry_run=False
+2026-04-29 09:52:49,263 - INFO - L8_2022_06 | img_count=2 | dry_run=False
+2026-04-29 09:52:49,937 - INFO - L8_2022_07 | img_count=3 | dry_run=False
+2026-04-29 09:52:50,428 - INFO - L8_2022_08 | img_count=4 | dry_run=False
+2026-04-29 09:52:51,238 - INFO - L8_2022_09 | img_count=4 | dry_run=False
+2026-04-29 09:52:51,725 - INFO - L8_2022_10 | img_count=4 | dry_run=False
+2026-04-29 09:52:52,539 - INFO - L8_2022_11 | img_count=3 | dry_run=False
+2026-04-29 09:52:53,439 - INFO - L8_2022_12 | img_count=4 | dry_run=False
+2026-04-29 09:52:54,335 - INFO - L8_2023_01 | img_count=3 | dry_run=False
+2026-04-29 09:52:54,689 - INFO - L8_2023_02 | img_count=4 | dry_run=False
+2026-04-29 09:52:55,052 - INFO - L8_2023_03 | img_count=3 | dry_run=False
+2026-04-29 09:52:55,501 - INFO - L8_2023_04 | img_count=2 | dry_run=False
+2026-04-29 09:52:56,298 - INFO - L8_2023_05 | img_count=4 | dry_run=False
+2026-04-29 09:52:56,803 - INFO - L8_2023_06 | img_count=4 | dry_run=False
+2026-04-29 09:52:57,275 - INFO - L8_2023_07 | img_count=4 | dry_run=False
+2026-04-29 09:52:57,668 - INFO - L8_2023_08 | img_count=4 | dry_run=False
+2026-04-29 09:52:58,099 - INFO - L8_2023_09 | img_count=3 | dry_run=False
+2026-04-29 09:52:58,781 - INFO - L8_2023_10 | img_count=4 | dry_run=False
+2026-04-29 09:52:59,697 - INFO - L8_2023_11 | img_count=4 | dry_run=False
+2026-04-29 09:53:00,388 - INFO - L8_2023_12 | img_count=4 | dry_run=False
+2026-04-29 09:53:00,999 - INFO - L8_2024_01 | img_count=4 | dry_run=False
+2026-04-29 09:53:01,493 - INFO - L8_2024_02 | img_count=3 | dry_run=False
+2026-04-29 09:53:02,169 - INFO - L8_2024_03 | img_count=4 | dry_run=False
+2026-04-29 09:53:02,633 - INFO - L8_2024_04 | img_count=4 | dry_run=False
+2026-04-29 09:53:03,101 - INFO - L8_2024_05 | img_count=2 | dry_run=False
+2026-04-29 09:53:03,755 - INFO - L8_2024_06 | img_count=4 | dry_run=False
+2026-04-29 09:53:04,224 - INFO - L8_2024_07 | img_count=3 | dry_run=False
+2026-04-29 09:53:04,619 - INFO - L8_2024_08 | img_count=3 | dry_run=False
+2026-04-29 09:53:05,041 - INFO - L8_2024_09 | img_count=4 | dry_run=False
+2026-04-29 09:53:05,576 - INFO - L8_2024_10 | img_count=4 | dry_run=False
+2026-04-29 09:53:06,304 - INFO - L8_2024_11 | img_count=3 | dry_run=False
+2026-04-29 09:53:07,045 - INFO - L8_2024_12 | img_count=4 | dry_run=False
+2026-05-06 12:11:50,400 - INFO - L8_2014_ene_feb | img_count=8 | status=export_started | dry_run=False
+2026-05-06 12:11:51,458 - INFO - L8_2014_mar_abr | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:11:52,249 - INFO - L8_2014_may_jun | img_count=6 | status=export_started | dry_run=False
+2026-05-06 12:11:52,882 - INFO - L8_2014_jul_ago | img_count=8 | status=export_started | dry_run=False
+2026-05-06 12:11:53,564 - INFO - L8_2014_sep_oct | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:11:54,474 - INFO - L8_2014_nov_dic | img_count=8 | status=export_started | dry_run=False
+2026-05-06 12:11:55,455 - INFO - L8_2015_ene_feb | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:11:56,107 - INFO - L8_2015_mar_abr | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:11:56,673 - INFO - L8_2015_may_jun | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:11:57,383 - INFO - L8_2015_jul_ago | img_count=6 | status=export_started | dry_run=False
+2026-05-06 12:11:58,039 - INFO - L8_2015_sep_oct | img_count=8 | status=export_started | dry_run=False
+2026-05-06 12:11:58,676 - INFO - L8_2015_nov_dic | img_count=8 | status=export_started | dry_run=False
+2026-05-06 12:11:59,962 - INFO - L8_2016_ene_feb | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:12:00,542 - INFO - L8_2016_mar_abr | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:12:01,296 - INFO - L8_2016_may_jun | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:12:01,959 - INFO - L8_2016_jul_ago | img_count=8 | status=export_started | dry_run=False
+2026-05-06 12:12:02,581 - INFO - L8_2016_sep_oct | img_count=8 | status=export_started | dry_run=False
+2026-05-06 12:12:03,268 - INFO - L8_2016_nov_dic | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:12:03,927 - INFO - L8_2017_ene_feb | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:12:04,586 - INFO - L8_2017_mar_abr | img_count=6 | status=export_started | dry_run=False
+2026-05-06 12:12:05,163 - INFO - L8_2017_may_jun | img_count=5 | status=export_started | dry_run=False
+2026-05-06 12:12:05,697 - INFO - L8_2017_jul_ago | img_count=8 | status=export_started | dry_run=False
+2026-05-06 12:12:06,489 - INFO - L8_2017_sep_oct | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:12:07,117 - INFO - L8_2017_nov_dic | img_count=8 | status=export_started | dry_run=False
+2026-05-06 12:12:08,038 - INFO - L8_2018_ene_feb | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:12:08,697 - INFO - L8_2018_mar_abr | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:12:09,233 - INFO - L8_2018_may_jun | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:12:09,703 - INFO - L8_2018_jul_ago | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:12:10,340 - INFO - L8_2018_sep_oct | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:12:10,811 - INFO - L8_2018_nov_dic | img_count=6 | status=export_started | dry_run=False
+2026-05-06 12:12:11,466 - INFO - L8_2019_ene_feb | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:12:12,132 - INFO - L8_2019_mar_abr | img_count=6 | status=export_started | dry_run=False
+2026-05-06 12:12:12,837 - INFO - L8_2019_may_jun | img_count=6 | status=export_started | dry_run=False
+2026-05-06 12:12:13,525 - INFO - L8_2019_jul_ago | img_count=8 | status=export_started | dry_run=False
+2026-05-06 12:12:14,109 - INFO - L8_2019_sep_oct | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:12:14,704 - INFO - L8_2019_nov_dic | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:12:15,180 - INFO - L8_2020_ene_feb | img_count=8 | status=export_started | dry_run=False
+2026-05-06 12:12:15,796 - INFO - L8_2020_mar_abr | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:12:16,321 - INFO - L8_2020_may_jun | img_count=8 | status=export_started | dry_run=False
+2026-05-06 12:12:16,829 - INFO - L8_2020_jul_ago | img_count=8 | status=export_started | dry_run=False
+2026-05-06 12:12:17,485 - INFO - L8_2020_sep_oct | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:12:18,131 - INFO - L8_2020_nov_dic | img_count=6 | status=export_started | dry_run=False
+2026-05-06 12:12:18,854 - INFO - L8_2021_ene_feb | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:12:19,489 - INFO - L8_2021_mar_abr | img_count=8 | status=export_started | dry_run=False
+2026-05-06 12:12:20,124 - INFO - L8_2021_may_jun | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:12:20,713 - INFO - L8_2021_jul_ago | img_count=6 | status=export_started | dry_run=False
+2026-05-06 12:12:21,379 - INFO - L8_2021_sep_oct | img_count=8 | status=export_started | dry_run=False
+2026-05-06 12:12:21,939 - INFO - L8_2021_nov_dic | img_count=8 | status=export_started | dry_run=False
+2026-05-06 12:12:22,456 - INFO - L8_2022_ene_feb | img_count=6 | status=export_started | dry_run=False
+2026-05-06 12:12:23,042 - INFO - L8_2022_mar_abr | img_count=8 | status=export_started | dry_run=False
+2026-05-06 12:12:23,612 - INFO - L8_2022_may_jun | img_count=5 | status=export_started | dry_run=False
+2026-05-06 12:12:24,197 - INFO - L8_2022_jul_ago | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:12:24,751 - INFO - L8_2022_sep_oct | img_count=8 | status=export_started | dry_run=False
+2026-05-06 12:12:25,538 - INFO - L8_2022_nov_dic | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:12:26,327 - INFO - L8_2023_ene_feb | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:12:26,971 - INFO - L8_2023_mar_abr | img_count=5 | status=export_started | dry_run=False
+2026-05-06 12:12:27,514 - INFO - L8_2023_may_jun | img_count=8 | status=export_started | dry_run=False
+2026-05-06 12:12:28,088 - INFO - L8_2023_jul_ago | img_count=8 | status=export_started | dry_run=False
+2026-05-06 12:12:28,560 - INFO - L8_2023_sep_oct | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:12:29,165 - INFO - L8_2023_nov_dic | img_count=8 | status=export_started | dry_run=False
+2026-05-06 12:12:29,814 - INFO - L8_2024_ene_feb | img_count=7 | status=export_started | dry_run=False
+2026-05-06 12:12:30,318 - INFO - L8_2024_mar_abr | img_count=8 | status=export_started | dry_run=False
+2026-05-06 12:12:30,800 - INFO - L8_2024_may_jun | img_count=6 | status=export_started | dry_run=False
+2026-05-06 12:12:31,277 - INFO - L8_2024_jul_ago | img_count=6 | status=export_started | dry_run=False
+2026-05-06 12:12:32,241 - INFO - L8_2024_sep_oct | img_count=8 | status=export_started | dry_run=False
+2026-05-06 12:12:32,842 - INFO - L8_2024_nov_dic | img_count=7 | status=export_started | dry_run=False
