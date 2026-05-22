@@ -1,0 +1,45 @@
+{
+  "path_fire_shp": "C:\\Users\\Equipo\\Tesis\\SemestreIV\\Objetivo1\\Objetivo1_26_02_20\\outputs\\fire_orbits\\incendios_con_orbitas_26_03_12.shp",
+  "path_abs_shp": "D:\\Maestria_Geomatica\\Semestre_IV\\Puntos_unificados_25_11_05\\Puntos_unificados_26_02_23\\puntos_no_calientes_aleatorios_961_26_02_23.shp",
+
+  "base_tiff": "D:\\Maestria_Geomatica\\Semestre_IV\\Tesis_Python\\Datos\\TIFF",
+  "l8_dir": "D:\\Maestria_Geomatica\\Semestre_IV\\Tesis_Python\\Datos\\TIFF\\L8_normalizado",
+  "s1_dir": "D:\\Maestria_Geomatica\\Semestre_IV\\Tesis_Python\\Datos\\TIFF\\S1_normalizado",
+
+  "out_dir": "C:\\Users\\Equipo\\Tesis\\SemestreIV\\Objetivo1\\Objetivo1_26_02_20\\outputs\\outputs_rf_pipeline_260507",
+
+  "out_gpkg": "puntos_features_260507.gpkg",
+  "out_layer": "puntos_features_260507",
+  "out_csv_a": "dataset_A_complete_case_260507.csv",
+  "out_csv_b": "dataset_B_imputed_260507.csv",
+  "out_model_a": "modelo_RF_A_260507.pkl",
+  "out_model_b": "modelo_RF_B_260507.pkl",
+  "out_report": "reporte_cv_260507.txt",
+
+  "out_gpkg_c": "puntos_features_model_C_260507.gpkg",
+  "out_layer_c": "puntos_features_model_C_260507",
+  "out_csv_c": "dataset_C_complete_case_260507.csv",
+  "out_model_c": "modelo_RF_C_260507.pkl",
+  "out_report_c": "reporte_cv_C_260507.txt",
+
+  "date_col": "acq_date",
+  "epsg_work": 9377,
+
+  "l8_use_bimonth_logic": true,
+  "l8_switch_day": 14,
+  "l8_fallback_next_available": true,
+
+  "s1_window_days": 60,
+  "s1_start_offset_days": 1,
+  "s1_select_mode": "next_available_after_fire",
+
+  "model_c_enabled": true,
+  "s1_difference_same_month": true,
+  "s1_difference_selection_strategy": "closest_to_fire_date",
+
+  "seed_abs_dates": 42,
+  "seed_dataset_a": 42,
+  "seed_dataset_b": 42,
+  "seed_dataset_c": 42,
+  "seed_cv": 123
+}

@@ -1,0 +1,189 @@
+2026-05-22 09:56:27,245 | INFO | Inicio pipeline RF con normalización Min-Max por fold-Copy1
+2026-05-22 09:56:36,810 | INFO | Inicio pipeline RF con normalización Min-Max por fold-Copy1
+2026-05-22 09:56:51,946 | INFO | =================================================
+2026-05-22 09:56:51,947 | INFO | INICIO PIPELINE RANDOM FOREST
+2026-05-22 09:56:51,947 | INFO | =================================================
+2026-05-22 09:56:51,947 | INFO | Ruta incendios: C:\Users\Equipo\Tesis\SemestreIV\Objetivo1\Objetivo1_26_02_20\outputs\fire_orbits\incendios_con_orbitas_26_03_12.shp
+2026-05-22 09:56:51,947 | INFO | Ruta ausencias: D:\Maestria_Geomatica\Semestre_IV\Puntos_unificados_25_11_05\Puntos_unificados_26_02_23\puntos_no_calientes_aleatorios_961_26_02_23.shp
+2026-05-22 09:56:51,947 | INFO | Ruta L8 normalizado: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\L8
+2026-05-22 09:56:51,947 | INFO | Ruta S1 normalizado: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\S1_V2_PREPOST
+2026-05-22 09:56:51,947 | INFO | OUT_DIR: C:\Users\Equipo\Tesis\SemestreIV\Objetivo1\Objetivo1_26_02_20\outputs\outputs_rf_pipeline_260507-Copy1
+2026-05-22 09:56:52,809 | INFO | CRS puntos combinados: EPSG:9377
+2026-05-22 09:56:52,809 | INFO | Incendios: 961
+2026-05-22 09:56:52,809 | INFO | Ausencias: 961
+2026-05-22 09:56:52,809 | INFO | Total puntos: 1922
+2026-05-22 09:56:52,820 | INFO | [L8] Carpeta: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\L8
+2026-05-22 09:56:52,820 | INFO | [L8] TIFF encontrados: 30
+2026-05-22 09:56:52,821 | INFO | [L8] TIFF indexados correctamente: 30
+2026-05-22 09:56:52,843 | INFO | [S1] Carpeta: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\S1_V2_PREPOST
+2026-05-22 09:56:52,843 | INFO | [S1] TIFF encontrados: 113
+2026-05-22 09:56:52,843 | INFO | [S1] TIFF indexados correctamente: 113
+2026-05-22 09:56:52,843 | INFO | [L8] Bimestres indexados: 30
+2026-05-22 09:56:52,843 | INFO | [S1] Escenas indexadas: 113
+2026-05-22 09:56:52,901 | INFO | [L8] Rasters Landsat 8 usados por puntos: 21
+2026-05-22 09:57:18,450 | INFO | [L8] Puntos con imagen Landsat 8: 1055
+2026-05-22 09:57:18,450 | INFO | [L8] Puntos sin imagen Landsat 8: 867
+2026-05-22 09:57:41,554 | INFO | [S1] Puntos con imagen Sentinel-1: 630
+2026-05-22 09:57:41,554 | INFO | [S1] Puntos sin imagen Sentinel-1: 1292
+2026-05-22 09:57:41,567 | INFO | Coverage report:
+        feature  missing_n  missing_pct
+             VV       1370    71.279917
+             VH       1370    71.279917
+     VVVH_ratio       1370    71.279917
+          angle       1366    71.071800
+  VV_Difference       1321    68.730489
+  VH_Difference       1321    68.730489
+VHVV_Difference       1321    68.730489
+          SR_B5       1222    63.579605
+          SR_B6       1222    63.579605
+          SR_B7       1222    63.579605
+           NDVI       1222    63.579605
+            EVI       1222    63.579605
+            NBR       1222    63.579605
+           NDWI       1222    63.579605
+2026-05-22 09:57:42,027 | INFO | Dataset A shape: (340, 74)
+2026-05-22 09:57:42,027 | INFO | Dataset B shape: (1922, 74)
+2026-05-22 09:58:17,589 | INFO | Created 1,922 records
+2026-05-22 09:58:18,277 | INFO | Outputs generados en: C:\Users\Equipo\Tesis\SemestreIV\Objetivo1\Objetivo1_26_02_20\outputs\outputs_rf_pipeline_260507-Copy1
+2026-05-22 09:58:18,278 | INFO | =================================================
+2026-05-22 09:58:18,278 | INFO | FIN PIPELINE RANDOM FOREST
+2026-05-22 09:58:18,278 | INFO | =================================================
+2026-05-22 10:02:24,528 | INFO | =================================================
+2026-05-22 10:02:24,528 | INFO | INICIO PIPELINE MODELO C
+2026-05-22 10:02:24,529 | INFO | =================================================
+2026-05-22 10:02:24,529 | INFO | [MODELO C] Ruta incendios: C:\Users\Equipo\Tesis\SemestreIV\Objetivo1\Objetivo1_26_02_20\outputs\fire_orbits\incendios_con_orbitas_26_03_12.shp
+2026-05-22 10:02:24,529 | INFO | [MODELO C] Ruta ausencias: D:\Maestria_Geomatica\Semestre_IV\Puntos_unificados_25_11_05\Puntos_unificados_26_02_23\puntos_no_calientes_aleatorios_961_26_02_23.shp
+2026-05-22 10:02:24,529 | INFO | [MODELO C] Ruta L8 normalizado: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\L8
+2026-05-22 10:02:24,529 | INFO | [MODELO C] Ruta S1 normalizado: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\S1_V2_PREPOST
+2026-05-22 10:02:24,529 | INFO | [MODELO C] OUT_DIR: C:\Users\Equipo\Tesis\SemestreIV\Objetivo1\Objetivo1_26_02_20\outputs\outputs_rf_pipeline_260507-Copy1
+2026-05-22 10:02:24,529 | INFO | [MODELO C] Estrategia diferencias S1: closest_to_fire_date
+2026-05-22 10:02:24,635 | INFO | [MODELO C] CRS puntos combinados: EPSG:9377
+2026-05-22 10:02:24,635 | INFO | [MODELO C] Incendios: 961
+2026-05-22 10:02:24,636 | INFO | [MODELO C] Ausencias: 961
+2026-05-22 10:02:24,636 | INFO | [MODELO C] Total puntos: 1922
+2026-05-22 10:02:24,641 | INFO | [L8] Carpeta: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\L8
+2026-05-22 10:02:24,641 | INFO | [L8] TIFF encontrados: 30
+2026-05-22 10:02:24,641 | INFO | [L8] TIFF indexados correctamente: 30
+2026-05-22 10:02:24,657 | INFO | [S1] Carpeta: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\S1_V2_PREPOST
+2026-05-22 10:02:24,657 | INFO | [S1] TIFF encontrados: 113
+2026-05-22 10:02:24,657 | INFO | [S1] TIFF indexados correctamente: 113
+2026-05-22 10:02:24,657 | INFO | [MODELO C][L8] Bimestres indexados: 30
+2026-05-22 10:02:24,657 | INFO | [MODELO C][S1] Escenas indexadas: 113
+2026-05-22 10:02:24,707 | INFO | [MODELO C][L8] Rasters Landsat 8 usados por puntos: 21
+2026-05-22 10:02:34,766 | INFO | [MODELO C][L8] Puntos con imagen Landsat 8: 1055
+2026-05-22 10:02:34,766 | INFO | [MODELO C][L8] Puntos sin imagen Landsat 8: 867
+2026-05-22 10:02:47,369 | INFO | [MODELO C][S1 GENERAL] Puntos con Sentinel-1 general: 630
+2026-05-22 10:02:47,369 | INFO | [MODELO C][S1 GENERAL] Puntos sin Sentinel-1 general: 1292
+2026-05-22 10:03:04,682 | INFO | [MODELO C][S1 DIFFERENCE] Puntos con Sentinel-1 diferencias mismo mes: 630
+2026-05-22 10:03:04,682 | INFO | [MODELO C][S1 DIFFERENCE] Puntos sin Sentinel-1 diferencias mismo mes: 1292
+2026-05-22 10:03:04,689 | INFO | [MODELO C] Coverage report:
+        feature  missing_n  missing_pct
+             VV       1370    71.279917
+             VH       1370    71.279917
+     VVVH_ratio       1370    71.279917
+          angle       1366    71.071800
+  VV_Difference       1357    70.603538
+  VH_Difference       1357    70.603538
+VHVV_Difference       1357    70.603538
+          SR_B5       1222    63.579605
+          SR_B6       1222    63.579605
+          SR_B7       1222    63.579605
+           NDVI       1222    63.579605
+            EVI       1222    63.579605
+            NBR       1222    63.579605
+           NDWI       1222    63.579605
+2026-05-22 10:03:04,804 | INFO | [MODELO C] Dataset C shape: (338, 79)
+2026-05-22 10:07:41,123 | INFO | Inicio pipeline RF con normalización Min-Max por fold-Copy1
+2026-05-22 10:07:41,528 | INFO | =================================================
+2026-05-22 10:07:41,528 | INFO | INICIO PIPELINE RANDOM FOREST
+2026-05-22 10:07:41,528 | INFO | =================================================
+2026-05-22 10:07:41,528 | INFO | Ruta incendios: C:\Users\Equipo\Tesis\SemestreIV\Objetivo1\Objetivo1_26_02_20\outputs\fire_orbits\incendios_con_orbitas_26_03_12.shp
+2026-05-22 10:07:41,528 | INFO | Ruta ausencias: D:\Maestria_Geomatica\Semestre_IV\Puntos_unificados_25_11_05\Puntos_unificados_26_02_23\puntos_no_calientes_aleatorios_961_26_02_23.shp
+2026-05-22 10:07:41,528 | INFO | Ruta L8 normalizado: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\L8
+2026-05-22 10:07:41,528 | INFO | Ruta S1 normalizado: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\S1_V2_PREPOST
+2026-05-22 10:07:41,528 | INFO | OUT_DIR: C:\Users\Equipo\Tesis\SemestreIV\Objetivo1\Objetivo1_26_02_20\outputs\outputs_rf_pipeline_260507-Copy1
+2026-05-22 10:07:41,694 | INFO | CRS puntos combinados: EPSG:9377
+2026-05-22 10:07:41,695 | INFO | Incendios: 961
+2026-05-22 10:07:41,695 | INFO | Ausencias: 961
+2026-05-22 10:07:41,695 | INFO | Total puntos: 1922
+2026-05-22 10:07:41,701 | INFO | [L8] Carpeta: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\L8
+2026-05-22 10:07:41,702 | INFO | [L8] TIFF encontrados: 30
+2026-05-22 10:07:41,702 | INFO | [L8] TIFF indexados correctamente: 30
+2026-05-22 10:07:41,719 | INFO | [S1] Carpeta: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\S1_V2_PREPOST
+2026-05-22 10:07:41,719 | INFO | [S1] TIFF encontrados: 113
+2026-05-22 10:07:41,719 | INFO | [S1] TIFF indexados correctamente: 113
+2026-05-22 10:07:41,719 | INFO | [L8] Bimestres indexados: 30
+2026-05-22 10:07:41,719 | INFO | [S1] Escenas indexadas: 113
+2026-05-22 10:07:41,771 | INFO | [L8] Rasters Landsat 8 usados por puntos: 21
+2026-05-22 10:07:51,808 | INFO | [L8] Puntos con imagen Landsat 8: 1055
+2026-05-22 10:07:51,808 | INFO | [L8] Puntos sin imagen Landsat 8: 867
+2026-05-22 10:08:04,064 | INFO | [S1] Puntos con imagen Sentinel-1: 630
+2026-05-22 10:08:04,064 | INFO | [S1] Puntos sin imagen Sentinel-1: 1292
+2026-05-22 10:08:04,072 | INFO | Coverage report:
+        feature  missing_n  missing_pct
+             VV       1370    71.279917
+             VH       1370    71.279917
+     VVVH_ratio       1370    71.279917
+          angle       1366    71.071800
+  VV_Difference       1321    68.730489
+  VH_Difference       1321    68.730489
+VHVV_Difference       1321    68.730489
+          SR_B5       1222    63.579605
+          SR_B6       1222    63.579605
+          SR_B7       1222    63.579605
+           NDVI       1222    63.579605
+            EVI       1222    63.579605
+            NBR       1222    63.579605
+           NDWI       1222    63.579605
+2026-05-22 10:08:04,513 | INFO | Dataset A shape: (340, 74)
+2026-05-22 10:08:04,513 | INFO | Dataset B shape: (1922, 74)
+2026-05-22 10:08:38,524 | INFO | Created 1,922 records
+2026-05-22 10:08:39,286 | INFO | Outputs generados en: C:\Users\Equipo\Tesis\SemestreIV\Objetivo1\Objetivo1_26_02_20\outputs\outputs_rf_pipeline_260507-Copy1
+2026-05-22 10:08:39,286 | INFO | =================================================
+2026-05-22 10:08:39,286 | INFO | FIN PIPELINE RANDOM FOREST
+2026-05-22 10:08:39,286 | INFO | =================================================
+2026-05-22 10:08:40,035 | INFO | =================================================
+2026-05-22 10:08:40,035 | INFO | INICIO PIPELINE MODELO C
+2026-05-22 10:08:40,036 | INFO | =================================================
+2026-05-22 10:08:40,036 | INFO | [MODELO C] Ruta incendios: C:\Users\Equipo\Tesis\SemestreIV\Objetivo1\Objetivo1_26_02_20\outputs\fire_orbits\incendios_con_orbitas_26_03_12.shp
+2026-05-22 10:08:40,036 | INFO | [MODELO C] Ruta ausencias: D:\Maestria_Geomatica\Semestre_IV\Puntos_unificados_25_11_05\Puntos_unificados_26_02_23\puntos_no_calientes_aleatorios_961_26_02_23.shp
+2026-05-22 10:08:40,036 | INFO | [MODELO C] Ruta L8 normalizado: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\L8
+2026-05-22 10:08:40,036 | INFO | [MODELO C] Ruta S1 normalizado: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\S1_V2_PREPOST
+2026-05-22 10:08:40,036 | INFO | [MODELO C] OUT_DIR: C:\Users\Equipo\Tesis\SemestreIV\Objetivo1\Objetivo1_26_02_20\outputs\outputs_rf_pipeline_260507-Copy1
+2026-05-22 10:08:40,036 | INFO | [MODELO C] Estrategia diferencias S1: closest_to_fire_date
+2026-05-22 10:08:40,146 | INFO | [MODELO C] CRS puntos combinados: EPSG:9377
+2026-05-22 10:08:40,146 | INFO | [MODELO C] Incendios: 961
+2026-05-22 10:08:40,146 | INFO | [MODELO C] Ausencias: 961
+2026-05-22 10:08:40,146 | INFO | [MODELO C] Total puntos: 1922
+2026-05-22 10:08:40,152 | INFO | [L8] Carpeta: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\L8
+2026-05-22 10:08:40,152 | INFO | [L8] TIFF encontrados: 30
+2026-05-22 10:08:40,152 | INFO | [L8] TIFF indexados correctamente: 30
+2026-05-22 10:08:40,169 | INFO | [S1] Carpeta: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\S1_V2_PREPOST
+2026-05-22 10:08:40,169 | INFO | [S1] TIFF encontrados: 113
+2026-05-22 10:08:40,169 | INFO | [S1] TIFF indexados correctamente: 113
+2026-05-22 10:08:40,169 | INFO | [MODELO C][L8] Bimestres indexados: 30
+2026-05-22 10:08:40,169 | INFO | [MODELO C][S1] Escenas indexadas: 113
+2026-05-22 10:08:40,219 | INFO | [MODELO C][L8] Rasters Landsat 8 usados por puntos: 21
+2026-05-22 10:08:50,156 | INFO | [MODELO C][L8] Puntos con imagen Landsat 8: 1055
+2026-05-22 10:08:50,156 | INFO | [MODELO C][L8] Puntos sin imagen Landsat 8: 867
+2026-05-22 10:09:02,259 | INFO | [MODELO C][S1 GENERAL] Puntos con Sentinel-1 general: 630
+2026-05-22 10:09:02,259 | INFO | [MODELO C][S1 GENERAL] Puntos sin Sentinel-1 general: 1292
+2026-05-22 10:09:14,836 | INFO | [MODELO C][S1 DIFFERENCE] Puntos con Sentinel-1 diferencias mismo mes: 630
+2026-05-22 10:09:14,836 | INFO | [MODELO C][S1 DIFFERENCE] Puntos sin Sentinel-1 diferencias mismo mes: 1292
+2026-05-22 10:09:14,845 | INFO | [MODELO C] Coverage report:
+        feature  missing_n  missing_pct
+             VV       1370    71.279917
+             VH       1370    71.279917
+     VVVH_ratio       1370    71.279917
+          angle       1366    71.071800
+  VV_Difference       1357    70.603538
+  VH_Difference       1357    70.603538
+VHVV_Difference       1357    70.603538
+          SR_B5       1222    63.579605
+          SR_B6       1222    63.579605
+          SR_B7       1222    63.579605
+           NDVI       1222    63.579605
+            EVI       1222    63.579605
+            NBR       1222    63.579605
+           NDWI       1222    63.579605
+2026-05-22 10:09:14,986 | INFO | [MODELO C] Dataset C shape: (338, 79)
