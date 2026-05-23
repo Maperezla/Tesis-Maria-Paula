@@ -1,0 +1,126 @@
+2026-05-08 11:53:41,978 | INFO | [S1] Archivos encontrados: 116
+2026-05-08 11:53:41,978 | INFO | [S1] Archivos indexados correctamente: 116
+2026-05-08 11:53:41,978 | INFO | [S1] Archivos omitidos por nombre inválido: 0
+2026-05-08 11:53:41,987 | WARNING | [SKIPPED_NO_PRE] S1_2017-01-09_0.tif | No existe imagen del mes anterior.
+2026-05-08 11:53:51,016 | INFO | [OK] S1_2017-02-26_2.tif | pre=S1_2017-01-09_0.tif | post=S1_2017-03-10_1.tif | out=S1_2017-02-26_2_prepost_indices.tif
+2026-05-08 11:53:58,069 | INFO | [OK] S1_2017-03-10_1.tif | pre=S1_2017-02-26_2.tif | post=S1_2017-04-15_2.tif | out=S1_2017-03-10_1_prepost_indices.tif
+2026-05-08 11:54:05,250 | INFO | [OK] S1_2017-03-22_3.tif | pre=S1_2017-02-26_2.tif | post=S1_2017-04-15_2.tif | out=S1_2017-03-22_3_prepost_indices.tif
+2026-05-08 11:54:12,618 | INFO | [OK] S1_2017-04-15_2.tif | pre=S1_2017-03-22_3.tif | post=S1_2017-05-09_1.tif | out=S1_2017-04-15_2_prepost_indices.tif
+2026-05-08 11:54:20,352 | INFO | [OK] S1_2017-04-27_3.tif | pre=S1_2017-03-22_3.tif | post=S1_2017-05-09_1.tif | out=S1_2017-04-27_3_prepost_indices.tif
+2026-05-08 11:54:27,483 | INFO | [OK] S1_2017-05-09_1.tif | pre=S1_2017-04-27_3.tif | post=S1_2017-06-14_1.tif | out=S1_2017-05-09_1_prepost_indices.tif
+2026-05-08 11:54:35,415 | INFO | [OK] S1_2017-05-21_3.tif | pre=S1_2017-04-27_3.tif | post=S1_2017-06-14_1.tif | out=S1_2017-05-21_3_prepost_indices.tif
+2026-05-08 11:54:44,815 | INFO | [OK] S1_2017-06-14_1.tif | pre=S1_2017-05-21_3.tif | post=S1_2017-07-08_0.tif | out=S1_2017-06-14_1_prepost_indices.tif
+2026-05-08 11:54:52,262 | INFO | [OK] S1_2017-06-26_2.tif | pre=S1_2017-05-21_3.tif | post=S1_2017-07-08_0.tif | out=S1_2017-06-26_2_prepost_indices.tif
+2026-05-08 11:55:00,304 | INFO | [OK] S1_2017-07-08_0.tif | pre=S1_2017-06-26_2.tif | post=S1_2017-08-01_0.tif | out=S1_2017-07-08_0_prepost_indices.tif
+2026-05-08 11:55:09,186 | INFO | [OK] S1_2017-07-20_1.tif | pre=S1_2017-06-26_2.tif | post=S1_2017-08-01_0.tif | out=S1_2017-07-20_1_prepost_indices.tif
+2026-05-08 11:55:18,167 | INFO | [OK] S1_2017-08-01_0.tif | pre=S1_2017-07-20_1.tif | post=S1_2017-09-06_0.tif | out=S1_2017-08-01_0_prepost_indices.tif
+2026-05-08 11:55:26,896 | INFO | [OK] S1_2017-08-25_2.tif | pre=S1_2017-07-20_1.tif | post=S1_2017-09-06_0.tif | out=S1_2017-08-25_2_prepost_indices.tif
+2026-05-08 11:55:34,857 | INFO | [OK] S1_2017-09-06_0.tif | pre=S1_2017-08-25_2.tif | post=S1_2017-10-12_0.tif | out=S1_2017-09-06_0_prepost_indices.tif
+2026-05-08 11:55:43,320 | INFO | [OK] S1_2017-09-18_1.tif | pre=S1_2017-08-25_2.tif | post=S1_2017-10-12_0.tif | out=S1_2017-09-18_1_prepost_indices.tif
+2026-05-08 11:55:50,567 | INFO | [OK] S1_2017-10-12_0.tif | pre=S1_2017-09-18_1.tif | post=S1_2017-11-17_1.tif | out=S1_2017-10-12_0_prepost_indices.tif
+2026-05-08 11:55:57,852 | INFO | [OK] S1_2017-10-24_1.tif | pre=S1_2017-09-18_1.tif | post=S1_2017-11-17_1.tif | out=S1_2017-10-24_1_prepost_indices.tif
+2026-05-08 11:56:05,185 | INFO | [OK] S1_2017-11-17_1.tif | pre=S1_2017-10-24_1.tif | post=S1_2017-12-23_1.tif | out=S1_2017-11-17_1_prepost_indices.tif
+2026-05-08 11:56:12,362 | INFO | [OK] S1_2017-11-29_2.tif | pre=S1_2017-10-24_1.tif | post=S1_2017-12-23_1.tif | out=S1_2017-11-29_2_prepost_indices.tif
+2026-05-08 11:56:19,632 | INFO | [OK] S1_2017-12-23_1.tif | pre=S1_2017-11-29_2.tif | post=S1_2018-01-04_0.tif | out=S1_2017-12-23_1_prepost_indices.tif
+2026-05-08 11:56:27,210 | INFO | [OK] S1_2018-01-04_0.tif | pre=S1_2017-12-23_1.tif | post=S1_2018-02-09_0.tif | out=S1_2018-01-04_0_prepost_indices.tif
+2026-05-08 11:56:35,030 | INFO | [OK] S1_2018-01-16_1.tif | pre=S1_2017-12-23_1.tif | post=S1_2018-02-09_0.tif | out=S1_2018-01-16_1_prepost_indices.tif
+2026-05-08 11:56:42,328 | INFO | [OK] S1_2018-01-28_2.tif | pre=S1_2017-12-23_1.tif | post=S1_2018-02-09_0.tif | out=S1_2018-01-28_2_prepost_indices.tif
+2026-05-08 11:56:49,491 | INFO | [OK] S1_2018-02-09_0.tif | pre=S1_2018-01-28_2.tif | post=S1_2018-03-05_0.tif | out=S1_2018-02-09_0_prepost_indices.tif
+2026-05-08 11:56:56,479 | INFO | [OK] S1_2018-02-21_1.tif | pre=S1_2018-01-28_2.tif | post=S1_2018-03-05_0.tif | out=S1_2018-02-21_1_prepost_indices.tif
+2026-05-08 11:57:03,845 | INFO | [OK] S1_2018-03-05_0.tif | pre=S1_2018-02-21_1.tif | post=S1_2018-04-10_0.tif | out=S1_2018-03-05_0_prepost_indices.tif
+2026-05-08 11:57:10,810 | INFO | [OK] S1_2018-03-29_2.tif | pre=S1_2018-02-21_1.tif | post=S1_2018-04-10_0.tif | out=S1_2018-03-29_2_prepost_indices.tif
+2026-05-08 11:57:18,245 | INFO | [OK] S1_2018-04-10_0.tif | pre=S1_2018-03-29_2.tif | post=S1_2018-05-04_0.tif | out=S1_2018-04-10_0_prepost_indices.tif
+2026-05-08 11:57:25,172 | INFO | [OK] S1_2018-05-04_0.tif | pre=S1_2018-04-10_0.tif | post=S1_2018-06-09_1.tif | out=S1_2018-05-04_0_prepost_indices.tif
+2026-05-08 11:57:32,276 | INFO | [OK] S1_2018-05-16_1.tif | pre=S1_2018-04-10_0.tif | post=S1_2018-06-09_1.tif | out=S1_2018-05-16_1_prepost_indices.tif
+2026-05-08 11:57:39,105 | INFO | [OK] S1_2018-06-09_1.tif | pre=S1_2018-05-16_1.tif | post=S1_2018-07-03_0.tif | out=S1_2018-06-09_1_prepost_indices.tif
+2026-05-08 11:57:46,028 | INFO | [OK] S1_2018-06-21_2.tif | pre=S1_2018-05-16_1.tif | post=S1_2018-07-03_0.tif | out=S1_2018-06-21_2_prepost_indices.tif
+2026-05-08 11:57:52,918 | INFO | [OK] S1_2018-07-03_0.tif | pre=S1_2018-06-21_2.tif | post=S1_2018-08-08_0.tif | out=S1_2018-07-03_0_prepost_indices.tif
+2026-05-08 11:57:59,784 | INFO | [OK] S1_2018-07-15_1.tif | pre=S1_2018-06-21_2.tif | post=S1_2018-08-08_0.tif | out=S1_2018-07-15_1_prepost_indices.tif
+2026-05-08 11:58:06,741 | INFO | [OK] S1_2018-07-27_2.tif | pre=S1_2018-06-21_2.tif | post=S1_2018-08-08_0.tif | out=S1_2018-07-27_2_prepost_indices.tif
+2026-05-08 11:58:12,765 | INFO | [OK] S1_2018-08-08_0.tif | pre=S1_2018-07-27_2.tif | post=S1_2018-09-06_0.tif | out=S1_2018-08-08_0_prepost_indices.tif
+2026-05-08 11:58:20,509 | INFO | [OK] S1_2018-09-06_0.tif | pre=S1_2018-08-08_0.tif | post=S1_2018-10-07_0.tif | out=S1_2018-09-06_0_prepost_indices.tif
+2026-05-08 11:58:27,706 | INFO | [OK] S1_2018-09-18_1.tif | pre=S1_2018-08-08_0.tif | post=S1_2018-10-07_0.tif | out=S1_2018-09-18_1_prepost_indices.tif
+2026-05-08 11:58:33,223 | INFO | [OK] S1_2018-10-07_0.tif | pre=S1_2018-09-18_1.tif | post=S1_2018-11-29_2.tif | out=S1_2018-10-07_0_prepost_indices.tif
+2026-05-08 11:58:41,071 | INFO | [OK] S1_2018-11-29_2.tif | pre=S1_2018-10-07_0.tif | post=S1_2018-12-06_0.tif | out=S1_2018-11-29_2_prepost_indices.tif
+2026-05-08 11:58:46,586 | INFO | [OK] S1_2018-12-06_0.tif | pre=S1_2018-11-29_2.tif | post=S1_2019-01-04_0.tif | out=S1_2018-12-06_0_prepost_indices.tif
+2026-05-08 11:58:52,837 | INFO | [OK] S1_2018-12-18_2.tif | pre=S1_2018-11-29_2.tif | post=S1_2019-01-04_0.tif | out=S1_2018-12-18_2_prepost_indices.tif
+2026-05-08 11:59:00,880 | INFO | [OK] S1_2019-01-04_0.tif | pre=S1_2018-12-18_2.tif | post=S1_2019-02-16_1.tif | out=S1_2019-01-04_0_prepost_indices.tif
+2026-05-08 11:59:08,342 | INFO | [OK] S1_2019-01-28_1.tif | pre=S1_2018-12-18_2.tif | post=S1_2019-02-16_1.tif | out=S1_2019-01-28_1_prepost_indices.tif
+2026-05-08 11:59:14,989 | INFO | [OK] S1_2019-02-16_1.tif | pre=S1_2019-01-28_1.tif | post=S1_2019-03-12_1.tif | out=S1_2019-02-16_1_prepost_indices.tif
+2026-05-08 11:59:21,813 | INFO | [OK] S1_2019-03-12_1.tif | pre=S1_2019-02-16_1.tif | post=S1_2019-04-05_0.tif | out=S1_2019-03-12_1_prepost_indices.tif
+2026-05-08 11:59:28,756 | INFO | [OK] S1_2019-03-24_3.tif | pre=S1_2019-02-16_1.tif | post=S1_2019-04-05_0.tif | out=S1_2019-03-24_3_prepost_indices.tif
+2026-05-08 11:59:35,954 | INFO | [OK] S1_2019-04-05_0.tif | pre=S1_2019-03-24_3.tif | post=S1_2019-05-11_1.tif | out=S1_2019-04-05_0_prepost_indices.tif
+2026-05-08 11:59:43,180 | INFO | [OK] S1_2019-04-29_3.tif | pre=S1_2019-03-24_3.tif | post=S1_2019-05-11_1.tif | out=S1_2019-04-29_3_prepost_indices.tif
+2026-05-08 11:59:50,224 | INFO | [OK] S1_2019-05-11_1.tif | pre=S1_2019-04-29_3.tif | post=S1_2019-06-04_0.tif | out=S1_2019-05-11_1_prepost_indices.tif
+2026-05-08 11:59:57,177 | INFO | [OK] S1_2019-05-23_2.tif | pre=S1_2019-04-29_3.tif | post=S1_2019-06-04_0.tif | out=S1_2019-05-23_2_prepost_indices.tif
+2026-05-08 12:00:04,269 | INFO | [OK] S1_2019-06-04_0.tif | pre=S1_2019-05-23_2.tif | post=S1_2019-07-10_0.tif | out=S1_2019-06-04_0_prepost_indices.tif
+2026-05-08 12:00:11,477 | INFO | [OK] S1_2019-06-16_1.tif | pre=S1_2019-05-23_2.tif | post=S1_2019-07-10_0.tif | out=S1_2019-06-16_1_prepost_indices.tif
+2026-05-08 12:00:18,308 | INFO | [OK] S1_2019-07-10_0.tif | pre=S1_2019-06-16_1.tif | post=S1_2019-08-03_0.tif | out=S1_2019-07-10_0_prepost_indices.tif
+2026-05-08 12:00:25,327 | INFO | [OK] S1_2019-07-22_1.tif | pre=S1_2019-06-16_1.tif | post=S1_2019-08-03_0.tif | out=S1_2019-07-22_1_prepost_indices.tif
+2026-05-08 12:00:32,290 | INFO | [OK] S1_2019-08-03_0.tif | pre=S1_2019-07-22_1.tif | post=S1_2019-09-08_1.tif | out=S1_2019-08-03_0_prepost_indices.tif
+2026-05-08 12:00:39,179 | INFO | [OK] S1_2019-08-27_4.tif | pre=S1_2019-07-22_1.tif | post=S1_2019-09-08_1.tif | out=S1_2019-08-27_4_prepost_indices.tif
+2026-05-08 12:00:46,403 | INFO | [OK] S1_2019-09-08_1.tif | pre=S1_2019-08-27_4.tif | post=S1_2019-10-14_2.tif | out=S1_2019-09-08_1_prepost_indices.tif
+2026-05-08 12:00:53,311 | INFO | [OK] S1_2019-09-20_3.tif | pre=S1_2019-08-27_4.tif | post=S1_2019-10-14_2.tif | out=S1_2019-09-20_3_prepost_indices.tif
+2026-05-08 12:01:00,388 | INFO | [OK] S1_2019-10-14_2.tif | pre=S1_2019-09-20_3.tif | post=S1_2019-11-12_0.tif | out=S1_2019-10-14_2_prepost_indices.tif
+2026-05-08 12:01:07,762 | INFO | [OK] S1_2019-10-26_4.tif | pre=S1_2019-09-20_3.tif | post=S1_2019-11-12_0.tif | out=S1_2019-10-26_4_prepost_indices.tif
+2026-05-08 12:01:15,371 | INFO | [OK] S1_2019-11-12_0.tif | pre=S1_2019-10-26_4.tif | post=S1_2019-12-06_0.tif | out=S1_2019-11-12_0_prepost_indices.tif
+2026-05-08 12:01:22,413 | INFO | [OK] S1_2019-11-24_1.tif | pre=S1_2019-10-26_4.tif | post=S1_2019-12-06_0.tif | out=S1_2019-11-24_1_prepost_indices.tif
+2026-05-08 12:01:29,382 | INFO | [OK] S1_2019-12-06_0.tif | pre=S1_2019-11-24_1.tif | post=S1_2020-01-18_2.tif | out=S1_2019-12-06_0_prepost_indices.tif
+2026-05-08 12:01:37,418 | INFO | [OK] S1_2019-12-18_1.tif | pre=S1_2019-11-24_1.tif | post=S1_2020-01-18_2.tif | out=S1_2019-12-18_1_prepost_indices.tif
+2026-05-08 12:01:45,078 | INFO | [OK] S1_2019-12-30_2.tif | pre=S1_2019-11-24_1.tif | post=S1_2020-01-18_2.tif | out=S1_2019-12-30_2_prepost_indices.tif
+2026-05-08 12:01:52,731 | INFO | [OK] S1_2020-01-18_2.tif | pre=S1_2019-12-30_2.tif | post=S1_2020-02-11_0.tif | out=S1_2020-01-18_2_prepost_indices.tif
+2026-05-08 12:01:59,790 | INFO | [OK] S1_2020-01-30_4.tif | pre=S1_2019-12-30_2.tif | post=S1_2020-02-11_0.tif | out=S1_2020-01-30_4_prepost_indices.tif
+2026-05-08 12:02:07,475 | INFO | [OK] S1_2020-02-11_0.tif | pre=S1_2020-01-30_4.tif | post=S1_2020-03-06_0.tif | out=S1_2020-02-11_0_prepost_indices.tif
+2026-05-08 12:02:14,517 | INFO | [OK] S1_2020-02-23_2.tif | pre=S1_2020-01-30_4.tif | post=S1_2020-03-06_0.tif | out=S1_2020-02-23_2_prepost_indices.tif
+2026-05-08 12:02:21,550 | INFO | [OK] S1_2020-03-06_0.tif | pre=S1_2020-02-23_2.tif | post=S1_2020-04-11_1.tif | out=S1_2020-03-06_0_prepost_indices.tif
+2026-05-08 12:02:28,905 | INFO | [OK] S1_2020-04-11_1.tif | pre=S1_2020-03-06_0.tif | post=S1_2020-05-05_0.tif | out=S1_2020-04-11_1_prepost_indices.tif
+2026-05-08 12:02:36,491 | INFO | [OK] S1_2020-04-23_3.tif | pre=S1_2020-03-06_0.tif | post=S1_2020-05-05_0.tif | out=S1_2020-04-23_3_prepost_indices.tif
+2026-05-08 12:02:43,411 | INFO | [OK] S1_2020-05-05_0.tif | pre=S1_2020-04-23_3.tif | post=S1_2020-06-10_1.tif | out=S1_2020-05-05_0_prepost_indices.tif
+2026-05-08 12:02:50,720 | INFO | [OK] S1_2020-05-29_4.tif | pre=S1_2020-04-23_3.tif | post=S1_2020-06-10_1.tif | out=S1_2020-05-29_4_prepost_indices.tif
+2026-05-08 12:02:57,818 | INFO | [OK] S1_2020-06-10_1.tif | pre=S1_2020-05-29_4.tif | post=S1_2020-07-04_0.tif | out=S1_2020-06-10_1_prepost_indices.tif
+2026-05-08 12:03:04,675 | INFO | [OK] S1_2020-06-22_3.tif | pre=S1_2020-05-29_4.tif | post=S1_2020-07-04_0.tif | out=S1_2020-06-22_3_prepost_indices.tif
+2026-05-08 12:03:11,754 | INFO | [OK] S1_2020-07-04_0.tif | pre=S1_2020-06-22_3.tif | post=S1_2020-08-09_0.tif | out=S1_2020-07-04_0_prepost_indices.tif
+2026-05-08 12:03:18,651 | INFO | [OK] S1_2020-07-16_2.tif | pre=S1_2020-06-22_3.tif | post=S1_2020-08-09_0.tif | out=S1_2020-07-16_2_prepost_indices.tif
+2026-05-08 12:03:25,921 | INFO | [OK] S1_2020-08-09_0.tif | pre=S1_2020-07-16_2.tif | post=S1_2020-09-02_0.tif | out=S1_2020-08-09_0_prepost_indices.tif
+2026-05-08 12:03:32,926 | INFO | [OK] S1_2020-08-21_2.tif | pre=S1_2020-07-16_2.tif | post=S1_2020-09-02_0.tif | out=S1_2020-08-21_2_prepost_indices.tif
+2026-05-08 12:03:40,069 | INFO | [OK] S1_2020-09-02_0.tif | pre=S1_2020-08-21_2.tif | post=S1_2020-10-08_1.tif | out=S1_2020-09-02_0_prepost_indices.tif
+2026-05-08 12:03:47,007 | INFO | [OK] S1_2020-09-14_2.tif | pre=S1_2020-08-21_2.tif | post=S1_2020-10-08_1.tif | out=S1_2020-09-14_2_prepost_indices.tif
+2026-05-08 12:03:54,371 | INFO | [OK] S1_2020-09-26_4.tif | pre=S1_2020-08-21_2.tif | post=S1_2020-10-08_1.tif | out=S1_2020-09-26_4_prepost_indices.tif
+2026-05-08 12:04:01,173 | INFO | [OK] S1_2020-10-08_1.tif | pre=S1_2020-09-26_4.tif | post=S1_2020-11-06_0.tif | out=S1_2020-10-08_1_prepost_indices.tif
+2026-05-08 12:04:07,873 | INFO | [OK] S1_2020-10-20_3.tif | pre=S1_2020-09-26_4.tif | post=S1_2020-11-06_0.tif | out=S1_2020-10-20_3_prepost_indices.tif
+2026-05-08 12:04:14,768 | INFO | [OK] S1_2020-11-06_0.tif | pre=S1_2020-10-20_3.tif | post=S1_2020-12-12_0.tif | out=S1_2020-11-06_0_prepost_indices.tif
+2026-05-08 12:04:21,596 | INFO | [OK] S1_2020-11-18_1.tif | pre=S1_2020-10-20_3.tif | post=S1_2020-12-12_0.tif | out=S1_2020-11-18_1_prepost_indices.tif
+2026-05-08 12:04:28,849 | INFO | [OK] S1_2020-11-25_2.tif | pre=S1_2020-10-20_3.tif | post=S1_2020-12-12_0.tif | out=S1_2020-11-25_2_prepost_indices.tif
+2026-05-08 12:04:35,580 | INFO | [OK] S1_2020-12-12_0.tif | pre=S1_2020-11-25_2.tif | post=S1_2021-01-12_1.tif | out=S1_2020-12-12_0_prepost_indices.tif
+2026-05-08 12:04:42,642 | INFO | [OK] S1_2020-12-19_1.tif | pre=S1_2020-11-25_2.tif | post=S1_2021-01-12_1.tif | out=S1_2020-12-19_1_prepost_indices.tif
+2026-05-08 12:04:49,405 | INFO | [OK] S1_2021-01-12_1.tif | pre=S1_2020-12-19_1.tif | post=S1_2021-02-05_0.tif | out=S1_2021-01-12_1_prepost_indices.tif
+2026-05-08 12:04:56,372 | INFO | [OK] S1_2021-01-24_3.tif | pre=S1_2020-12-19_1.tif | post=S1_2021-02-05_0.tif | out=S1_2021-01-24_3_prepost_indices.tif
+2026-05-08 12:05:03,324 | INFO | [OK] S1_2021-02-05_0.tif | pre=S1_2021-01-24_3.tif | post=S1_2021-03-30_0.tif | out=S1_2021-02-05_0_prepost_indices.tif
+2026-05-08 12:05:10,267 | INFO | [OK] S1_2021-03-30_0.tif | pre=S1_2021-02-05_0.tif | post=S1_2021-04-06_0.tif | out=S1_2021-03-30_0_prepost_indices.tif
+2026-05-08 12:05:17,100 | INFO | [OK] S1_2021-04-06_0.tif | pre=S1_2021-03-30_0.tif | post=S1_2021-05-12_1.tif | out=S1_2021-04-06_0_prepost_indices.tif
+2026-05-08 12:05:23,987 | INFO | [OK] S1_2021-04-18_2.tif | pre=S1_2021-03-30_0.tif | post=S1_2021-05-12_1.tif | out=S1_2021-04-18_2_prepost_indices.tif
+2026-05-08 12:05:31,197 | INFO | [OK] S1_2021-05-12_1.tif | pre=S1_2021-04-18_2.tif | post=S1_2021-06-05_0.tif | out=S1_2021-05-12_1_prepost_indices.tif
+2026-05-08 12:05:38,671 | INFO | [OK] S1_2021-05-24_3.tif | pre=S1_2021-04-18_2.tif | post=S1_2021-06-05_0.tif | out=S1_2021-05-24_3_prepost_indices.tif
+2026-05-08 12:05:45,828 | INFO | [OK] S1_2021-06-05_0.tif | pre=S1_2021-05-24_3.tif | post=S1_2021-07-11_1.tif | out=S1_2021-06-05_0_prepost_indices.tif
+2026-05-08 12:05:52,676 | INFO | [OK] S1_2021-06-17_2.tif | pre=S1_2021-05-24_3.tif | post=S1_2021-07-11_1.tif | out=S1_2021-06-17_2_prepost_indices.tif
+2026-05-08 12:05:59,604 | INFO | [OK] S1_2021-06-29_4.tif | pre=S1_2021-05-24_3.tif | post=S1_2021-07-11_1.tif | out=S1_2021-06-29_4_prepost_indices.tif
+2026-05-08 12:06:06,775 | INFO | [OK] S1_2021-07-11_1.tif | pre=S1_2021-06-29_4.tif | post=S1_2021-08-04_0.tif | out=S1_2021-07-11_1_prepost_indices.tif
+2026-05-08 12:06:13,916 | INFO | [OK] S1_2021-07-23_3.tif | pre=S1_2021-06-29_4.tif | post=S1_2021-08-04_0.tif | out=S1_2021-07-23_3_prepost_indices.tif
+2026-05-08 12:06:21,091 | INFO | [OK] S1_2021-08-04_0.tif | pre=S1_2021-07-23_3.tif | post=S1_2021-09-09_1.tif | out=S1_2021-08-04_0_prepost_indices.tif
+2026-05-08 12:06:28,007 | INFO | [OK] S1_2021-08-16_2.tif | pre=S1_2021-07-23_3.tif | post=S1_2021-09-09_1.tif | out=S1_2021-08-16_2_prepost_indices.tif
+2026-05-08 12:06:35,115 | INFO | [OK] S1_2021-08-28_4.tif | pre=S1_2021-07-23_3.tif | post=S1_2021-09-09_1.tif | out=S1_2021-08-28_4_prepost_indices.tif
+2026-05-08 12:06:42,291 | INFO | [OK] S1_2021-09-09_1.tif | pre=S1_2021-08-28_4.tif | post=S1_2021-10-15_2.tif | out=S1_2021-09-09_1_prepost_indices.tif
+2026-05-08 12:06:49,576 | INFO | [OK] S1_2021-09-21_3.tif | pre=S1_2021-08-28_4.tif | post=S1_2021-10-15_2.tif | out=S1_2021-09-21_3_prepost_indices.tif
+2026-05-08 12:06:56,469 | INFO | [OK] S1_2021-10-15_2.tif | pre=S1_2021-09-21_3.tif | post=S1_2021-11-08_1.tif | out=S1_2021-10-15_2_prepost_indices.tif
+2026-05-08 12:07:03,317 | INFO | [OK] S1_2021-10-27_3.tif | pre=S1_2021-09-21_3.tif | post=S1_2021-11-08_1.tif | out=S1_2021-10-27_3_prepost_indices.tif
+2026-05-08 12:07:10,328 | INFO | [OK] S1_2021-11-08_1.tif | pre=S1_2021-10-27_3.tif | post=S1_2021-12-02_0.tif | out=S1_2021-11-08_1_prepost_indices.tif
+2026-05-08 12:07:17,585 | INFO | [OK] S1_2021-11-20_3.tif | pre=S1_2021-10-27_3.tif | post=S1_2021-12-02_0.tif | out=S1_2021-11-20_3_prepost_indices.tif
+2026-05-08 12:07:17,600 | WARNING | [SKIPPED_NO_POST] S1_2021-12-02_0.tif | No existe imagen del mes siguiente.
+2026-05-08 12:07:17,603 | WARNING | [SKIPPED_NO_POST] S1_2021-12-14_2.tif | No existe imagen del mes siguiente.
+2026-05-08 12:07:17,617 | INFO | Trazabilidad guardada en: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\S1_V2_PREPOST\s1_prepost_trace.csv
+2026-05-08 12:07:17,617 | INFO | Resumen de procesamiento:
+2026-05-08 12:07:17,622 | INFO | 
+status
+OK                 113
+SKIPPED_NO_POST      2
+SKIPPED_NO_PRE       1
