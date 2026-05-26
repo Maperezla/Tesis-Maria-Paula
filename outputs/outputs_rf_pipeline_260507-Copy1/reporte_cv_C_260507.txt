@@ -1,0 +1,172 @@
+########################
+# DATASET C - MODELO C
+########################
+
+========== CV REPORT MODELO C (StratifiedGroupKFold) ==========
+
+--- Modelo C | Fold 1 (StratifiedGroupKFold) ---
+              precision    recall  f1-score   support
+
+  absence(0)       0.85      0.89      0.87        19
+ presence(1)       0.87      0.81      0.84        16
+
+    accuracy                           0.86        35
+   macro avg       0.86      0.85      0.86        35
+weighted avg       0.86      0.86      0.86        35
+
+
+--- Modelo C | Fold 2 (StratifiedGroupKFold) ---
+              precision    recall  f1-score   support
+
+  absence(0)       1.00      0.82      0.90        17
+ presence(1)       0.85      1.00      0.92        17
+
+    accuracy                           0.91        34
+   macro avg       0.93      0.91      0.91        34
+weighted avg       0.92      0.91      0.91        34
+
+
+--- Modelo C | Fold 3 (StratifiedGroupKFold) ---
+              precision    recall  f1-score   support
+
+  absence(0)       0.69      0.85      0.76        13
+ presence(1)       0.86      0.71      0.77        17
+
+    accuracy                           0.77        30
+   macro avg       0.77      0.78      0.77        30
+weighted avg       0.78      0.77      0.77        30
+
+
+--- Modelo C | Fold 4 (StratifiedGroupKFold) ---
+              precision    recall  f1-score   support
+
+  absence(0)       0.85      0.52      0.65        21
+ presence(1)       0.60      0.88      0.71        17
+
+    accuracy                           0.68        38
+   macro avg       0.72      0.70      0.68        38
+weighted avg       0.74      0.68      0.68        38
+
+
+--- Modelo C | Fold 5 (StratifiedGroupKFold) ---
+              precision    recall  f1-score   support
+
+  absence(0)       0.89      0.94      0.92        18
+ presence(1)       0.94      0.88      0.91        17
+
+    accuracy                           0.91        35
+   macro avg       0.92      0.91      0.91        35
+weighted avg       0.92      0.91      0.91        35
+
+
+--- Modelo C | Fold 6 (StratifiedGroupKFold) ---
+              precision    recall  f1-score   support
+
+  absence(0)       0.82      0.86      0.84        21
+ presence(1)       0.80      0.75      0.77        16
+
+    accuracy                           0.81        37
+   macro avg       0.81      0.80      0.81        37
+weighted avg       0.81      0.81      0.81        37
+
+
+--- Modelo C | Fold 7 (StratifiedGroupKFold) ---
+              precision    recall  f1-score   support
+
+  absence(0)       0.86      0.80      0.83        15
+ presence(1)       0.82      0.88      0.85        16
+
+    accuracy                           0.84        31
+   macro avg       0.84      0.84      0.84        31
+weighted avg       0.84      0.84      0.84        31
+
+
+--- Modelo C | Fold 8 (StratifiedGroupKFold) ---
+              precision    recall  f1-score   support
+
+  absence(0)       0.76      0.94      0.84        17
+ presence(1)       0.92      0.69      0.79        16
+
+    accuracy                           0.82        33
+   macro avg       0.84      0.81      0.81        33
+weighted avg       0.84      0.82      0.81        33
+
+
+--- Modelo C | Fold 9 (StratifiedGroupKFold) ---
+              precision    recall  f1-score   support
+
+  absence(0)       0.67      0.80      0.73        15
+ presence(1)       0.81      0.68      0.74        19
+
+    accuracy                           0.74        34
+   macro avg       0.74      0.74      0.74        34
+weighted avg       0.75      0.74      0.74        34
+
+
+--- Modelo C | Fold 10 (StratifiedGroupKFold) ---
+              precision    recall  f1-score   support
+
+  absence(0)       0.93      1.00      0.96        13
+ presence(1)       1.00      0.94      0.97        18
+
+    accuracy                           0.97        31
+   macro avg       0.96      0.97      0.97        31
+weighted avg       0.97      0.97      0.97        31
+
+
+
+========== METRICS PER FOLD ==========
+
+modelo  fold                   cv  n_train  n_test  balanced_accuracy  precision_pos  recall_pos   f1_pos  precision_neg  recall_neg   f1_neg  tn  fp  fn  tp
+     C     1 StratifiedGroupKFold      303      35           0.853618       0.866667    0.812500 0.838710       0.850000    0.894737 0.871795  17   2   3  13
+     C     2 StratifiedGroupKFold      304      34           0.911765       0.850000    1.000000 0.918919       1.000000    0.823529 0.903226  14   3   0  17
+     C     3 StratifiedGroupKFold      308      30           0.776018       0.857143    0.705882 0.774194       0.687500    0.846154 0.758621  11   2   5  12
+     C     4 StratifiedGroupKFold      300      38           0.703081       0.600000    0.882353 0.714286       0.846154    0.523810 0.647059  11  10   2  15
+     C     5 StratifiedGroupKFold      303      35           0.913399       0.937500    0.882353 0.909091       0.894737    0.944444 0.918919  17   1   2  15
+     C     6 StratifiedGroupKFold      301      37           0.803571       0.800000    0.750000 0.774194       0.818182    0.857143 0.837209  18   3   4  12
+     C     7 StratifiedGroupKFold      307      31           0.837500       0.823529    0.875000 0.848485       0.857143    0.800000 0.827586  12   3   2  14
+     C     8 StratifiedGroupKFold      305      33           0.814338       0.916667    0.687500 0.785714       0.761905    0.941176 0.842105  16   1   5  11
+     C     9 StratifiedGroupKFold      304      34           0.742105       0.812500    0.684211 0.742857       0.666667    0.800000 0.727273  12   3   6  13
+     C    10 StratifiedGroupKFold      307      31           0.972222       1.000000    0.944444 0.971429       0.928571    1.000000 0.962963  13   0   1  17
+
+
+========== SUMMARY (mean ± std) ==========
+
+                       mean       std
+balanced_accuracy  0.832762  0.083065
+precision_pos      0.846401  0.106410
+recall_pos         0.822424  0.111854
+f1_pos             0.827788  0.084134
+precision_neg      0.831086  0.103255
+recall_neg         0.843099  0.130565
+f1_neg             0.829676  0.095460
+
+
+========== AGGREGATED CONFUSION MATRIX ==========
+
+[[141  28]
+ [ 30 139]]
+
+
+========== FEATURE IMPORTANCE ==========
+
+             feature  importance_mean  importance_std
+          SR_B5_norm         0.214718        0.011240
+          SR_B6_norm         0.158086        0.007145
+            EVI_norm         0.148127        0.006478
+            NBR_norm         0.059088        0.004641
+           NDVI_norm         0.057560        0.004411
+           NDWI_norm         0.054486        0.002426
+          angle_norm         0.054267        0.003186
+          SR_B7_norm         0.050257        0.002708
+             VV_norm         0.039221        0.002678
+             VH_norm         0.037971        0.002723
+  VH_Difference_norm         0.033188        0.001959
+     VVVH_ratio_norm         0.032277        0.002228
+VHVV_Difference_norm         0.030831        0.002228
+  VV_Difference_norm         0.029921        0.001981
+
+
+========== NORMALIZACIÓN ==========
+
+La normalización Min-Max se calculó dentro de cada fold usando únicamente el conjunto de entrenamiento. El conjunto de prueba fue transformado con los parámetros del entrenamiento correspondiente. El modelo final se entrenó con todo el dataset normalizado usando parámetros Min-Max finales calculados sobre todo el dataset final.

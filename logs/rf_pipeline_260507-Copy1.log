@@ -187,3 +187,54 @@ VHVV_Difference       1357    70.603538
             NBR       1222    63.579605
            NDWI       1222    63.579605
 2026-05-22 10:09:14,986 | INFO | [MODELO C] Dataset C shape: (338, 79)
+2026-05-25 19:58:54,428 | INFO | Inicio pipeline RF con normalización Min-Max por fold-Copy1
+2026-05-25 19:59:14,718 | INFO | =================================================
+2026-05-25 19:59:14,718 | INFO | INICIO PIPELINE MODELO C
+2026-05-25 19:59:14,718 | INFO | =================================================
+2026-05-25 19:59:14,718 | INFO | [MODELO C] Ruta incendios: C:\Users\Equipo\Tesis\SemestreIV\Objetivo1\Objetivo1_26_02_20\outputs\fire_orbits\incendios_con_orbitas_26_03_12.shp
+2026-05-25 19:59:14,718 | INFO | [MODELO C] Ruta ausencias: D:\Maestria_Geomatica\Semestre_IV\Puntos_unificados_25_11_05\Puntos_unificados_26_02_23\puntos_no_calientes_aleatorios_961_26_02_23.shp
+2026-05-25 19:59:14,718 | INFO | [MODELO C] Ruta L8 normalizado: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\L8
+2026-05-25 19:59:14,718 | INFO | [MODELO C] Ruta S1 normalizado: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\S1_V2_PREPOST
+2026-05-25 19:59:14,718 | INFO | [MODELO C] OUT_DIR: C:\Users\Equipo\Tesis\SemestreIV\Objetivo1\Objetivo1_26_02_20\outputs\outputs_rf_pipeline_260507-Copy1
+2026-05-25 19:59:14,718 | INFO | [MODELO C] Estrategia diferencias S1: closest_to_fire_date
+2026-05-25 19:59:15,672 | INFO | [MODELO C] CRS puntos combinados: EPSG:9377
+2026-05-25 19:59:15,672 | INFO | [MODELO C] Incendios: 961
+2026-05-25 19:59:15,673 | INFO | [MODELO C] Ausencias: 961
+2026-05-25 19:59:15,673 | INFO | [MODELO C] Total puntos: 1922
+2026-05-25 19:59:15,732 | INFO | [L8] Carpeta: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\L8
+2026-05-25 19:59:15,732 | INFO | [L8] TIFF encontrados: 30
+2026-05-25 19:59:15,732 | INFO | [L8] TIFF indexados correctamente: 30
+2026-05-25 19:59:15,765 | INFO | [S1] Carpeta: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\S1_V2_PREPOST
+2026-05-25 19:59:15,765 | INFO | [S1] TIFF encontrados: 113
+2026-05-25 19:59:15,765 | INFO | [S1] TIFF indexados correctamente: 113
+2026-05-25 19:59:15,765 | INFO | [MODELO C][L8] Bimestres indexados: 30
+2026-05-25 19:59:15,765 | INFO | [MODELO C][S1] Escenas indexadas: 113
+2026-05-25 19:59:15,822 | INFO | [MODELO C][L8] Rasters Landsat 8 usados por puntos: 21
+2026-05-25 19:59:41,929 | INFO | [MODELO C][L8] Puntos con imagen Landsat 8: 1055
+2026-05-25 19:59:41,930 | INFO | [MODELO C][L8] Puntos sin imagen Landsat 8: 867
+2026-05-25 20:00:04,573 | INFO | [MODELO C][S1 GENERAL] Puntos con Sentinel-1 general: 630
+2026-05-25 20:00:04,573 | INFO | [MODELO C][S1 GENERAL] Puntos sin Sentinel-1 general: 1292
+2026-05-25 20:00:22,211 | INFO | [MODELO C][S1 DIFFERENCE] Puntos con Sentinel-1 diferencias mismo mes: 630
+2026-05-25 20:00:22,211 | INFO | [MODELO C][S1 DIFFERENCE] Puntos sin Sentinel-1 diferencias mismo mes: 1292
+2026-05-25 20:00:22,226 | INFO | [MODELO C] Coverage report:
+        feature  missing_n  missing_pct
+             VV       1370    71.279917
+             VH       1370    71.279917
+     VVVH_ratio       1370    71.279917
+          angle       1366    71.071800
+  VV_Difference       1357    70.603538
+  VH_Difference       1357    70.603538
+VHVV_Difference       1357    70.603538
+          SR_B5       1222    63.579605
+          SR_B6       1222    63.579605
+          SR_B7       1222    63.579605
+           NDVI       1222    63.579605
+            EVI       1222    63.579605
+            NBR       1222    63.579605
+           NDWI       1222    63.579605
+2026-05-25 20:00:22,391 | INFO | [MODELO C] Dataset C shape: (338, 79)
+2026-05-25 20:00:38,866 | INFO | Created 1,922 records
+2026-05-25 20:00:39,159 | INFO | [MODELO C] Outputs generados en: C:\Users\Equipo\Tesis\SemestreIV\Objetivo1\Objetivo1_26_02_20\outputs\outputs_rf_pipeline_260507-Copy1
+2026-05-25 20:00:39,159 | INFO | =================================================
+2026-05-25 20:00:39,159 | INFO | FIN PIPELINE MODELO C
+2026-05-25 20:00:39,159 | INFO | =================================================
