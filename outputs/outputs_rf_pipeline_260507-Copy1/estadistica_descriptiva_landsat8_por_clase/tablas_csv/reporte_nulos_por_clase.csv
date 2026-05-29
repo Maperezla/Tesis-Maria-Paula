@@ -1,0 +1,15 @@
+﻿label,clase,variable,n_total_clase,n_nulos,porcentaje_nulos
+0,no_incendio,SR_B5,170,0,0.0
+0,no_incendio,SR_B6,170,0,0.0
+0,no_incendio,SR_B7,170,0,0.0
+0,no_incendio,NDVI,170,0,0.0
+0,no_incendio,EVI,170,0,0.0
+0,no_incendio,NBR,170,0,0.0
+0,no_incendio,NDWI,170,0,0.0
+1,incendio,SR_B5,170,0,0.0
+1,incendio,SR_B6,170,0,0.0
+1,incendio,SR_B7,170,0,0.0
+1,incendio,NDVI,170,0,0.0
+1,incendio,EVI,170,0,0.0
+1,incendio,NBR,170,0,0.0
+1,incendio,NDWI,170,0,0.0
