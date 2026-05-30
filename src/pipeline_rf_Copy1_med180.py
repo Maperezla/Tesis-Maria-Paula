@@ -1198,6 +1198,12 @@ def build_master_features_model_c(
             except RasterioIOError:
                 logger.warning(f"[MODELO C][L8][BUFFER] No se pudo muestrear raster: {path}")
 
+            except Exception as exc:
+                logger.warning(
+                    f"[MODELO C][L8][BUFFER] Error calculando mediana {buffer_radius_m} m | "
+                    f"raster={os.path.basename(path)} | error={exc}"
+                )
+
         g.loc[grp_idx, "l8_found"] = True
         g.loc[grp_idx, "l8_file"] = os.path.basename(path)
 
@@ -2142,6 +2148,88 @@ def export_outputs_model_c(
         f.write(reportC)
 
 
+
+def run_preflight_med180_ab(
+    cfg,
+    logger: logging.Logger,
+    max_points: Optional[int] = 5,
+) -> Dict[str, object]:
+    """
+    Ejecuta una validación previa de extracción para Modelos A/B sin entrenar RF.
+
+    Permite comprobar rápidamente que las variables puntuales y med180 se asignan
+    correctamente antes de procesar todo el conjunto o ejecutar validación cruzada.
+
+    Parameters
+    ----------
+    cfg : RFPipelineConfig
+        Configuración general del pipeline.
+    logger : logging.Logger
+        Logger activo.
+    max_points : Optional[int]
+        Número máximo de puntos a evaluar. Use None para revisar todos los puntos.
+
+    Returns
+    -------
+    Dict[str, object]
+        Incluye puntos, índices raster, g_master de prueba, reporte de cobertura y
+        conteo de NaN por variable.
+    """
+    enable_buffer_features = bool(getattr(cfg, "enable_buffer_features", True))
+    buffer_radius_m = float(getattr(cfg, "buffer_radius_m", DEFAULT_BUFFER_RADIUS_M))
+    raw_features = get_raw_features(enable_buffer_features)
+
+    g_points = load_points(
+        path_fire_shp=str(cfg.path_fire_shp),
+        path_abs_shp=str(cfg.path_abs_shp),
+        date_col=cfg.date_col,
+        epsg_work=cfg.epsg_work,
+    )
+
+    g_points = assign_dates_to_absences(
+        g_points,
+        date_col=cfg.date_col,
+        seed=cfg.seed_abs_dates,
+    )
+
+    if max_points is not None:
+        g_eval = g_points.head(int(max_points)).copy()
+    else:
+        g_eval = g_points.copy()
+
+    l8_index = index_l8_rasters(str(cfg.l8_dir), logger=logger)
+    s1_index = index_s1_rasters_from_filenames(str(cfg.s1_dir), logger=logger)
+
+    g_master = build_master_features(
+        g=g_eval,
+        l8_index=l8_index,
+        s1_df=s1_index,
+        date_col=cfg.date_col,
+        l8_switch_day=cfg.l8_switch_day,
+        l8_fallback_next_available=cfg.l8_fallback_next_available,
+        s1_start_offset_days=cfg.s1_start_offset_days,
+        s1_window_days=cfg.s1_window_days,
+        logger=logger,
+        enable_buffer_features=enable_buffer_features,
+        buffer_radius_m=buffer_radius_m,
+        epsg_work=cfg.epsg_work,
+    )
+
+    nan_counts = g_master[raw_features].isna().sum().sort_values(ascending=False)
+    coverage = coverage_report(g_master, raw_features)
+
+    return {
+        "g_points": g_points,
+        "g_eval": g_eval,
+        "l8_index": l8_index,
+        "s1_index": s1_index,
+        "g_master": g_master,
+        "raw_features": raw_features,
+        "nan_counts": nan_counts,
+        "coverage": coverage,
+    }
+
+
 # =========================================================
 # PIPELINE PRINCIPAL
 # =========================================================
@@ -2220,8 +2308,8 @@ def run_pipeline(cfg, logger: logging.Logger):
         s1_start_offset_days=cfg.s1_start_offset_days,
         s1_window_days=cfg.s1_window_days,
         logger=logger,
-        enable_buffer_features=cfg.enable_buffer_features,
-        buffer_radius_m=cfg.buffer_radius_m,
+        enable_buffer_features=enable_buffer_features,
+        buffer_radius_m=buffer_radius_m,
         epsg_work=cfg.epsg_work,
     )
 
@@ -2287,9 +2375,15 @@ def run_pipeline(cfg, logger: logging.Logger):
     # =========================
 
     if dfA.empty:
+        missing_counts = g_master[raw_features].isna().sum().sort_values(ascending=False)
+        missing_pct = (g_master[raw_features].isna().mean() * 100.0).sort_values(ascending=False)
         raise ValueError(
-            "dfA quedó vacío antes de CV. "
-            "Revisa cobertura completa de FEATURES, disponibilidad L8/S1 y balanceo temporal."
+            "dfA quedó vacío antes de CV: ningún punto cumple caso completo en todas las "
+            "variables puntuales y med180. Revisa la cobertura L8/S1.\n\n"
+            "Variables con mayor número de NaN:\n"
+            f"{missing_counts.head(20).to_string()}\n\n"
+            "Porcentaje de NaN en esas variables:\n"
+            f"{missing_pct.head(20).to_string()}"
         )
 
     if dfB.empty:

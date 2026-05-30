@@ -654,7 +654,6 @@ def sample_raster_at_points(
         return arr
 
 
-
 def sample_raster_buffer_median(
     raster_path: str,
     pts: gpd.GeoDataFrame,
@@ -666,20 +665,21 @@ def sample_raster_buffer_median(
     """
     Calcula la mediana por banda dentro de un buffer circular en metros.
 
-    Flujo geomático:
-    1. Los puntos se reproyectan a EPSG:epsg_work.
-    2. El buffer se construye en EPSG:epsg_work para garantizar unidades en metros.
-    3. El buffer se reproyecta al CRS nativo del raster para aplicar la máscara.
-    4. Se calcula np.nanmedian por banda ignorando NoData, NaN e infinitos.
+    Procedimiento:
+    1. Los puntos se reproyectan al CRS de trabajo EPSG:9377.
+    2. El buffer se construye en EPSG:9377, porque sus unidades están en metros.
+    3. El buffer se reproyecta al CRS del raster.
+    4. Se extraen los píxeles intersectados por el buffer.
+    5. Se calcula la mediana por banda ignorando NoData, NaN e infinitos.
 
     Retorna
     -------
     np.ndarray
-        Matriz de tamaño (n_puntos, n_bandas). Si el buffer no intersecta
-        el raster o todos los píxeles son inválidos, retorna NaN para esa fila.
+        Matriz de tamaño (n_puntos, n_bandas).
     """
     n_points = len(pts)
     n_bands = len(band_indices_1based)
+
     out = np.full((n_points, n_bands), np.nan, dtype="float64")
 
     if n_points == 0:
@@ -692,17 +692,24 @@ def sample_raster_buffer_median(
         if src.crs is None:
             raise ValueError(f"El raster no tiene CRS definido: {raster_path}")
 
-        nod = src.nodata
+        nodata_value = src.nodata
 
-        pts_work = pts.to_crs(epsg=epsg_work)
+        # 1. Reproyectar puntos al CRS de trabajo en metros
+        pts_work = pts.to_crs(epsg=epsg_work).copy()
+
+        # 2. Crear buffer en EPSG:9377
         buffers_work = pts_work.geometry.buffer(float(buffer_radius_m))
+
         buffers_gdf = gpd.GeoDataFrame(
             {"_idx": np.arange(n_points)},
             geometry=buffers_work,
             crs=f"EPSG:{epsg_work}",
-        ).to_crs(src.crs)
+        )
 
-        for pos, geom in enumerate(buffers_gdf.geometry):
+        # 3. Reproyectar buffer al CRS del raster
+        buffers_raster = buffers_gdf.to_crs(src.crs)
+
+        for pos, geom in enumerate(buffers_raster.geometry):
             if geom is None or geom.is_empty:
                 continue
 
@@ -713,41 +720,64 @@ def sample_raster_buffer_median(
                     crop=True,
                     indexes=band_indices_1based,
                     filled=False,
-                    nodata=nod,
+                    nodata=nodata_value,
+                    all_touched=True,
                 )
+
             except ValueError:
-                # rasterio lanza ValueError cuando la geometría no intersecta.
+                # El buffer no intersecta el raster
                 if logger is not None:
                     logger.debug(
-                        f"[BUFFER] Sin intersección raster-buffer | "
+                        "[BUFFER] Buffer sin intersección con raster | "
                         f"raster={os.path.basename(raster_path)} | punto_pos={pos}"
                     )
                 continue
+
             except RasterioIOError:
                 raise
+
             except Exception as exc:
                 if logger is not None:
                     logger.warning(
-                        f"[BUFFER] Error calculando mediana | "
-                        f"raster={os.path.basename(raster_path)} | punto_pos={pos} | {exc}"
+                        "[BUFFER] Error en rasterio.mask.mask | "
+                        f"raster={os.path.basename(raster_path)} | "
+                        f"punto_pos={pos} | error={exc}"
                     )
                 continue
 
-            arr = np.ma.filled(data, np.nan).astype("float64")
+            # IMPORTANTE:
+            # Convertir a float antes de rellenar con NaN.
+            # Esto evita problemas cuando el raster está en int16, uint16, etc.
+            try:
+                data_float = data.astype("float64")
+                arr = np.ma.filled(data_float, np.nan)
 
-            if nod is not None:
-                arr[arr == nod] = np.nan
+            except Exception as exc:
+                if logger is not None:
+                    logger.warning(
+                        "[BUFFER] Error convirtiendo datos a float64 | "
+                        f"raster={os.path.basename(raster_path)} | "
+                        f"punto_pos={pos} | error={exc}"
+                    )
+                continue
 
+            # Convertir NoData explícito a NaN
+            if nodata_value is not None:
+                arr[arr == nodata_value] = np.nan
+
+            # Limpiar infinitos
             arr[~np.isfinite(arr)] = np.nan
 
-            # arr tiene forma (bandas, filas, columnas). Se calcula mediana espacial.
+            # Calcular mediana espacial por banda
             for b in range(n_bands):
                 vals = arr[b, :, :].ravel()
                 vals = vals[np.isfinite(vals)]
+
                 if vals.size > 0:
                     out[pos, b] = float(np.median(vals))
 
     return out
+
 
 
 def log_buffer_coverage(
@@ -815,7 +845,7 @@ def build_master_features(
     s1_window_days: int,
     logger: logging.Logger,
     enable_buffer_features: bool = True,
-    buffer_radius_m: float = DEFAULT_BUFFER_RADIUS_M,
+    buffer_radius_m: float = 180.0,
     epsg_work: int = 9377,
 ) -> gpd.GeoDataFrame:
     """
@@ -933,6 +963,12 @@ def build_master_features(
             except RasterioIOError:
                 logger.warning(f"[L8][BUFFER] No se pudo muestrear raster: {path}")
 
+            except Exception as exc:
+                logger.warning(
+                    f"[L8][BUFFER] Error calculando mediana {buffer_radius_m} m | "
+                    f"raster={os.path.basename(path)} | error={exc}"
+                )
+
         g.loc[grp_idx, "l8_found"] = True
         g.loc[grp_idx, "l8_file"] = os.path.basename(path)
 
@@ -998,10 +1034,17 @@ def build_master_features(
             except RasterioIOError:
                 logger.warning(f"[S1][BUFFER] No se pudo muestrear raster: {path}")
 
+            except Exception as exc:
+                logger.warning(
+                    f"[S1][BUFFER] Error calculando mediana {buffer_radius_m} m | "
+                    f"punto={i} | raster={os.path.basename(path)} | error={exc}"
+                )
+
         g.at[i, "s1_found"] = True
         g.at[i, "s1_file"] = os.path.basename(path)
         g.at[i, "s1_date"] = pd.Timestamp(sel["date"])
         g.at[i, "s1_scene_index"] = int(sel["scene_index"])
+
 
     n_s1_found = int(g["s1_found"].sum())
     n_s1_missing = int((~g["s1_found"]).sum())
@@ -1155,6 +1198,12 @@ def build_master_features_model_c(
             except RasterioIOError:
                 logger.warning(f"[MODELO C][L8][BUFFER] No se pudo muestrear raster: {path}")
 
+            except Exception as exc:
+                logger.warning(
+                    f"[MODELO C][L8][BUFFER] Error calculando mediana {buffer_radius_m} m | "
+                    f"raster={os.path.basename(path)} | error={exc}"
+                )
+
         g.loc[grp_idx, "l8_found"] = True
         g.loc[grp_idx, "l8_file"] = os.path.basename(path)
 
@@ -1202,7 +1251,7 @@ def build_master_features_model_c(
 
         if enable_buffer_features:
             try:
-                vals_general_buf = sample_raster_buffer_median(
+                vals_general_med180 = sample_raster_buffer_median(
                     raster_path=path_general,
                     pts=g.loc[[i]],
                     band_indices_1based=S1_GENERAL_BAND_INDICES_MODEL_C,
@@ -1210,12 +1259,18 @@ def build_master_features_model_c(
                     epsg_work=epsg_work,
                     logger=logger,
                 )
-
-                for j, feature_name in enumerate(S1_GENERAL_BUFFER_FEATURES_MODEL_C):
-                    g.at[i, feature_name] = vals_general_buf[0, j]
-
+        
+                for j, feature_name in enumerate(S1_GENERAL_RAW_FEATURES_MODEL_C):
+                    g.at[i, f"{feature_name}_med180"] = vals_general_med180[0, j]
+        
             except RasterioIOError:
                 logger.warning(f"[MODELO C][S1 GENERAL][BUFFER] No se pudo muestrear raster: {path_general}")
+        
+            except Exception as exc:
+                logger.warning(
+                    f"[MODELO C][S1 GENERAL][BUFFER] Error calculando mediana 180 m | "
+                    f"punto={i} | raster={os.path.basename(path_general)} | error={exc}"
+                )
 
         g.at[i, "s1_general_found"] = True
         g.at[i, "s1_general_file"] = os.path.basename(path_general)
@@ -1285,7 +1340,16 @@ def build_master_features_model_c(
                     g.at[i, feature_name] = vals_diff_buf[0, j]
 
             except RasterioIOError:
-                logger.warning(f"[MODELO C][S1 DIFFERENCE][BUFFER] No se pudo muestrear raster: {path_diff}")
+                logger.warning(
+                    f"[MODELO C][S1 DIFFERENCE][BUFFER] "
+                    f"No se pudo muestrear raster: {path_diff}"
+                )
+
+            except Exception as exc:
+                logger.warning(
+                    f"[MODELO C][S1 DIFFERENCE][BUFFER] Error calculando mediana {buffer_radius_m} m | "
+                    f"punto={i} | raster={os.path.basename(path_diff)} | error={exc}"
+                )
 
         g.at[i, "s1_difference_found"] = True
         g.at[i, "s1_difference_file"] = os.path.basename(path_diff)
@@ -2084,6 +2148,88 @@ def export_outputs_model_c(
         f.write(reportC)
 
 
+
+def run_preflight_med180_ab(
+    cfg,
+    logger: logging.Logger,
+    max_points: Optional[int] = 5,
+) -> Dict[str, object]:
+    """
+    Ejecuta una validación previa de extracción para Modelos A/B sin entrenar RF.
+
+    Permite comprobar rápidamente que las variables puntuales y med180 se asignan
+    correctamente antes de procesar todo el conjunto o ejecutar validación cruzada.
+
+    Parameters
+    ----------
+    cfg : RFPipelineConfig
+        Configuración general del pipeline.
+    logger : logging.Logger
+        Logger activo.
+    max_points : Optional[int]
+        Número máximo de puntos a evaluar. Use None para revisar todos los puntos.
+
+    Returns
+    -------
+    Dict[str, object]
+        Incluye puntos, índices raster, g_master de prueba, reporte de cobertura y
+        conteo de NaN por variable.
+    """
+    enable_buffer_features = bool(getattr(cfg, "enable_buffer_features", True))
+    buffer_radius_m = float(getattr(cfg, "buffer_radius_m", DEFAULT_BUFFER_RADIUS_M))
+    raw_features = get_raw_features(enable_buffer_features)
+
+    g_points = load_points(
+        path_fire_shp=str(cfg.path_fire_shp),
+        path_abs_shp=str(cfg.path_abs_shp),
+        date_col=cfg.date_col,
+        epsg_work=cfg.epsg_work,
+    )
+
+    g_points = assign_dates_to_absences(
+        g_points,
+        date_col=cfg.date_col,
+        seed=cfg.seed_abs_dates,
+    )
+
+    if max_points is not None:
+        g_eval = g_points.head(int(max_points)).copy()
+    else:
+        g_eval = g_points.copy()
+
+    l8_index = index_l8_rasters(str(cfg.l8_dir), logger=logger)
+    s1_index = index_s1_rasters_from_filenames(str(cfg.s1_dir), logger=logger)
+
+    g_master = build_master_features(
+        g=g_eval,
+        l8_index=l8_index,
+        s1_df=s1_index,
+        date_col=cfg.date_col,
+        l8_switch_day=cfg.l8_switch_day,
+        l8_fallback_next_available=cfg.l8_fallback_next_available,
+        s1_start_offset_days=cfg.s1_start_offset_days,
+        s1_window_days=cfg.s1_window_days,
+        logger=logger,
+        enable_buffer_features=enable_buffer_features,
+        buffer_radius_m=buffer_radius_m,
+        epsg_work=cfg.epsg_work,
+    )
+
+    nan_counts = g_master[raw_features].isna().sum().sort_values(ascending=False)
+    coverage = coverage_report(g_master, raw_features)
+
+    return {
+        "g_points": g_points,
+        "g_eval": g_eval,
+        "l8_index": l8_index,
+        "s1_index": s1_index,
+        "g_master": g_master,
+        "raw_features": raw_features,
+        "nan_counts": nan_counts,
+        "coverage": coverage,
+    }
+
+
 # =========================================================
 # PIPELINE PRINCIPAL
 # =========================================================
@@ -2229,9 +2375,15 @@ def run_pipeline(cfg, logger: logging.Logger):
     # =========================
 
     if dfA.empty:
+        missing_counts = g_master[raw_features].isna().sum().sort_values(ascending=False)
+        missing_pct = (g_master[raw_features].isna().mean() * 100.0).sort_values(ascending=False)
         raise ValueError(
-            "dfA quedó vacío antes de CV. "
-            "Revisa cobertura completa de FEATURES, disponibilidad L8/S1 y balanceo temporal."
+            "dfA quedó vacío antes de CV: ningún punto cumple caso completo en todas las "
+            "variables puntuales y med180. Revisa la cobertura L8/S1.\n\n"
+            "Variables con mayor número de NaN:\n"
+            f"{missing_counts.head(20).to_string()}\n\n"
+            "Porcentaje de NaN en esas variables:\n"
+            f"{missing_pct.head(20).to_string()}"
         )
 
     if dfB.empty:
