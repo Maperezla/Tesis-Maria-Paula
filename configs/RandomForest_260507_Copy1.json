@@ -12,7 +12,11 @@
   "normalization_excel": "parametros_minmax_modelos.xlsx",
   "normalized_raster_dir": "rasters_normalizados_minmax",
   "overwrite_norm_columns": true,
-  "nodata_output": -9999.0,       
+  "nodata_output": -9999.0,
+
+  "enable_buffer_features": true,
+  "buffer_radius_m": 180,
+  "buffer_statistic": "median",
     
   "out_gpkg": "puntos_features_260507-Copy1.gpkg",
   "out_layer": "puntos_features_260507-Copy1",
