@@ -433,3 +433,125 @@ VHVV_Difference_med180       1922   100.000000
                  SR_B5       1222    63.579605
 2026-05-29 20:47:43,303 | INFO | Dataset A shape: (0, 88)
 2026-05-29 20:47:43,303 | INFO | Dataset B shape: (1922, 88)
+2026-05-30 04:49:24,593 | INFO | Inicio pipeline RF con variables med180 y normalización Min-Max por fold
+2026-05-30 04:50:16,274 | INFO | [L8] Carpeta: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\L8
+2026-05-30 04:50:16,274 | INFO | [L8] TIFF encontrados: 30
+2026-05-30 04:50:16,274 | INFO | [L8] TIFF indexados correctamente: 30
+2026-05-30 04:50:16,388 | INFO | [S1] Carpeta: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\S1_V2_PREPOST
+2026-05-30 04:50:16,388 | INFO | [S1] TIFF encontrados: 113
+2026-05-30 04:50:16,388 | INFO | [S1] TIFF indexados correctamente: 113
+2026-05-30 04:50:16,401 | INFO | [L8] Rasters Landsat 8 usados por puntos: 1
+2026-05-30 04:50:17,123 | INFO | [L8] Puntos con imagen Landsat 8: 5
+2026-05-30 04:50:17,123 | INFO | [L8] Puntos sin imagen Landsat 8: 0
+2026-05-30 04:50:17,128 | INFO | [S1] Puntos con imagen Sentinel-1: 0
+2026-05-30 04:50:17,129 | INFO | [S1] Puntos sin imagen Sentinel-1: 5
+2026-05-30 04:50:17,133 | INFO | [L8 BUFFER med180] Puntos con al menos una variable buffer válida: 5
+2026-05-30 04:50:17,133 | INFO | [L8 BUFFER med180] Puntos con todas las variables buffer válidas: 5
+2026-05-30 04:50:17,133 | INFO | [L8 BUFFER med180] Puntos con todas las variables buffer en NaN: 0
+2026-05-30 04:50:17,135 | INFO | [L8 BUFFER med180] Porcentaje NaN variables buffer:
+SR_B5_med180    0.0
+SR_B6_med180    0.0
+SR_B7_med180    0.0
+NDVI_med180     0.0
+EVI_med180      0.0
+NBR_med180      0.0
+NDWI_med180     0.0
+2026-05-30 04:50:17,139 | INFO | [S1 BUFFER med180] Puntos con al menos una variable buffer válida: 0
+2026-05-30 04:50:17,139 | INFO | [S1 BUFFER med180] Puntos con todas las variables buffer válidas: 0
+2026-05-30 04:50:17,139 | INFO | [S1 BUFFER med180] Puntos con todas las variables buffer en NaN: 5
+2026-05-30 04:50:17,141 | INFO | [S1 BUFFER med180] Porcentaje NaN variables buffer:
+VV_med180                 100.0
+VH_med180                 100.0
+angle_med180              100.0
+VVVH_ratio_med180         100.0
+VV_Difference_med180      100.0
+VH_Difference_med180      100.0
+VHVV_Difference_med180    100.0
+2026-05-30 05:00:47,691 | INFO | [L8] Carpeta: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\L8
+2026-05-30 05:00:47,692 | INFO | [L8] TIFF encontrados: 30
+2026-05-30 05:00:47,692 | INFO | [L8] TIFF indexados correctamente: 30
+2026-05-30 05:00:47,707 | INFO | [S1] Carpeta: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\S1_V2_PREPOST
+2026-05-30 05:00:47,707 | INFO | [S1] TIFF encontrados: 113
+2026-05-30 05:00:47,707 | INFO | [S1] TIFF indexados correctamente: 113
+2026-05-30 05:02:19,280 | INFO | =================================================
+2026-05-30 05:02:19,280 | INFO | INICIO PIPELINE RANDOM FOREST
+2026-05-30 05:02:19,280 | INFO | =================================================
+2026-05-30 05:02:19,280 | INFO | Ruta incendios: C:\Users\Equipo\Tesis\SemestreIV\Objetivo1\Objetivo1_26_02_20\outputs\fire_orbits\incendios_con_orbitas_26_03_12.shp
+2026-05-30 05:02:19,280 | INFO | Ruta ausencias: D:\Maestria_Geomatica\Semestre_IV\Puntos_unificados_25_11_05\Puntos_unificados_26_02_23\puntos_no_calientes_aleatorios_961_26_02_23.shp
+2026-05-30 05:02:19,280 | INFO | Ruta L8 normalizado: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\L8
+2026-05-30 05:02:19,280 | INFO | Ruta S1 normalizado: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\S1_V2_PREPOST
+2026-05-30 05:02:19,280 | INFO | OUT_DIR: C:\Users\Equipo\Tesis\SemestreIV\Objetivo1\Objetivo1_26_02_20\outputs\outputs_rf_pipeline_260507-Copy1
+2026-05-30 05:02:19,280 | INFO | Variables buffer habilitadas: True
+2026-05-30 05:02:19,280 | INFO | Radio buffer mediana: 180.0 m
+2026-05-30 05:02:19,280 | INFO | Variables crudas activas: ['SR_B5', 'SR_B6', 'SR_B7', 'NDVI', 'EVI', 'NBR', 'NDWI', 'VV', 'VH', 'angle', 'VVVH_ratio', 'VV_Difference', 'VH_Difference', 'VHVV_Difference', 'SR_B5_med180', 'SR_B6_med180', 'SR_B7_med180', 'NDVI_med180', 'EVI_med180', 'NBR_med180', 'NDWI_med180', 'VV_med180', 'VH_med180', 'angle_med180', 'VVVH_ratio_med180', 'VV_Difference_med180', 'VH_Difference_med180', 'VHVV_Difference_med180']
+2026-05-30 05:02:19,387 | INFO | CRS puntos combinados: EPSG:9377
+2026-05-30 05:02:19,387 | INFO | Incendios: 961
+2026-05-30 05:02:19,387 | INFO | Ausencias: 961
+2026-05-30 05:02:19,387 | INFO | Total puntos: 1922
+2026-05-30 05:02:19,393 | INFO | [L8] Carpeta: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\L8
+2026-05-30 05:02:19,393 | INFO | [L8] TIFF encontrados: 30
+2026-05-30 05:02:19,393 | INFO | [L8] TIFF indexados correctamente: 30
+2026-05-30 05:02:19,409 | INFO | [S1] Carpeta: D:\Maestria_Geomatica\Semestre_IV\Tesis_Python\Datos\TIFF\S1_V2_PREPOST
+2026-05-30 05:02:19,409 | INFO | [S1] TIFF encontrados: 113
+2026-05-30 05:02:19,409 | INFO | [S1] TIFF indexados correctamente: 113
+2026-05-30 05:02:19,410 | INFO | [L8] Bimestres indexados: 30
+2026-05-30 05:02:19,410 | INFO | [S1] Escenas indexadas: 113
+2026-05-30 05:02:19,460 | INFO | [L8] Rasters Landsat 8 usados por puntos: 21
+2026-05-30 05:02:47,662 | INFO | [L8] Puntos con imagen Landsat 8: 1055
+2026-05-30 05:02:47,662 | INFO | [L8] Puntos sin imagen Landsat 8: 867
+2026-05-30 05:03:19,202 | INFO | [S1] Puntos con imagen Sentinel-1: 630
+2026-05-30 05:03:19,202 | INFO | [S1] Puntos sin imagen Sentinel-1: 1292
+2026-05-30 05:03:19,207 | INFO | [L8 BUFFER med180] Puntos con al menos una variable buffer válida: 113
+2026-05-30 05:03:19,207 | INFO | [L8 BUFFER med180] Puntos con todas las variables buffer válidas: 113
+2026-05-30 05:03:19,207 | INFO | [L8 BUFFER med180] Puntos con todas las variables buffer en NaN: 1809
+2026-05-30 05:03:19,209 | INFO | [L8 BUFFER med180] Porcentaje NaN variables buffer:
+SR_B5_med180    94.120708
+SR_B6_med180    94.120708
+SR_B7_med180    94.120708
+NDVI_med180     94.120708
+EVI_med180      94.120708
+NBR_med180      94.120708
+NDWI_med180     94.120708
+2026-05-30 05:03:19,213 | INFO | [S1 BUFFER med180] Puntos con al menos una variable buffer válida: 0
+2026-05-30 05:03:19,213 | INFO | [S1 BUFFER med180] Puntos con todas las variables buffer válidas: 0
+2026-05-30 05:03:19,213 | INFO | [S1 BUFFER med180] Puntos con todas las variables buffer en NaN: 1922
+2026-05-30 05:03:19,215 | INFO | [S1 BUFFER med180] Porcentaje NaN variables buffer:
+VV_med180                 100.0
+VH_med180                 100.0
+angle_med180              100.0
+VVVH_ratio_med180         100.0
+VV_Difference_med180      100.0
+VH_Difference_med180      100.0
+VHVV_Difference_med180    100.0
+2026-05-30 05:03:19,224 | INFO | Coverage report:
+               feature  missing_n  missing_pct
+VHVV_Difference_med180       1922   100.000000
+  VH_Difference_med180       1922   100.000000
+  VV_Difference_med180       1922   100.000000
+     VVVH_ratio_med180       1922   100.000000
+          angle_med180       1922   100.000000
+             VH_med180       1922   100.000000
+             VV_med180       1922   100.000000
+          SR_B6_med180       1809    94.120708
+           NDWI_med180       1809    94.120708
+            NBR_med180       1809    94.120708
+            EVI_med180       1809    94.120708
+           NDVI_med180       1809    94.120708
+          SR_B7_med180       1809    94.120708
+          SR_B5_med180       1809    94.120708
+            VVVH_ratio       1370    71.279917
+                    VH       1370    71.279917
+                    VV       1370    71.279917
+                 angle       1366    71.071800
+       VHVV_Difference       1321    68.730489
+         VH_Difference       1321    68.730489
+         VV_Difference       1321    68.730489
+                 SR_B6       1222    63.579605
+                  NDWI       1222    63.579605
+                   NBR       1222    63.579605
+                   EVI       1222    63.579605
+                  NDVI       1222    63.579605
+                 SR_B7       1222    63.579605
+                 SR_B5       1222    63.579605
+2026-05-30 05:03:19,773 | INFO | Dataset A shape: (0, 88)
+2026-05-30 05:03:19,773 | INFO | Dataset B shape: (1922, 88)
